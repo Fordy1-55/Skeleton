@@ -7,6 +7,7 @@
     <title></title>
 </head>
 <body>
+    This is the supplier data entry page
     <form id="form1" runat="server">
         <div>
         </div>
