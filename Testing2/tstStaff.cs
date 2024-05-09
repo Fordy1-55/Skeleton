@@ -48,12 +48,12 @@ namespace Testing2
 
         [TestMethod]
 
-        public void SpecialtyPropertyOK()
+        public void RolePropertyOK()
         {
             clsStaff Staff = new clsStaff();
-            string TestData = "A Specialty";
-            clsStaff.SpecialtyProperty = TestData;
-            Assert.AreEqual(clsStaff.SpecialtyProperty, TestData);
+            string TestData = "A Role";
+            clsStaff.RoleProperty = TestData;
+            Assert.AreEqual(clsStaff.RoleProperty, TestData);
         }
 
         [TestMethod]
