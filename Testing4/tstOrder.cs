@@ -17,28 +17,28 @@ namespace Testing4
         }
 
         [TestMethod]
-        public void AvailablePropertyOK()
+        public void OverseasDeliveryPropertyOK()
         {
             //create a new instance of the class we want to create
             clsOrder AnOrder = new clsOrder();
             //create some test data to assign to the property
             Boolean TestData = true;
             //assign the data to the property
-            AnOrder.Active = TestData;
+            AnOrder.OverseasDelivery = TestData;
             //test to see if the two values are the same
-            Assert.AreEqual(AnOrder.Active, TestData);
+            Assert.AreEqual(AnOrder.OverseasDelivery, TestData);
         }
 
-        public void DateAddedPropertyOK()
+        public void DateOrderedPropertyOK()
         {
             //create a new instance of the class we want to create
             clsOrder AnOrder = new clsOrder();
             //create some test data to assign to the property
             DateTime TestData = DateTime.Now.Date;
             //assign the data to the property
-            AnOrder.DateAdded = TestData;
+            AnOrder.DateOrdered = TestData;
             //test to see if the two values are the same
-            Assert.AreEqual(AnOrder.DateAdded, TestData);
+            Assert.AreEqual(AnOrder.DateOrdered, TestData);
         }
 
         public void OrderIdPropertyOK()
@@ -77,6 +77,26 @@ namespace Testing4
             Assert.AreEqual(AnOrder.OrderPrice, TestData);
         }
 
+        public void ReturnAddressPropertyOK()
+        {
+            //create a new instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            //create some test data to assign to the property
+            string TestData = "Return Address";
+            //assign the data to the property
+            AnOrder.ReturnAddress = TestData;
+            //test to see if the two values are the same
+            Assert.AreEqual(AnOrder.ReturnAddress, TestData);
+        }
+
+        public void DeliveryInstructionsPropertyOK()
+        {
+            //create a new instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            string TestData = "Delivery Instructions";
+            AnOrder.DeliveryInstructions = TestData;
+            Assert.AreEqual(AnOrder.ReturnAddress, TestData);
+        }
 
 
     }
