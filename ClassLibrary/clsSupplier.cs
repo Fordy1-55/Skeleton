@@ -4,12 +4,12 @@ namespace ClassLibrary
 {
     public class clsSupplier
     {
-        public bool Active { get; set; }
-        public DateTime DateAdded { get; set; }
+        public bool Availability { get; set; }
+        public DateTime SupplierAddDate { get; set; }
         public int SupplierID { get; set; }
-        public string Name { get; set; }
-        public string Email { get; set; }
-        public string Phone { get; set; }
-        public string City { get; set; }
+        public string SupplierName { get; set; }
+        public string SupplierContactEmail { get; set; }
+        public string SupplierContactPhone { get; set; }
+        public string SupplierCity { get; set; }
     }
 }

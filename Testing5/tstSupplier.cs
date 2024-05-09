@@ -19,8 +19,8 @@ namespace Testing5
         {
             clsSupplier ASupplier = new clsSupplier();
             Boolean TestData = true;
-            ASupplier.Active = TestData;
-            Assert.AreEqual(ASupplier.Active, TestData);
+            ASupplier.Availability = TestData;
+            Assert.AreEqual(ASupplier.Availability, TestData);
         }
 
         [TestMethod]
@@ -28,8 +28,8 @@ namespace Testing5
         {
             clsSupplier ASupplier = new clsSupplier();
             DateTime TestData = DateTime.Now.Date;
-            ASupplier.DateAdded = TestData;
-            Assert.AreEqual(ASupplier.DateAdded, TestData);
+            ASupplier.SupplierAddDate = TestData;
+            Assert.AreEqual(ASupplier.SupplierAddDate, TestData);
         }
 
         [TestMethod]
@@ -46,8 +46,8 @@ namespace Testing5
         {
             clsSupplier ASupplier = new clsSupplier();
             string TestData = "Hats";
-            ASupplier.Name = TestData;
-            Assert.AreEqual(ASupplier.Name, TestData);
+            ASupplier.SupplierName = TestData;
+            Assert.AreEqual(ASupplier.SupplierName, TestData);
         }
 
         [TestMethod]
@@ -55,8 +55,8 @@ namespace Testing5
         {
             clsSupplier ASupplier = new clsSupplier();
             string TestData = "he got an email";
-            ASupplier.Email = TestData;
-            Assert.AreEqual(ASupplier.Email, TestData);
+            ASupplier.SupplierContactEmail = TestData;
+            Assert.AreEqual(ASupplier.SupplierContactEmail, TestData);
         }
 
         [TestMethod]
@@ -64,8 +64,8 @@ namespace Testing5
         {
             clsSupplier ASupplier = new clsSupplier();
             string TestData = "he got a phone";
-            ASupplier.Phone = TestData;
-            Assert.AreEqual(ASupplier.Phone, TestData);
+            ASupplier.SupplierContactPhone = TestData;
+            Assert.AreEqual(ASupplier.SupplierContactPhone, TestData);
         }
 
         [TestMethod]
@@ -73,8 +73,8 @@ namespace Testing5
         {
             clsSupplier ASupplier = new clsSupplier();
             string TestData = "city";
-            ASupplier.City = TestData;
-            Assert.AreEqual(ASupplier.City, TestData);
+            ASupplier.SupplierCity = TestData;
+            Assert.AreEqual(ASupplier.SupplierCity, TestData);
         }
     }
 }
