@@ -12,4 +12,8 @@ namespace ClassLibrary
         public bool PerformanceTargetProperty { get; set; }
         public bool ManagerStatusProperty { get; set; }
     }
+
+    public class Boonlean
+    {
+    }
 }
