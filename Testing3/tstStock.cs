@@ -17,16 +17,16 @@ namespace Testing3
         }
 
         [TestMethod]
-        public void ActivePropertyOK()
+        public void AvailablePropertyOK()
         {
             //create am instance of the new class we want to create
             clsStock AnStock = new clsStock();
             //create some test data to assign to the property
             Boolean TestData = true;
             //aasign the data to the property
-            AnStock.Active = TestData;
+            AnStock.Available = TestData;
             //test to see that the two values are the same
-            Assert.AreEqual(AnStock.Active, TestData);
+            Assert.AreEqual(AnStock.Available, TestData);
         }
 
         [TestMethod]
@@ -61,7 +61,7 @@ namespace Testing3
             //create am instance of the new class we want to create
             clsStock AnStock = new clsStock();
             //create some test data to assign to the property
-            Double TestData = 5.66;
+            Double TestData = 6.2500;
             //aasign the data to the property
             AnStock.ProductPrice = TestData;
             //test to see that the two values are the same
@@ -95,19 +95,6 @@ namespace Testing3
         }
 
         [TestMethod]
-        public void ProductKeyWordPropertyOK()
-        {
-            //create am instance of the new class we want to create
-            clsStock AnStock = new clsStock();
-            //create some test data to assign to the property
-            string TestData = "Beanie, Hat, Cap";
-            //aasign the data to the property
-            AnStock.ProductKeyWord = TestData;
-            //test to see that the two values are the same
-            Assert.AreEqual(AnStock.ProductKeyWord, TestData);
-        }
-
-        [TestMethod]
         public void ProductColourPropertyOK()
         {
             //create am instance of the new class we want to create
@@ -118,19 +105,6 @@ namespace Testing3
             AnStock.ProductColour = TestData;
             //test to see that the two values are the same
             Assert.AreEqual(AnStock.ProductColour, TestData);
-        }
-
-        [TestMethod]
-        public void ProductImagePropertyOK()
-        {
-            //create am instance of the new class we want to create
-            clsStock AnStock = new clsStock();
-            //create some test data to assign to the property
-            string TestData = "A Picture";
-            //aasign the data to the property
-            AnStock.ProductImage = TestData;
-            //test to see that the two values are the same
-            Assert.AreEqual(AnStock.ProductImage, TestData);
         }
 
     }
