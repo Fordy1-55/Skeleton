@@ -95,7 +95,16 @@ namespace Testing2
             Staff.ManagerStatus = TestData;
             Assert.AreEqual(Staff.ManagerStatus, TestData);
 
+        }
 
+        [TestMethod]
+        public void FindMethodOK()
+        {
+            clsStaff Staff = new clsStaff();
+            Boolean Found = false;
+            Int32 StaffID = 4;
+            Found = Staff.Find(StaffID);
+            Assert.IsTrue(Found);
 
         }
 

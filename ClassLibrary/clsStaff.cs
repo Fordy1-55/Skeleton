@@ -11,6 +11,12 @@ namespace ClassLibrary
         public static string NameProperty { get; set; }
         public bool ManagerStatus { get; set; }
         public bool PerformanceTarget { get; set; }
+
+        public bool Find(int staffID)
+        {
+            //always return true
+            return true;
+        }
     }
 
     public class Boonlean
