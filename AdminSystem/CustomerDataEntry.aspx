@@ -19,7 +19,7 @@
             <asp:TextBox ID="txtCustomerName" runat="server" style="z-index: 1; left: 131px; top: 91px; position: absolute" width="95px"></asp:TextBox>
         </p>
         <p>
-            <asp:TextBox ID="txtCustomerAddress" runat="server" OnTextChanged="txtCustomerAddress_TextChanged" style="z-index: 1; left: 131px; top: 197px; position: absolute" width="95px"></asp:TextBox>
+            <asp:TextBox ID="txtCustomerAddress" runat="server" style="z-index: 1; left: 131px; top: 197px; position: absolute" width="95px"></asp:TextBox>
             <asp:Label ID="lblCustomerAddress" runat="server" style="z-index: 1; left: 7px; top: 199px; position: absolute" Text="Address" width="117px"></asp:Label>
         </p>
         <asp:Label ID="lblCustomerEmail" runat="server" style="z-index: 1; left: 9px; top: 150px; position: absolute" Text="Email" width="117px"></asp:Label>

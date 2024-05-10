@@ -4,11 +4,15 @@ namespace ClassLibrary
 {
     public class clsCustomer
     {
-        public bool SubscriptionProperty { get; set; }
-        public DateTime DateOfBirthProperty { get; set; }
-        public string CustomerNameProperty { get; set; }
-        public string CustomerEmailProperty { get; set; }
-        public string CustomerAddressProperty { get; set; }
-        public string CustomerTelphoneNoProperty { get; set; }
+        public static int CustomerID { get; set; }
+
+
+        public string CustomerAddress { get; set; }
+        public bool Subscription { get; set; }
+        public DateTime DateOfBirth { get; set; }
+        public string CustomerName { get; set; }
+        public string CustomerTelphoneNo { get; set; }
+        public string CustomerEmail { get; set; }
+       
     }
 }

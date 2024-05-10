@@ -14,21 +14,32 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
     }
 
-    protected void txtCustomerAddress_TextChanged(object sender, EventArgs e)
-    {
 
-    }
 
     protected void btnOK_Click(object sender, EventArgs e)
 
     {
       //create a new instance of clsCustomer
       clsCustomer AnCustomer = new clsCustomer();
-        //capture Customer ID
-        AnCustomer.CustomerNameProperty = txtCustomerName.Text;
+        //capture Customer Name
+        AnCustomer.CustomerName = txtCustomerName.Text;
+        //Capture customerID
+        clsCustomer.CustomerID = Convert.ToInt32(txtCustomerId.Text);
+        //Capture customer Address
+        AnCustomer.CustomerAddress = txtCustomerAddress.Text;
+        //Capture Customer Telephone Number
+        AnCustomer.CustomerTelphoneNo = txtCustomerTelephone.Text;
+        //Capture customers date of birth
+        AnCustomer.DateOfBirth = Convert.ToDateTime(txtCustomerDOB.Text);
+        //Capture Customers email address
+        AnCustomer.CustomerEmail = txtCustomerEmail.Text;
+        //Capture active checkbox
+        AnCustomer.Subscription = chkSubscription.Checked;
         //Store the Customer Name in the session object
         Session["AnCustomer"] = AnCustomer;
         //navigate to view page
         Response.Redirect("CustomerViewer.aspx");
     }
+
+    
 }

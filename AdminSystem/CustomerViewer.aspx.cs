@@ -15,7 +15,7 @@ public partial class _1Viewer : System.Web.UI.Page
         //get the data from the session object
         AnCustomer = (clsCustomer)Session["AnCustomer"];
         //Display the customer name for the entry
-        Response.Write(AnCustomer.CustomerNameProperty);
+        Response.Write(AnCustomer.CustomerName);
         
     }
 }

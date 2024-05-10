@@ -7,6 +7,8 @@ namespace Testing1
     [TestClass]
     public class tstCustomer
     {
+        public int AnCustomerID { get; private set; }
+
         [TestMethod]
         public void InstanceOK()
         {
@@ -25,9 +27,9 @@ namespace Testing1
             // create some test data to assign to the property
             Boolean TestData = true;
             //Assign the data to the property
-            AnCustomer.SubscriptionProperty = TestData;
+            AnCustomer.Subscription = TestData;
             // test to see that the two values are the same
-            Assert.AreEqual(AnCustomer.SubscriptionProperty, TestData);
+            Assert.AreEqual(AnCustomer.Subscription, TestData);
 
         }
         [TestMethod]
@@ -40,11 +42,15 @@ namespace Testing1
             //create some test data to assign to the poperty
             DateTime TestData = DateTime.Now.Date;
             // Assign the data to a property
-            AnCustomer.DateOfBirthProperty = TestData;
+            AnCustomer.DateOfBirth = TestData;
             // test to see that the two values are the same 
-            Assert.AreEqual(AnCustomer.DateOfBirthProperty, TestData);
+            Assert.AreEqual(AnCustomer.DateOfBirth, TestData);
 
         }
+
+
+
+
         [TestMethod]
         public void CustomerNamePropertyOK()
         {
@@ -53,9 +59,9 @@ namespace Testing1
             //create some test data to assign to the property
             string TestData = "Customer Name";
             //assign the data to the property
-            AnCustomer.CustomerNameProperty = TestData;
+            AnCustomer.CustomerName = TestData;
             //test to see that the two values are the same
-            Assert.AreEqual(AnCustomer.CustomerNameProperty, TestData);
+            Assert.AreEqual(AnCustomer.CustomerName, TestData);
         }
 
         [TestMethod]
@@ -66,9 +72,10 @@ namespace Testing1
             //create some test data to assign to the property
             string TestData = "Customer Email";
             //assign the data to the property
-            AnCustomer.CustomerEmailProperty = TestData;
+            AnCustomer.CustomerEmail = TestData;
             //test to see that the two values are the same
-            Assert.AreEqual(AnCustomer.CustomerEmailProperty, TestData);
+            Assert.AreEqual(AnCustomer.CustomerEmail, TestData);
+
 
         }
 
@@ -80,9 +87,9 @@ namespace Testing1
             //create some test data to assign to the property
             string TestData = "CustomerAddress";
             //assign the data to the property
-            AnCustomer.CustomerAddressProperty = TestData;
+            AnCustomer.CustomerAddress = TestData;
             //test to see that the two values are the same
-            Assert.AreEqual(AnCustomer.CustomerAddressProperty, TestData);
+            Assert.AreEqual(AnCustomer.CustomerAddress, TestData);
         }
 
         [TestMethod]
@@ -93,10 +100,24 @@ namespace Testing1
             //create some test data to assign to the property
             string TestData = "Customer Telephone Number";
             //assign the data to the property
-            AnCustomer.CustomerTelphoneNoProperty = TestData;
+            AnCustomer.CustomerTelphoneNo = TestData;
             //test to see that the two values are the same
-            Assert.AreEqual(AnCustomer.CustomerTelphoneNoProperty, TestData);
+            Assert.AreEqual(AnCustomer.CustomerTelphoneNo, TestData);
         }
 
+        [TestMethod]
+
+        public void CustomerIDPropertyOK()
+
+        {
+            clsCustomer AnCustomer = new clsCustomer();
+            int TestData =1;
+            clsCustomer.CustomerID = TestData;
+            Assert.AreEqual(clsCustomer.CustomerID, TestData);
+
+        }
+
+        
+    
     }
 }
