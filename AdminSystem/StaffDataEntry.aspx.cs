@@ -37,16 +37,18 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //Capture the Name
         clsStaff.NameProperty = txtName.Text;
         //Capture the Role
-        clsStaff.RoleProperty = txtName.Text;
+        clsStaff.RoleProperty = txtRole.Text;
         //Capture Shift Type
         clsStaff.ShiftTypeProperty = txtShiftType.Text;
         //Capture check box manager
-       // clsStaff.PerformanceTargetProperty = chkPerformamceTarget.Checked;
+        //clsStaff.ManagerStatus = chkManagerStatus.Checked;
+        //Capture the date
+        clsStaff.StartDateProperty = Convert.ToDateTime(txtStartDate.Text);
         //Store staff id in session object
         Session["Staff"] = Staff;
         //Navigate to view
         Response.Redirect("StaffViewer.aspx");
-        
+
 
 
     }

@@ -27,9 +27,9 @@ namespace Testing2
             //add test data to be assigned
             Boolean TestData = true;
             //Now assign the testdata to the property
-            Staff.PerformanceTargetProperty = TestData;
+            Staff.PerformanceTarget = TestData;
             //Check if both values are equal
-            Assert.AreEqual(Staff.PerformanceTargetProperty, TestData); 
+            Assert.AreEqual(Staff.PerformanceTarget, TestData); 
         }
 
         [TestMethod]
@@ -92,8 +92,8 @@ namespace Testing2
         {
             clsStaff Staff = new clsStaff();
             Boolean TestData = true;
-            Staff.ManagerStatusProperty = TestData;
-            Assert.AreEqual(Staff.ManagerStatusProperty, TestData);
+            Staff.ManagerStatus = TestData;
+            Assert.AreEqual(Staff.ManagerStatus, TestData);
 
 
 
