@@ -126,18 +126,36 @@ namespace ClassLibrary
         }
 
 
+
+        /******* FIND METHOD ******/
         public bool Find(int OrderId)
         {
-            //set the private data members the test data value
-            mOrderId = 25;
-            mOrderDescription = "Test Description";
-            mDateOrdered = Convert.ToDateTime("19/10/2003");
-            mOrderPrice = Convert.ToDouble("1.99");
-            mOverseasDelivery = true;
-            mReturnAddress = "Test Address";
-            mDeliveryInstructions = "Test Instructions";
-            //always return true
-            return true;
+            //create an instance of the data connection
+            clsDataConnection DB = new clsDataConnection();
+            //add the parameter for the order id to search for
+            DB.AddParameter("@OrderId", OrderId);
+            //execute the stored procedure
+            DB.Execute("sproc_tblOrder_FilterByOrderId");
+            //if one record is found (there should be either one or zero)
+            if (DB.Count == 1)
+            {
+                //copy the data from the database to the private data members
+                mOrderId = Convert.ToInt32(DB.DataTable.Rows[0]["OrderId"]);
+                mOrderDescription = Convert.ToString(DB.DataTable.Rows[0]["OrderDescription"]);
+                mDateOrdered = Convert.ToDateTime(DB.DataTable.Rows[0]["DateOrdered"]);
+                mOrderPrice = Convert.ToDouble(DB.DataTable.Rows[0]["OrderPrice"]);
+                mOverseasDelivery = Convert.ToBoolean(DB.DataTable.Rows[0]["OverseasDelivery"]);
+                mReturnAddress = Convert.ToString(DB.DataTable.Rows[0]["ReturnAddress"]);
+                mDeliveryInstructions = Convert.ToString(DB.DataTable.Rows[0]["DeliveryInstructions"]);
+                //return that everything worked okay
+                return true;
+            }
+            //if no record found
+            else
+            {
+                //return false indicating there is a problem
+                return false;
+            }
         }
     }
 }

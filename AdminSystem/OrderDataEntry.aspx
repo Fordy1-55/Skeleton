@@ -8,9 +8,10 @@
 </head>
 <body>
     &nbsp;<form id="form1" runat="server">
+        <asp:Button ID="btnFind" runat="server" style="z-index: 1; left: 370px; top: 27px; position: absolute" Text="Find" OnClick="btnFind_Click1" />
         <div>
-            <asp:Label ID="lblOrderId" runat="server" style="z-index: 1; left: 11px; top: 31px; position: absolute" Text="Order ID" width="123px"></asp:Label>
-            <asp:TextBox ID="txtOrderId" runat="server"  style="z-index: 1; left: 148px; top: 29px; position: absolute; margin-bottom: 0px"></asp:TextBox>
+            <asp:Label ID="lblOrderId" runat="server" style="z-index: 1; left: 11px; top: 28px; position: absolute" Text="Order ID" width="123px"></asp:Label>
+            <asp:TextBox ID="txtOrderId" runat="server"  style="z-index: 1; left: 148px; top: 28px; position: absolute; margin-bottom: 0px"></asp:TextBox>
         </div>
         <p>
             <asp:Label ID="lblOrderDescription" runat="server" style="z-index: 1; left: 11px; top: 65px; position: absolute; bottom: 790px" Text="Order Description" width="123px"></asp:Label>
