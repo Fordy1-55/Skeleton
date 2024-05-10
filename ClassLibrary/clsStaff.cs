@@ -9,8 +9,8 @@ namespace ClassLibrary
         public static string ShiftTypeProperty { get; set; }
         public static int StaffIDProperty { get; set; }
         public static string NameProperty { get; set; }
-        public bool PerformanceTargetProperty { get; set; }
-        public bool ManagerStatusProperty { get; set; }
+        public bool ManagerStatus { get; set; }
+        public bool PerformanceTarget { get; set; }
     }
 
     public class Boonlean
