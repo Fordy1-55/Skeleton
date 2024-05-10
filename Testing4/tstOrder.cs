@@ -116,7 +116,7 @@ namespace Testing4
             //create a boolean variable to store the results of the validation
             Boolean Found = false;
             //create some test data to use with the method
-            Int32 OrderId = 25;
+            Int32 OrderId = 6;
             //invoke the method
             Found = AnOrder.Find(OrderId);
             //test to see if the result is true
@@ -133,11 +133,11 @@ namespace Testing4
             //create a boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 OrderId = 25;
+            Int32 OrderId = 6;
             //invoke the method
             Found = AnOrder.Find(OrderId);
             //check the order id
-            if (AnOrder.OrderId != 25)
+            if (AnOrder.OrderId != 6)
             {
                 OK = false;
             }
@@ -155,11 +155,11 @@ namespace Testing4
             //create a boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 OrderDescription = 25;
+            Int32 OrderId = 6;
             //invoke the method
-            Found = AnOrder.Find(OrderDescription);
+            Found = AnOrder.Find(OrderId);
             //check the order description
-            if (AnOrder.OrderDescription != "Test Description")
+            if (AnOrder.OrderDescription != "TestHat")
             {
                 OK = false;
             }
@@ -178,11 +178,11 @@ namespace Testing4
             //create a boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 OrderId = 25;
+            Int32 OrderId = 6;
             //invoke the method
             Found = AnOrder.Find(OrderId);
             //check the date ordered
-            if (AnOrder.DateOrdered != Convert.ToDateTime("19/10/2003"))
+            if (AnOrder.DateOrdered != Convert.ToDateTime("10/05/2024"))
             {
                 OK = false;
             }
@@ -191,7 +191,7 @@ namespace Testing4
         }
 
         [TestMethod]
-        public void TestPriceFound()
+        public void TestOrderPriceFound()
         {
             //create a new instance of the class we want to create
             clsOrder AnOrder = new clsOrder();
@@ -200,11 +200,11 @@ namespace Testing4
             //create a boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 OrderId = 25;
+            Int32 OrderId = 6;
             //invoke the method
             Found = AnOrder.Find(OrderId);
             //check the order price
-            if (AnOrder.OrderPrice != Convert.ToDouble("1.99"))
+            if (AnOrder.OrderPrice != Convert.ToDouble("5.55"))
             {
                 OK = false;
             }
@@ -222,11 +222,11 @@ namespace Testing4
             //create a boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 OrderId = 25;
+            Int32 OrderId = 6;
             //invoke the method
             Found = AnOrder.Find(OrderId);
             //check the overseas delivery
-            if (AnOrder.OverseasDelivery != true)
+            if (AnOrder.OverseasDelivery != false)
             {
                 OK = false;
             }
@@ -244,11 +244,11 @@ namespace Testing4
             //create a boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 OrderId = 25;
+            Int32 OrderId = 6;
             //invoke the method
             Found = AnOrder.Find(OrderId);
             //check the return address
-            if (AnOrder.ReturnAddress != "Test Address")
+            if (AnOrder.ReturnAddress != "DMU")
             {
                 OK = false;
             }
@@ -257,7 +257,7 @@ namespace Testing4
         }
 
         [TestMethod]
-        public void TestDeliveryInstructions()
+        public void TestDeliveryInstructionsFound()
         {
             //create a new instance of the class we want to create
             clsOrder AnOrder = new clsOrder();
@@ -266,11 +266,11 @@ namespace Testing4
             //create a boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 OrderId = 25;
+            Int32 OrderId = 6;
             //invoke the method
             Found = AnOrder.Find(OrderId);
             //check the delivery instructions
-            if (AnOrder.DeliveryInstructions != "Test Instructions")
+            if (AnOrder.DeliveryInstructions != "At Door")
             {
                 OK = false;
 
