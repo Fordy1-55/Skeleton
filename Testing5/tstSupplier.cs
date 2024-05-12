@@ -7,6 +7,7 @@ namespace Testing5
     [TestClass]
     public class tstSupplier
     {
+        /*******INSTANCE OF THE CLASS TEST*******/
         [TestMethod]
         public void InstanceOK()
         {
@@ -76,5 +77,124 @@ namespace Testing5
             ASupplier.SupplierCity = TestData;
             Assert.AreEqual(ASupplier.SupplierCity, TestData);
         }
-    }
+
+        /*******FIND METHOD TEST*******/
+
+        [TestMethod]
+        public void FindMethodOK()
+        {
+            clsSupplier ASupplier = new clsSupplier();
+            Boolean Found = false;
+            Int32 SupplierID = 21;
+            Found = ASupplier.Find(SupplierID);
+            Assert.IsTrue(Found);
+        }
+
+        /*******PROPERTY DATA TESTS*******/
+        [TestMethod]
+        public void TestSupplierIdFound() 
+        { 
+            clsSupplier ASupplier = new clsSupplier();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 SupplierID = 21;
+            Found = ASupplier.Find(SupplierID);
+            if (ASupplier.SupplierID != 21)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+
+        }
+
+        [TestMethod]    
+        public void TestDateaddedFound() 
+        {
+            clsSupplier ASupplier = new clsSupplier();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 SupplierID = 21;
+            Found = ASupplier.Find(SupplierID);
+            if (ASupplier.SupplierAddDate != Convert.ToDateTime("12/05/24"))
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestSupplierNameFound()
+        {
+            clsSupplier ASupplier = new clsSupplier();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 SupplierID = 21;
+            Found = ASupplier.Find(SupplierID);
+            if (ASupplier.SupplierName != "Test Name")
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestSupplierEmailFound()
+        {
+            clsSupplier ASupplier = new clsSupplier();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 SupplierID = 21;
+            Found = ASupplier.Find(SupplierID);
+            if (ASupplier.SupplierContactEmail != "Test@Email.com")
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestSupplierPhoneFound()
+        {
+            clsSupplier ASupplier = new clsSupplier();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 SupplierID = 21;
+            Found = ASupplier.Find(SupplierID);
+            if(ASupplier.SupplierContactPhone != "07357960435")
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TstSupplierCityFound()
+        {
+            clsSupplier ASupplier = new clsSupplier();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 SupplierID = 21;
+            Found = ASupplier.Find(SupplierID);
+            if(ASupplier.SupplierCity != "Test City")
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestSupplierAvailabilityFound()
+        {
+            clsSupplier ASupplier = new clsSupplier();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 SupplierID = 21;
+            Found = ASupplier.Find(SupplierID);
+            if(ASupplier.Availability != true)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+    }   
 }
