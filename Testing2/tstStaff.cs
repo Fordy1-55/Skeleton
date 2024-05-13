@@ -41,9 +41,9 @@ namespace Testing2
             //Create test data to be assigned
             DateTime TestData = DateTime.Now.Date;
             //Assign to propert
-            clsStaff.StartDateProperty = TestData;
+            Staff.StartDateProperty = TestData;
             //Check if both values match
-            Assert.AreEqual(clsStaff.StartDateProperty, TestData);
+            Assert.AreEqual(Staff.StartDateProperty, TestData);
         }
 
         [TestMethod]
@@ -52,8 +52,8 @@ namespace Testing2
         {
             clsStaff Staff = new clsStaff();
             string TestData = "A Role";
-            clsStaff.RoleProperty = TestData;
-            Assert.AreEqual(clsStaff.RoleProperty, TestData);
+            Staff.RoleProperty = TestData;
+            Assert.AreEqual(Staff.RoleProperty, TestData);
         }
 
         [TestMethod]
@@ -62,8 +62,8 @@ namespace Testing2
         {
             clsStaff Staff = new clsStaff();
             string TestData = "A type of shift";
-            clsStaff.ShiftTypeProperty = TestData;
-            Assert.AreEqual(clsStaff.ShiftTypeProperty, TestData);
+            Staff.ShiftTypeProperty = TestData;
+            Assert.AreEqual(Staff.ShiftTypeProperty, TestData);
 
         }
 
@@ -73,8 +73,8 @@ namespace Testing2
         {
             clsStaff Staff = new clsStaff();
             int TestData = 1;
-            clsStaff.StaffIDProperty = TestData;
-            Assert.AreEqual(clsStaff.StaffIDProperty, TestData);
+            Staff.StaffIDProperty = TestData;
+            Assert.AreEqual(Staff.StaffIDProperty, TestData);
         }
 
         [TestMethod] 
@@ -83,8 +83,8 @@ namespace Testing2
         {
             clsStaff Staff = new clsStaff();
             string TestData = "Staff Name";
-            clsStaff.NameProperty = TestData;
-            Assert.AreEqual(clsStaff.NameProperty, TestData);
+            Staff.NameProperty = TestData;
+            Assert.AreEqual(Staff.NameProperty, TestData);
         }
 
         [TestMethod]
@@ -101,12 +101,38 @@ namespace Testing2
         public void FindMethodOK()
         {
             clsStaff Staff = new clsStaff();
+            //create boolean variable to store the result
             Boolean Found = false;
             Int32 StaffID = 4;
             Found = Staff.Find(StaffID);
             Assert.IsTrue(Found);
 
         }
+
+        [TestMethod]
+        public void TestStaffIDFound()
+        {
+            //create instance of class 
+            clsStaff Staff = new clsStaff();
+            //Create boolean variable to store result
+            Boolean Found = false;
+            //Create boolean variable to store result if value is OK
+            Boolean OK = true;
+            //Add test data 
+            Int32 StaffIDProperty = 7;
+            //Invoke the method
+            Found = Staff.Find(StaffIDProperty);
+            //Check StaffID 
+            if (Staff.StaffIDProperty != 7)
+            {
+                OK = false;
+            }
+            //Test to see result is correct
+            Assert.IsTrue(OK);
+
+
+        }
+
 
     }
 }
