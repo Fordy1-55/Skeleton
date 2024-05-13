@@ -42,4 +42,24 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
 
     }
+
+    protected void btnFind_Click1(object sender, EventArgs e)
+    {
+        clsSupplier ASupplier = new clsSupplier();
+        Int32 SupplierID;
+        Boolean Found = false;
+        SupplierID = Convert.ToInt32(txtSupplierID.Text);
+        Found = ASupplier.Find(SupplierID);
+        if (Found == true)
+        {
+            txtSupplierName.Text = ASupplier.SupplierName;
+            txtSupplierContactEmail.Text = ASupplier.SupplierContactEmail;
+            txtSupplierContactPhone.Text = ASupplier.SupplierContactPhone;
+            txtSupplierCity.Text = ASupplier.SupplierCity;
+            txtSupplierAddDate.Text = ASupplier.SupplierAddDate.ToString();
+            chkAvailability.Checked = ASupplier.Availability;
+        }
+    }
+
+
 }

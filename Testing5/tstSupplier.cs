@@ -85,7 +85,7 @@ namespace Testing5
         {
             clsSupplier ASupplier = new clsSupplier();
             Boolean Found = false;
-            Int32 SupplierID = 21;
+            Int32 SupplierID = 6;
             Found = ASupplier.Find(SupplierID);
             Assert.IsTrue(Found);
         }
@@ -97,9 +97,9 @@ namespace Testing5
             clsSupplier ASupplier = new clsSupplier();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 SupplierID = 21;
+            Int32 SupplierID = 6;
             Found = ASupplier.Find(SupplierID);
-            if (ASupplier.SupplierID != 21)
+            if (ASupplier.SupplierID != 6)
             {
                 OK = false;
             }
@@ -113,9 +113,9 @@ namespace Testing5
             clsSupplier ASupplier = new clsSupplier();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 SupplierID = 21;
+            Int32 SupplierID = 6;
             Found = ASupplier.Find(SupplierID);
-            if (ASupplier.SupplierAddDate != Convert.ToDateTime("12/05/24"))
+            if (ASupplier.SupplierAddDate != Convert.ToDateTime("13/05/2024"))
             {
                 OK = false;
             }
@@ -128,9 +128,9 @@ namespace Testing5
             clsSupplier ASupplier = new clsSupplier();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 SupplierID = 21;
+            Int32 SupplierID = 6;
             Found = ASupplier.Find(SupplierID);
-            if (ASupplier.SupplierName != "Test Name")
+            if (ASupplier.SupplierName != "Adidas")
             {
                 OK = false;
             }
@@ -143,9 +143,9 @@ namespace Testing5
             clsSupplier ASupplier = new clsSupplier();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 SupplierID = 21;
+            Int32 SupplierID = 6;
             Found = ASupplier.Find(SupplierID);
-            if (ASupplier.SupplierContactEmail != "Test@Email.com")
+            if (ASupplier.SupplierContactEmail != "Adidas@Adidas.com")
             {
                 OK = false;
             }
@@ -158,9 +158,9 @@ namespace Testing5
             clsSupplier ASupplier = new clsSupplier();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 SupplierID = 21;
+            Int32 SupplierID = 6;
             Found = ASupplier.Find(SupplierID);
-            if(ASupplier.SupplierContactPhone != "07357960435")
+            if(ASupplier.SupplierContactPhone != "07854322345")
             {
                 OK = false;
             }
@@ -173,9 +173,9 @@ namespace Testing5
             clsSupplier ASupplier = new clsSupplier();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 SupplierID = 21;
+            Int32 SupplierID = 6;
             Found = ASupplier.Find(SupplierID);
-            if(ASupplier.SupplierCity != "Test City")
+            if(ASupplier.SupplierCity != "Leicester")
             {
                 OK = false;
             }
@@ -188,7 +188,7 @@ namespace Testing5
             clsSupplier ASupplier = new clsSupplier();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 SupplierID = 21;
+            Int32 SupplierID = 6;
             Found = ASupplier.Find(SupplierID);
             if(ASupplier.Availability != true)
             {

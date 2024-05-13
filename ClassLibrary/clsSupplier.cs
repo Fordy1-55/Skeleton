@@ -99,18 +99,26 @@ namespace ClassLibrary
             }
         }
         /*******FIND METHOD*******/
-        public bool Find(int supplierID)
+        public bool Find(int SupplierID)
         {
-            //set the private data members to the test data value
-            mSupplierID = 21;
-            mSupplierAddDate = Convert.ToDateTime("12/05/24");
-            mSupplierName = "Test Name";
-            mAvailability = true;
-            mSupplierContactEmail = "Test@Email.com";
-            mSupplierContactPhone = "07357960435";
-
-            //always return true
-            return true;
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@SupplierID", SupplierID);
+            DB.Execute("sproc_tblSupplier_FilterBySupplierID");
+            if(DB.Count == 1)
+            {
+                mSupplierID = Convert.ToInt32(DB.DataTable.Rows[0]["SupplierID"]);
+                mSupplierName = Convert.ToString(DB.DataTable.Rows[0]["SupplierName"]);
+                mSupplierContactEmail = Convert.ToString(DB.DataTable.Rows[0]["SupplierContactEmail"]);
+                mSupplierContactPhone = Convert.ToString(DB.DataTable.Rows[0]["SupplierContactPhone"]);
+                mSupplierAddDate = Convert.ToDateTime(DB.DataTable.Rows[0]["SupplierAddDate"]);
+                mSupplierCity = Convert.ToString(DB.DataTable.Rows[0]["SupplierCity"]);
+                mAvailability = Convert.ToBoolean(DB.DataTable.Rows[0]["Availability"]);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }
