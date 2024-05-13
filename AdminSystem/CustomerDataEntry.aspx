@@ -14,7 +14,7 @@
         <p>
             &nbsp;</p>
         <p>
-            <asp:TextBox ID="txtCustomerId" runat="server" style="z-index: 1; left: 131px; top: 30px; position: absolute; height: 17px" width="95px"></asp:TextBox>
+            <asp:TextBox ID="txtCustomerID" runat="server" style="z-index: 1; left: 131px; top: 30px; position: absolute; height: 17px" width="95px"></asp:TextBox>
             <asp:Label ID="lblCustomerName" runat="server" style="z-index: 1; left: 10px; top: 91px; position: absolute" Text="Customers Name" width="117px"></asp:Label>
             <asp:TextBox ID="txtCustomerName" runat="server" style="z-index: 1; left: 131px; top: 91px; position: absolute" width="95px"></asp:TextBox>
         </p>
@@ -29,7 +29,7 @@
         </p>
         <asp:TextBox ID="txtCustomerTelephone" runat="server" style="z-index: 1; left: 131px; top: 249px; position: absolute" width="95px"></asp:TextBox>
         <asp:Label ID="lblCustomerDOB" runat="server" style="z-index: 1; left: 13px; top: 299px; position: absolute" Text="Date Of Birth" width="117px"></asp:Label>
-        <asp:TextBox ID="txtCustomerDOB" runat="server" style="z-index: 1; left: 131px; top: 296px; position: absolute" width="95px"></asp:TextBox>
+        <asp:TextBox ID="txtDateOfBirth" runat="server" style="z-index: 1; left: 131px; top: 296px; position: absolute" width="95px"></asp:TextBox>
         <p>
             <asp:CheckBox ID="chkSubscription" runat="server" style="z-index: 1; left: 147px; top: 346px; position: absolute" Text="Subscription" />
         </p>
