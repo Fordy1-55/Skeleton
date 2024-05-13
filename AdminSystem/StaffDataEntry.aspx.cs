@@ -33,17 +33,17 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //Create new instance of Staff Class
         clsStaff Staff = new clsStaff();
         //Capture the StaffID
-        clsStaff.StaffIDProperty = Convert.ToInt32(txtStaffId.Text);
+        Staff.StaffIDProperty = Convert.ToInt32(txtStaffId.Text);
         //Capture the Name
-        clsStaff.NameProperty = txtName.Text;
+        Staff.NameProperty = txtName.Text;
         //Capture the Role
-        clsStaff.RoleProperty = txtRole.Text;
+        Staff.RoleProperty = txtRole.Text;
         //Capture Shift Type
-        clsStaff.ShiftTypeProperty = txtShiftType.Text;
+        Staff.ShiftTypeProperty = txtShiftType.Text;
         //Capture check box manager
         //clsStaff.ManagerStatus = chkManagerStatus.Checked;
         //Capture the date
-        clsStaff.StartDateProperty = Convert.ToDateTime(txtStartDate.Text);
+        Staff.StartDateProperty = Convert.ToDateTime(txtStartDate.Text);
         //Store staff id in session object
         Session["Staff"] = Staff;
         //Navigate to view
