@@ -1,12 +1,25 @@
 ﻿using ClassLibrary;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Runtime.CompilerServices;
 
 namespace Testing4
 {
     [TestClass]
     public class tstOrder
     {
+
+        //good test data
+        //create some test data to pass the method
+        string DateOrdered = DateTime.Now.ToShortDateString();
+        string OrderDescription = "Test Description";
+        string OrderPrice = "1.99";
+        string ReturnAddress = "Test Address";
+        string DeliveryInstructions = "Test Instructions";
+
+
+
+
         [TestMethod]
         public void InstanceOK()
         {
@@ -81,7 +94,7 @@ namespace Testing4
             Assert.AreEqual(AnOrder.OrderPrice, TestData);
         }
 
-        [TestMethod]   
+        [TestMethod]
         public void ReturnAddressPropertyOK()
         {
             //create a new instance of the class we want to create
@@ -94,7 +107,7 @@ namespace Testing4
             Assert.AreEqual(AnOrder.ReturnAddress, TestData);
         }
 
-        [TestMethod]   
+        [TestMethod]
         public void DeliveryInstructionsPropertyOK()
         {
             //create a new instance of the class we want to create
@@ -277,6 +290,108 @@ namespace Testing4
             }
             //test to see that the result is correct
             Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void ValidMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            //string variable to store any error message
+            string Error = "";
+            //invoke the method
+            Error = AnOrder.Valid(OrderDescription, DeliveryInstructions, ReturnAddress, DateOrdered, OrderPrice);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void OrderDescriptionMinLessOne()
+
+        {
+            //create a instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string OrderDescription = ""; //this should trigger an error
+            //invoke the method
+            Error = AnOrder.Valid(OrderDescription, DeliveryInstructions, ReturnAddress, DateOrdered, OrderPrice);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+
+        }
+
+        [TestMethod]
+        public void OrderDescriptionMin()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String Error = "";
+            string OrderDescription = "a";
+            Error = AnOrder.Valid(OrderDescription, DeliveryInstructions, ReturnAddress, DateOrdered, OrderPrice);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void OrderDescriptionMinPlusOne()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String Error = "";
+            string OrderDescription = "aa";
+            Error = AnOrder.Valid(OrderDescription, DeliveryInstructions, ReturnAddress, DateOrdered, OrderPrice);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void OrderDescriptionMaxLessOne()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String Error = "";
+            string OrderDescription = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+            Error = AnOrder.Valid(OrderDescription, DeliveryInstructions, ReturnAddress, DateOrdered, OrderPrice);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void OrderDescriptionMax()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String Error = "";
+            string OrderDescription = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+            Error = AnOrder.Valid(OrderDescription,DeliveryInstructions, ReturnAddress, DateOrdered , OrderPrice);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void OrderDescriptionMid()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String Error = "";
+            string OrderDescription = "aaaaaaaaaaaaaaaaaaaaaaaaa";
+            Error = AnOrder.Valid(OrderDescription, DeliveryInstructions, ReturnAddress, DateOrdered, OrderPrice);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void OrderDescriptionMaxPlusOne()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String Error = "";
+            string OrderDescription = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+            Error = AnOrder.Valid(OrderDescription, DeliveryInstructions, ReturnAddress, DateOrdered, OrderPrice);
+            Assert.AreNotEqual(Error, "");
+
+        }
+
+        [TestMethod]
+        public void OrderDescriptionExtremeMax()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String Error = "";
+            string OrderDescription = "";
+            OrderDescription = OrderDescription.PadRight(500, 'a');
+            Error = AnOrder.Valid(OrderDescription, DeliveryInstructions, ReturnAddress, DateOrdered, OrderPrice);
+            Assert.AreNotEqual(Error, "");
         }
 
     }
