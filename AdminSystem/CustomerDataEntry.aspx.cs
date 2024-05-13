@@ -24,13 +24,13 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //capture Customer Name
         AnCustomer.CustomerName = txtCustomerName.Text;
         //Capture customerID
-        clsCustomer.CustomerID = Convert.ToInt32(txtCustomerId.Text);
+        AnCustomer.CustomerID = Convert.ToInt32(txtCustomerID.Text);
         //Capture customer Address
         AnCustomer.CustomerAddress = txtCustomerAddress.Text;
         //Capture Customer Telephone Number
         AnCustomer.CustomerTelphoneNo = txtCustomerTelephone.Text;
         //Capture customers date of birth
-        AnCustomer.DateOfBirth = Convert.ToDateTime(txtCustomerDOB.Text);
+        AnCustomer.DateOfBirth = Convert.ToDateTime(txtDateOfBirth.Text);
         //Capture Customers email address
         AnCustomer.CustomerEmail = txtCustomerEmail.Text;
         //Capture active checkbox
