@@ -157,5 +157,23 @@ namespace ClassLibrary
                 return false;
             }
         }
+
+        public string Valid(string orderDescription, string deliveryInstructions, string returnAddress, object dateOrdered, string orderPrice)
+        {
+            //create a string variable to store the error
+            String Error = "";
+            if (orderDescription.Length == 0)
+            {
+                //record the error
+                Error = Error + "The Order Description may not be blank : ";
+            }
+            if (orderDescription.Length > 50)
+            {
+                Error = Error + "The Order Description must be less than 51 characters : ";
+            }
+            //return any error messages
+            return Error;
+
+        }
     }
 }
