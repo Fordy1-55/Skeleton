@@ -158,10 +158,13 @@ namespace ClassLibrary
             }
         }
 
-        public string Valid(string orderDescription, string deliveryInstructions, string returnAddress, object dateOrdered, string orderPrice)
+        public string Valid(string orderDescription, string deliveryInstructions, string returnAddress, object dateOrdered, object orderPrice)
         {
             //create a string variable to store the error
             String Error = "";
+            //create a temporary variable to store the date values
+            DateTime DateTemp;
+            Double PriceTemp;
             if (orderDescription.Length == 0)
             {
                 //record the error
@@ -171,6 +174,55 @@ namespace ClassLibrary
             {
                 Error = Error + "The Order Description must be less than 51 characters : ";
             }
+            if (deliveryInstructions.Length == 0)
+            {
+                Error = Error + "The Delivery Instructions may not be blank : ";
+            }
+            if (deliveryInstructions.Length > 50)
+            {
+                Error = Error + "The Delivery Instructions must be less than 51 characters : ";
+            }
+            if (returnAddress.Length == 0)
+            {
+                Error = Error + "The return Address may not be blank : ";
+            }
+            if (returnAddress.Length > 50)
+            {
+                Error = Error + "The return Address must be less than 51 characters : ";
+            }
+
+            DateTime DateComp = DateTime.Now.Date;
+            try
+            {
+                //copy the dateOrdered Value to the DateTemp variable
+                DateTemp = Convert.ToDateTime(dateOrdered);
+                if (DateTemp < DateComp)
+                {
+                    Error = Error + "The date cannot be in the past : ";
+                }
+                if (DateTemp > DateComp)
+                {
+                    Error = Error + "The date cannot be in the future : ";
+                }
+            }
+            catch
+            {
+                Error = Error + "The date was not a valid date : ";
+            }
+  
+            try
+            {
+                PriceTemp = Convert.ToDouble(orderPrice);
+                if (PriceTemp < 0.01)
+                {
+                    Error = Error + "The Price cannot be less than £0.01 : ";
+                }
+            }
+            catch
+            {
+                Error = Error + "The price was not a valid price : ";
+            }
+
             //return any error messages
             return Error;
 
