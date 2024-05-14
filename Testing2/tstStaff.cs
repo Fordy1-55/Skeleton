@@ -1,6 +1,7 @@
 ﻿using ClassLibrary;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Runtime.InteropServices;
 
 
 
@@ -29,7 +30,7 @@ namespace Testing2
             //Now assign the testdata to the property
             Staff.PerformanceTarget = TestData;
             //Check if both values are equal
-            Assert.AreEqual(Staff.PerformanceTarget, TestData); 
+            Assert.AreEqual(Staff.PerformanceTarget, TestData);
         }
 
         [TestMethod]
@@ -77,7 +78,7 @@ namespace Testing2
             Assert.AreEqual(Staff.StaffIDProperty, TestData);
         }
 
-        [TestMethod] 
+        [TestMethod]
 
         public void NamePropertyOK()
         {
@@ -130,8 +131,11 @@ namespace Testing2
             //Test to see result is correct
             Assert.IsTrue(OK);
 
-
         }
+
+       
+        
+
 
 
     }
