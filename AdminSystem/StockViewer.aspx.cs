@@ -25,9 +25,9 @@ public partial class _1Viewer : System.Web.UI.Page
         //display the prodcut Price for this entry
         Response.Write(AnStock.ProductPrice);
         //display the prodcut Date for this entry
-        Response.Write(AnStock.DateAdded);
+        Response.Write(AnStock.ProductDate);
         //display the prodcut 'Available' for this entry
-        Response.Write(AnStock.Available);
+        Response.Write(AnStock.ProductAvailable);
 
     }
 }

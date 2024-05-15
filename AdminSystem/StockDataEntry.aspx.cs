@@ -51,9 +51,9 @@ public partial class _1_DataEntry : System.Web.UI.Page
  
         AnStock.ProductPrice = Convert.ToDouble(txtProductPrice.Text);
 
-        AnStock.DateAdded = Convert.ToDateTime(DateTime.Now);
+        AnStock.ProductDate = Convert.ToDateTime(DateTime.Now);
 
-        AnStock.Available = ChkAvaible.Checked;  
+        AnStock.ProductAvailable = ChkAvaible.Checked;  
         //store the data in the session object
         Session["AnStock"] = AnStock;
         //display the prodcut id for this entry
