@@ -111,9 +111,13 @@ namespace Testing1
 
         {
             clsCustomer AnCustomer = new clsCustomer();
+
+            
+
             int TestData = 1;
             AnCustomer.CustomerID = TestData;
             Assert.AreEqual(AnCustomer.CustomerID, TestData);
+
 
         }
 
