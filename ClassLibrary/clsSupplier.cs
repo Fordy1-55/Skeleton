@@ -1,5 +1,6 @@
 ﻿using System;
 
+
 namespace ClassLibrary
 {
     public class clsSupplier
@@ -104,7 +105,7 @@ namespace ClassLibrary
             clsDataConnection DB = new clsDataConnection();
             DB.AddParameter("@SupplierID", SupplierID);
             DB.Execute("sproc_tblSupplier_FilterBySupplierID");
-            if(DB.Count == 1)
+            if (DB.Count == 1)
             {
                 mSupplierID = Convert.ToInt32(DB.DataTable.Rows[0]["SupplierID"]);
                 mSupplierName = Convert.ToString(DB.DataTable.Rows[0]["SupplierName"]);
@@ -119,6 +120,18 @@ namespace ClassLibrary
             {
                 return false;
             }
+        }
+
+        public string Valid(string supplierName, string supplierContactEmail, string supplierContactPhone, string supplierCity, string supplierAddDate)
+        {
+            String Error = "";
+
+            if (supplierContactPhone.Length > 11 || supplierContactPhone.Length < 11)
+            {
+                Error = Error + "The phone number can be no longer or shorter than 11 characters";
+            }
+
+            return Error;
         }
     }
 }

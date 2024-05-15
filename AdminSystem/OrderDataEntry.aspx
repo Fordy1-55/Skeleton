@@ -32,7 +32,7 @@
             <asp:TextBox ID="txtDeliveryInstructions" runat="server" style="z-index: 1; left: 148px; top: 219px; position: absolute"></asp:TextBox>
         </p>
         <asp:CheckBox ID="chkOverseas" runat="server" style="z-index: 1; left: 148px; top: 253px; position: absolute; height: 18px" Text="Overseas" width="123px" />
-        <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 11px; top: 286px; position: absolute" width="123px"></asp:Label>
+        <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 347px; top: 124px; position: absolute" width="123px"></asp:Label>
         <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" style="z-index: 1; left: 11px; top: 311px; position: absolute" Text="OK" />
         <asp:Button ID="btnCancel" runat="server"  style="z-index: 1; top: 311px; position: absolute; left: 84px" Text="Cancel" />
     </form>

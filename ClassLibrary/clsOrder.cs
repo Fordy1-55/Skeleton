@@ -165,18 +165,9 @@ namespace ClassLibrary
             //create a temporary variable to store the date values
             DateTime DateTemp;
             Double PriceTemp;
-            if (orderDescription.Length == 0)
-            {
-                //record the error
-                Error = Error + "The Order Description may not be blank : ";
-            }
             if (orderDescription.Length > 50)
             {
                 Error = Error + "The Order Description must be less than 51 characters : ";
-            }
-            if (deliveryInstructions.Length == 0)
-            {
-                Error = Error + "The Delivery Instructions may not be blank : ";
             }
             if (deliveryInstructions.Length > 50)
             {
@@ -196,9 +187,9 @@ namespace ClassLibrary
             {
                 //copy the dateOrdered Value to the DateTemp variable
                 DateTemp = Convert.ToDateTime(dateOrdered);
-                if (DateTemp < DateComp)
+                if (DateTemp < (DateComp.AddYears(-20)))
                 {
-                    Error = Error + "The date cannot be in the past : ";
+                    Error = Error + "The date cannot be more than 20 years in the past";
                 }
                 if (DateTemp > DateComp)
                 {
