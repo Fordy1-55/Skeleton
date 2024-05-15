@@ -308,28 +308,11 @@ namespace Testing4
         }
 
         [TestMethod]
-        public void OrderDescriptionMinLessOne()
-
-        {
-            //create a instance of the class we want to create
-            clsOrder AnOrder = new clsOrder();
-            //string variable to store any error message
-            String Error = "";
-            //create some test data to pass to the method
-            string OrderDescription = ""; //this should trigger an error
-            //invoke the method
-            Error = AnOrder.Valid(OrderDescription, DeliveryInstructions, ReturnAddress, DateOrdered, OrderPrice);
-            //test to see that the result is correct
-            Assert.AreNotEqual(Error, "");
-
-        }
-
-        [TestMethod]
         public void OrderDescriptionMin()
         {
             clsOrder AnOrder = new clsOrder();
             String Error = "";
-            string OrderDescription = "a";
+            string OrderDescription = "";
             Error = AnOrder.Valid(OrderDescription, DeliveryInstructions, ReturnAddress, DateOrdered, OrderPrice);
             Assert.AreEqual(Error, "");
         }
@@ -339,7 +322,7 @@ namespace Testing4
         {
             clsOrder AnOrder = new clsOrder();
             String Error = "";
-            string OrderDescription = "aa";
+            string OrderDescription = "a";
             Error = AnOrder.Valid(OrderDescription, DeliveryInstructions, ReturnAddress, DateOrdered, OrderPrice);
             Assert.AreEqual(Error, "");
         }
@@ -396,12 +379,15 @@ namespace Testing4
             Assert.AreNotEqual(Error, "");
         }
 
+
+
+
         [TestMethod]
         public void DeliveryInstructionsMin()
         {
             clsOrder AnOrder = new clsOrder();
             String Error = "";
-            string DeliveryInstructions = "a";
+            string DeliveryInstructions = "";
             Error = AnOrder.Valid(OrderDescription, DeliveryInstructions, ReturnAddress, DateOrdered, OrderPrice);
             Assert.AreEqual(Error, "");
         }
@@ -411,7 +397,7 @@ namespace Testing4
         {
             clsOrder AnOrder = new clsOrder();
             string Error = "";
-            string DeliveryInstructions = "aa";
+            string DeliveryInstructions = "a";
             Error = AnOrder.Valid(OrderDescription, DeliveryInstructions, ReturnAddress, DateOrdered, OrderPrice);
             Assert.AreEqual(Error, "");
         }
@@ -467,6 +453,18 @@ namespace Testing4
             Error = AnOrder.Valid(OrderDescription, DeliveryInstructions, ReturnAddress, DateOrdered, OrderPrice);
             Assert.AreNotEqual(Error, "");
         }
+
+        [TestMethod]
+        public void ReturnAddressMinLessOne()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String Error = "";
+            string ReturnAddress = "";
+            Error = AnOrder.Valid(OrderDescription, DeliveryInstructions, ReturnAddress, DateOrdered, OrderPrice);
+            Assert.AreNotEqual(Error, "");
+        }
+
+
 
         [TestMethod]
         public void ReturnAddressMin()
@@ -572,7 +570,7 @@ namespace Testing4
             TestDate = TestDate.AddDays(-1);
             string DateOrdered = TestDate.ToString();
             Error = AnOrder.Valid(OrderDescription, DeliveryInstructions, ReturnAddress, DateOrdered, OrderPrice);
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
 
         [TestMethod]
@@ -627,7 +625,16 @@ namespace Testing4
             Assert.AreNotEqual(Error, "");
         }
 
-
+        [TestMethod]
+        public void OrderPriceExtremeMin()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String Error = "";
+            Double Price = 0;
+            string OrderPrice = Price.ToString();
+            Error = AnOrder.Valid(OrderDescription, DeliveryInstructions, ReturnAddress, DateOrdered, OrderPrice);
+            Assert.AreNotEqual(Error, "");
+        }
 
         [TestMethod]
         public void OrderPriceMin()

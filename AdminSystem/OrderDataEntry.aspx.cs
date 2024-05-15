@@ -23,18 +23,37 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //create a new instance of clsOrder
         clsOrder AnOrder = new clsOrder();
         //capture the order Description
-        AnOrder.OrderDescription = txtOrderDescription.Text;
+        string OrderDescription = txtOrderDescription.Text;
         //capture the orderID
-        AnOrder.OrderId = Convert.ToInt32(txtOrderId.Text);
-        AnOrder.OrderPrice = Convert.ToDouble(txtPrice.Text);
-        AnOrder.DateOrdered = Convert.ToDateTime(txtDateOrdered.Text);
-        AnOrder.DeliveryInstructions = txtDeliveryInstructions.Text;
-        AnOrder.ReturnAddress = txtReturnAddress.Text;
-        AnOrder.OverseasDelivery = chkOverseas.Checked;
-        //store the description in the session object
-        Session["AnOrder"] = AnOrder;
-        //navigate to the view page
-        Response.Redirect("OrderViewer.aspx");
+        string OrderId = txtOrderId.Text;
+        string OrderPrice = txtPrice.Text;
+        string DateOrdered = txtDateOrdered.Text;
+        string DeliveryInstructions = txtDeliveryInstructions.Text;
+        string ReturnAddress = txtReturnAddress.Text;
+        string OverseasDelivery = chkOverseas.Text;
+        //variable to store any error messages
+        string Error = "";
+        //validate the data
+        Error = AnOrder.Valid(OrderDescription, OrderPrice, ReturnAddress, DateOrdered, ReturnAddress);
+        if (Error == "")
+        {
+            //capture the data
+            AnOrder.OrderDescription = OrderDescription;
+            AnOrder.OrderId = Convert.ToInt32(OrderId);
+            AnOrder.OrderPrice = Convert.ToDouble(OrderPrice);
+            AnOrder.DateOrdered = Convert.ToDateTime(DateOrdered);
+            AnOrder.DeliveryInstructions = DeliveryInstructions;
+            AnOrder.ReturnAddress = ReturnAddress;
+            //store the description in the session object
+            Session["AnOrder"] = AnOrder;
+            //navigate to the view page
+            Response.Redirect("OrderViewer.aspx");
+        }
+        else
+        {
+            //display error message
+            lblError.Text = Error;
+        }
 
 
 
