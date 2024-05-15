@@ -111,14 +111,63 @@ namespace Testing1
 
         {
             clsCustomer AnCustomer = new clsCustomer();
-            int TestData =1;
-            clsCustomer.CustomerID = TestData;
-            Assert.AreEqual(clsCustomer.CustomerID, TestData);
+            int TestData = 1;
+            AnCustomer.CustomerID = TestData;
+            Assert.AreEqual(AnCustomer.CustomerID, TestData);
 
         }
 
-        
-       
+        [TestMethod]
+
+        public void FindMethodOK()
+
+        {   //Create an instance of the class we want to create
+            clsCustomer AnCustomer = new clsCustomer();
+            //create a boolean variable to store the results of the validation 
+            Boolean Found = false;
+            //create some test data to use with the method
+            Int32 CustomerID = 4;
+            //Invoke the method
+            Found = AnCustomer.Find(CustomerID);
+            //test to see if the result is true
+            Assert.IsTrue(Found);
+
+
+        }
+
+
+        [TestMethod]
+
+        public void TestCustomerIDFound()
+
+        {  clsCustomer AnCustomer = new clsCustomer();
+            //create a boolean variable to store the result of the search
+            Boolean Found = false;
+            // create a boolean variable to record if the data is OK (assume that it is)
+            Boolean OK = true;
+            // create some test data to use with the method
+            Int32 CustomerID = 4;
+            // invoke the method
+            Found = AnCustomer.Find(CustomerID);
+            // check the customerID
+            if(AnCustomer.CustomerID != 4)
+            {
+                OK = false;
+            }
+            // test to see if the results is correct
+            Assert.IsTrue(OK);
+
+
+
+
+
+
+
+
+
+        }
+
+
 
 
     }
