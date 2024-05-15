@@ -41,9 +41,9 @@ namespace Testing3
             //create some test data to assign to the property
             DateTime TestData = DateTime.Now.Date;
             //aasign the data to the property
-            AnStock.DateAdded = TestData;
+            AnStock.ProductDate = TestData;
             //test to see that the two values are the same
-            Assert.AreEqual(AnStock.DateAdded, TestData);
+            Assert.AreEqual(AnStock.ProductDate, TestData);
         }
 
         [TestMethod]
@@ -91,7 +91,7 @@ namespace Testing3
             //create am instance of the new class we want to create
             clsStock AnStock = new clsStock();
             //create some test data to assign to the property
-            string TestData = "Beanie is a brimless, soft, round, stretchy hat that fits snugly on your head – and can be dragged down to your ears. It’s a flexible cap that hugs your head and ears and saves them from freezing in the cold weather";
+            string TestData = "Beanie is a brimless, soft, round, stretchy hat that fits snugly on your head – and can be dragged down to your ears. It’s a flexible cap that hugs your head and ears and saves them from freezing in the cold weather.                                  ";
             //aasign the data to the property
             AnStock.ProductDescription = TestData;
             //test to see that the two values are the same
@@ -153,7 +153,7 @@ namespace Testing3
             Assert.IsTrue(OK);
         }
 
-        public void TestDateAddedFound()
+        public void TestProoductDateFound()
         {
             //create am instance of the new class we want to create
             clsStock AnStock = new clsStock();
@@ -166,7 +166,7 @@ namespace Testing3
             //invoke the method
             Found = AnStock.Find(ProductId);
             //check the DateAdded property
-            if (AnStock.DateAdded != Convert.ToDateTime("04/05/2024"))
+            if (AnStock.ProductDate != Convert.ToDateTime("03/05/2024"))
             {
                 OK = false;
             }
@@ -188,7 +188,7 @@ namespace Testing3
             //invoke the method
             Found = AnStock.Find(ProductId);
             //check the street property
-            if (AnStock.ProductDescription != "Beanie is a brimless, soft, round, stretchy hat that fits snugly on your head – and can be dragged down to your ears. It’s a flexible cap that hugs your head and ears and saves them from freezing in the cold weather")
+            if (AnStock.ProductDescription != "Beanie is a brimless, soft, round, stretchy hat that fits snugly on your head – and can be dragged down to your ears. It’s a flexible cap that hugs your head and ears and saves them from freezing in the cold weather.                                  ")
             {
                 OK = false;
             }
@@ -210,7 +210,7 @@ namespace Testing3
             //invoke the method
             Found = AnStock.Find(ProductId);
             //check the street property
-            if (AnStock.ProductTitle != "A Beanie")
+            if (AnStock.ProductTitle != "Cuffless Beanie")
             {
                 OK = false;
             }
@@ -232,7 +232,7 @@ namespace Testing3
             //invoke the method
             Found = AnStock.Find(ProductId);
             //check the street property
-            if (AnStock.ProductColour != "Black, Blue, Red, Gray, White, Green, Orange, Brown, Purple")
+            if (AnStock.ProductColour != "Black")
             {
                 OK = false;
             }

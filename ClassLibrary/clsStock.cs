@@ -5,20 +5,20 @@ namespace ClassLibrary
     public class clsStock
     {
        
-        //private data member for the DateAdded property
-        private DateTime mDateAdded;
-        //DateAdded public property
-        public DateTime DateAdded
+        //private data member for the Date property
+        private DateTime mProductDate;
+        //Date public property
+        public DateTime ProductDate
         {
             get
             {
                 //this line of code sends data out of the property
-                return mDateAdded;
+                return mProductDate;
             }
             set
             {
                 //this line of code allows data into the property
-                mDateAdded = value;
+                mProductDate = value;
             }
         }
 
@@ -132,18 +132,35 @@ namespace ClassLibrary
         }
 
 
+        /**********************************FIND METHOD***********************************/
         public bool Find(int ProductId)
         {
-            //set the privatre data members to the test data value
-            mProductId = 1;
-            mDateAdded = Convert.ToDateTime("04/05/2024");
-            mProductAvailable = true;
-            mProductPrice = Convert.ToDouble(6.25);
-            mProductDescription = "Beanie is a brimless, soft, round, stretchy hat that fits snugly on your head – and can be dragged down to your ears. It’s a flexible cap that hugs your head and ears and saves them from freezing in the cold weather";
-            mProductTitle = "A Beanie";
-            mProductColour = "Black, Blue, Red, Gray, White, Green, Orange, Brown, Purple";
-            //always return true
-            return true;
+            //create an instance of the data connection
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@ProductId", ProductId);
+            //execute the stored procedure
+            DB.Execute("sproc_tblProduct_FilterByProductId");
+            //if one record is found (there should be either one or zero)
+            if (DB.Count == 1)
+            {
+                //copy the database to the private data members
+                mProductId = Convert.ToInt32(DB.DataTable.Rows[0]["ProductId"]);
+                mProductDate = Convert.ToDateTime(DB.DataTable.Rows[0]["ProductDate"]);
+                mProductAvailable = Convert.ToBoolean(DB.DataTable.Rows[0]["ProductAvailable"]);
+                mProductPrice = Convert.ToDouble(DB.DataTable.Rows[0]["ProductPrice"]);
+                mProductDescription = Convert.ToString(DB.DataTable.Rows[0]["ProductDescription"]);
+                mProductTitle = Convert.ToString(DB.DataTable.Rows[0]["ProductTitle"]);
+                mProductColour = Convert.ToString(DB.DataTable.Rows[0]["ProductColour"]);
+                //return that everything worked OK
+                return true;
+            }
+            //if no record was found
+            else 
+            {
+                //return false indicating there is a problem
+                return false;
+            }
+           
         }
     }
 }
