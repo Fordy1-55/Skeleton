@@ -23,7 +23,9 @@ namespace ClassLibrary
         }
 
         //Private data member for the name property
-        private string mName
+        private string mName;
+        //Public accessor
+        public string Name
         
         {
             get 
@@ -36,6 +38,77 @@ namespace ClassLibrary
             }
         }
 
+        //Private data member for Role property
+        private string mRole;
+        //Public accessor
+        public string Role
+        {
+            get
+            {
+                return mRole;
+            }
+            set
+            {
+                mRole = value;
+            }
+        }
+
+        //Private data member for ShiftType property
+        private string mShiftType;
+        //public accessor
+        public string ShiftType
+        {
+            get
+            {
+                return mShiftType;
+            }
+            set
+            {
+                mShiftType = value;
+            }
+        }
+
+        private Boolean mPerformanceTarg;
+        public bool PerformanceTarg
+        {
+            get
+            {
+                return mPerformanceTarg;
+            }
+            set
+            {
+                mPerformanceTarg = value;
+            }
+        }
+
+        private Boolean mManagerStat;
+        public bool ManagerStat
+        {
+            get
+            {
+                return mManagerStat;
+            }
+            set
+            {
+                mManagerStat = value;
+            }
+        }
+
+        //Private data member for start date
+        private DateTime mStartDate;
+        //Public property
+        public DateTime StartDate
+        {
+            get
+            {
+                return mStartDate;
+            }
+            set
+            {
+                mStartDate = value;
+            }
+        }
+
         public DateTime StartDateProperty { get; set; }
         public string RoleProperty { get; set; }
         public string ShiftTypeProperty { get; set; }
@@ -44,10 +117,16 @@ namespace ClassLibrary
         public bool ManagerStatus { get; set; }
         public bool PerformanceTarget { get; set; }
 
-        public bool Find(int StaffIDProperty)
+        public bool Find(int StaffID)
         {
             //Set private data members to test data value
-            mStaffID = 5;
+            mStaffID = 7;
+            mStartDate = Convert.ToDateTime("13/05/2028");
+            mRole = "Test Role";
+            mName = "Test Name";
+            mShiftType = "Test Shift";
+            mPerformanceTarg = true;
+            mManagerStat = true;
             //always return true
             return true;
         }
