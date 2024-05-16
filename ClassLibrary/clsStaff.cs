@@ -68,29 +68,29 @@ namespace ClassLibrary
             }
         }
 
-        private Boolean mPerformanceTarg;
-        public bool PerformanceTarg
+        private Boolean mPerformanceTarget;
+        public bool PerformanceTarget
         {
             get
             {
-                return mPerformanceTarg;
+                return mPerformanceTarget;
             }
             set
             {
-                mPerformanceTarg = value;
+                mPerformanceTarget = value;
             }
         }
 
-        private Boolean mManagerStat;
-        public bool ManagerStat
+        private Boolean mManagerStatus;
+        public bool ManagerStatus
         {
             get
             {
-                return mManagerStat;
+                return mManagerStatus;
             }
             set
             {
-                mManagerStat = value;
+                mManagerStatus = value;
             }
         }
 
@@ -114,21 +114,38 @@ namespace ClassLibrary
         public string ShiftTypeProperty { get; set; }
         public int StaffIDProperty { get; set; }
         public string NameProperty { get; set; }
-        public bool ManagerStatus { get; set; }
-        public bool PerformanceTarget { get; set; }
+        public bool ManagerStatusProperty { get; set; }
+        public bool PerformanceTargetProperty { get; set; }
 
         public bool Find(int StaffID)
         {
-            //Set private data members to test data value
-            mStaffID = 7;
-            mStartDate = Convert.ToDateTime("13/05/2028");
-            mRole = "Test Role";
-            mName = "Test Name";
-            mShiftType = "Test Shift";
-            mPerformanceTarg = true;
-            mManagerStat = true;
-            //always return true
-            return true;
+            //Create instance of the data connection
+            clsDataConnection DB = new clsDataConnection();
+            //add parameter for staff id to search for
+            DB.AddParameter("@StaffID", StaffID);
+            //Execute the stored procedure
+            DB.Execute("sproc_tblStaff_FilterByStaffID");
+            //if one recird is found
+            if (DB.Count == 1)
+            {
+                //copy data from database tp private data members
+                mStaffID = Convert.ToInt32(DB.DataTable.Rows[0]["StaffID"]);
+                mStartDate = Convert.ToDateTime(DB.DataTable.Rows[0]["StartDate"]);
+                mName = Convert.ToString(DB.DataTable.Rows[0]["Name"]);
+                mRole = Convert.ToString(DB.DataTable.Rows[0]["Role"]);
+                mShiftType = Convert.ToString(DB.DataTable.Rows[0]["ShiftType"]);
+                mPerformanceTarget = Convert.ToBoolean(DB.DataTable.Rows[0]["PerformanceTarget"]);
+                mManagerStatus = Convert.ToBoolean(DB.DataTable.Rows[0]["ManagerStatus"]);
+                //always return true
+                return true;
+            }
+            //if no record os found
+            else
+            {
+                //return false indicating problem
+                return false;
+            }
+            
         }
     }
 
