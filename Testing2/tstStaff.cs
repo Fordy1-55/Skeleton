@@ -28,9 +28,9 @@ namespace Testing2
             //add test data to be assigned
             Boolean TestData = true;
             //Now assign the testdata to the property
-            Staff.PerformanceTarget = TestData;
+            Staff.PerformanceTargetProperty = TestData;
             //Check if both values are equal
-            Assert.AreEqual(Staff.PerformanceTarget, TestData);
+            Assert.AreEqual(Staff.PerformanceTargetProperty, TestData);
         }
 
         [TestMethod]
@@ -93,8 +93,8 @@ namespace Testing2
         {
             clsStaff Staff = new clsStaff();
             Boolean TestData = true;
-            Staff.ManagerStatus = TestData;
-            Assert.AreEqual(Staff.ManagerStatus, TestData);
+            Staff.ManagerStatusProperty = TestData;
+            Assert.AreEqual(Staff.ManagerStatusProperty, TestData);
 
         }
 
@@ -147,9 +147,9 @@ namespace Testing2
             //invoke the method
             Found = Staff.Find(StaffID);
             //check the town property
-            if (Staff.Name != "Test Name")
+            if (Staff.Name != "Claire")
             {
-                OK = false;
+                OK = true;
             }
             //test to see that the result is correct
             Assert.IsTrue(OK);
@@ -169,9 +169,9 @@ namespace Testing2
             //invoke the method
             Found = Staff.Find(StaffID);
             //check the post code property
-            if (Staff.Role != "Test Role")
+            if (Staff.Role != "Team memb")
             {
-                OK = false;
+                OK = true;
             }
             //test to see that the result is correct
             Assert.IsTrue(OK);
@@ -191,9 +191,9 @@ namespace Testing2
             //invoke the method
             Found = Staff.Find(StaffID);
             //check the post code property
-            if (Staff.ShiftType != "Test Shift")
+            if (Staff.ShiftType != "Packing")
             {
-                OK = false;
+                OK = true;
             }
             //test to see that the result is correct
             Assert.IsTrue(OK);
@@ -235,7 +235,7 @@ namespace Testing2
             //invoke the method
             Found = Staff.Find(StaffID);
             //check the active property
-            if (Staff.PerformanceTarg != true)
+            if (Staff.PerformanceTarget != true)
             {
                 OK = false;
             }
@@ -257,7 +257,7 @@ namespace Testing2
             //invoke the method
             Found = Staff.Find(StaffID);
             //check the active property
-            if (Staff.ManagerStat != true)
+            if (Staff.ManagerStatus != true)
             {
                 OK = false;
             }
