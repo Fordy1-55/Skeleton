@@ -125,10 +125,35 @@ namespace ClassLibrary
         public string Valid(string supplierName, string supplierContactEmail, string supplierContactPhone, string supplierCity, string supplierAddDate)
         {
             String Error = "";
+            DateTime DateTemp;
+            DateTime DateComp = DateTime.Now.Date;
+
+            if (supplierName.Length < 1 || supplierName.Length > 50)
+            {
+                Error = Error + "The Name Length cannot exceed 50 characters or be less than 1 character!";
+            }
+            
 
             if (supplierContactPhone.Length > 11 || supplierContactPhone.Length < 11)
             {
-                Error = Error + "The phone number can be no longer or shorter than 11 characters";
+                Error = Error + "The phone number can be no longer or shorter than 11 characters!";
+            }
+
+            if ( supplierCity.Length < 1 || supplierCity.Length > 50)
+            {
+                Error = Error + "The City name cannot exceed 50 characters or be less than one character!";
+            }
+            try
+            {
+                DateTemp = Convert.ToDateTime(supplierAddDate);
+                if (DateTemp < DateTime.Now.Date.AddYears(-1) || DateTemp > DateTime.Now.Date)
+                {
+                    Error = Error + "The Date Added cannot exceed 1 year in the past or be in the future";
+                }
+            }
+            catch
+            {
+                Error = Error + "The date was not valid";
             }
 
             return Error;
