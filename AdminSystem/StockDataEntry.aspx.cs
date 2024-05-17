@@ -36,6 +36,10 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
 
     }
+    protected void txtProductDate_TextChanged(object sender, EventArgs e)
+    {
+
+    }
     protected void btnOk_Click(object sender, EventArgs e)
     {
         //create a new instance of clsStock
@@ -61,5 +65,63 @@ public partial class _1_DataEntry : System.Web.UI.Page
     }
 
 
-    
+
+
+    protected void btnFind_Click(object sender, EventArgs e)
+    {
+        //create an instance of the sock class
+        clsStock AnStock = new clsStock();
+        //create a variable to score the primary key
+        Int32 ProductId;
+        //create a variable to store the results of the find operation
+        Boolean Found = false;
+        //get the primary key entered by the user
+        ProductId = Convert.ToInt32(txtProductId.Text);
+        //find the recore
+        Found = AnStock.Find(ProductId);
+        //iffound
+        if (Found == true) 
+        {
+            //display the values of the properties in the form 
+            txtProductId.Text = AnStock.ProductId.ToString();
+            txtProductDate.Text = AnStock.ProductDate.ToString();
+            txtProductPrice.Text = AnStock.ProductPrice.ToString();
+            txtProductTitle.Text = AnStock.ProductTitle;
+            txtProductDescription.Text = AnStock.ProductDescription;
+            txtProductColour.Text = AnStock.ProductColour;
+            ChkAvaible.Checked = AnStock.ProductAvailable;
+           
+
+        }
+    }
+
+
+
+    protected void BTNfIND_Click(object sender, EventArgs e)
+    {
+        //create an instance of the sock class
+        clsStock AnStock = new clsStock();
+        //create a variable to score the primary key
+        Int32 ProductId;
+        //create a variable to store the results of the find operation
+        Boolean Found = false;
+        //get the primary key entered by the user
+        ProductId = Convert.ToInt32(txtProductId.Text);
+        //find the recore
+        Found = AnStock.Find(ProductId);
+        //iffound
+        if (Found == true)
+        {
+            //display the values of the properties in the form 
+            txtProductId.Text = AnStock.ProductId.ToString();
+            txtProductDate.Text = AnStock.ProductDate.ToString();
+            txtProductPrice.Text = AnStock.ProductPrice.ToString();
+            txtProductTitle.Text = AnStock.ProductTitle;
+            txtProductDescription.Text = AnStock.ProductDescription;
+            txtProductColour.Text = AnStock.ProductColour;
+            ChkAvaible.Checked = AnStock.ProductAvailable;
+
+
+        }
+    }
 }

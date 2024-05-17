@@ -15,6 +15,7 @@
     <form id="form1" runat="server">
         <div style="height: 416px">
             <asp:Label ID="lblProductId" runat="server" height="19px" style="z-index: 1; left: 12px; top: 19px; position: absolute" Text="Product ID" width="121px"></asp:Label>
+            <asp:Button ID="BTNfIND" runat="server" OnClick="BTNfIND_Click" style="z-index: 1; left: 380px; top: 16px; position: absolute; width: 64px" Text="Find" />
             <br />
             <br />
             <br />
