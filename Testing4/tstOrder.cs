@@ -89,7 +89,7 @@ namespace Testing4
             //create a new instance of the class we want to create
             clsOrder AnOrder = new clsOrder();
             //create some test data to assign to the property
-            Double TestData = 1.55;
+            Decimal TestData = 1.55M;
             //assign the data to the property
             AnOrder.OrderPrice = TestData;
             //test to see if the two values are the same
@@ -219,7 +219,7 @@ namespace Testing4
             //invoke the method
             Found = AnOrder.Find(OrderId);
             //check the order price
-            if (AnOrder.OrderPrice != Convert.ToDouble("5.55"))
+            if (AnOrder.OrderPrice != Convert.ToDecimal("5.55"))
             {
                 OK = false;
             }
@@ -630,7 +630,7 @@ namespace Testing4
         {
             clsOrder AnOrder = new clsOrder();
             String Error = "";
-            Double Price = 0;
+            Decimal Price = 0M;
             string OrderPrice = Price.ToString();
             Error = AnOrder.Valid(OrderDescription, DeliveryInstructions, ReturnAddress, DateOrdered, OrderPrice);
             Assert.AreNotEqual(Error, "");
@@ -641,7 +641,7 @@ namespace Testing4
         {
             clsOrder AnOrder = new clsOrder();
             String Error = "";
-            Double Price = 0.01;
+            Decimal Price = 0.01M;
             string OrderPrice = Price.ToString();
             Error = AnOrder.Valid(OrderDescription, DeliveryInstructions, ReturnAddress, DateOrdered, OrderPrice);
             Assert.AreEqual(Error, "");
@@ -652,7 +652,7 @@ namespace Testing4
         {
             clsOrder AnOrder = new clsOrder();
             String Error = "";
-            Double Price = 1.00;
+            Decimal Price = 1.00M;
             string OrderPrice = Price.ToString();
             Error = AnOrder.Valid(OrderDescription, DeliveryInstructions, ReturnAddress, DateOrdered, OrderPrice);
             Assert.AreEqual(Error, "");
