@@ -28,9 +28,9 @@ namespace Testing2
             //add test data to be assigned
             Boolean TestData = true;
             //Now assign the testdata to the property
-            Staff.PerformanceTargetProperty = TestData;
+            Staff.PerformanceTarget = TestData;
             //Check if both values are equal
-            Assert.AreEqual(Staff.PerformanceTargetProperty, TestData);
+            Assert.AreEqual(Staff.PerformanceTarget, TestData);
         }
 
         [TestMethod]
@@ -42,9 +42,9 @@ namespace Testing2
             //Create test data to be assigned
             DateTime TestData = DateTime.Now.Date;
             //Assign to propert
-            Staff.StartDateProperty = TestData;
+            Staff.StartDate = TestData;
             //Check if both values match
-            Assert.AreEqual(Staff.StartDateProperty, TestData);
+            Assert.AreEqual(Staff.StartDate, TestData);
         }
 
         [TestMethod]
@@ -53,8 +53,8 @@ namespace Testing2
         {
             clsStaff Staff = new clsStaff();
             string TestData = "A Role";
-            Staff.RoleProperty = TestData;
-            Assert.AreEqual(Staff.RoleProperty, TestData);
+            Staff.Role = TestData;
+            Assert.AreEqual(Staff.Role, TestData);
         }
 
         [TestMethod]
@@ -63,8 +63,8 @@ namespace Testing2
         {
             clsStaff Staff = new clsStaff();
             string TestData = "A type of shift";
-            Staff.ShiftTypeProperty = TestData;
-            Assert.AreEqual(Staff.ShiftTypeProperty, TestData);
+            Staff.ShiftType = TestData;
+            Assert.AreEqual(Staff.ShiftType, TestData);
 
         }
 
@@ -74,8 +74,8 @@ namespace Testing2
         {
             clsStaff Staff = new clsStaff();
             int TestData = 1;
-            Staff.StaffIDProperty = TestData;
-            Assert.AreEqual(Staff.StaffIDProperty, TestData);
+            Staff.StaffID = TestData;
+            Assert.AreEqual(Staff.StaffID, TestData);
         }
 
         [TestMethod]
@@ -84,8 +84,8 @@ namespace Testing2
         {
             clsStaff Staff = new clsStaff();
             string TestData = "Staff Name";
-            Staff.NameProperty = TestData;
-            Assert.AreEqual(Staff.NameProperty, TestData);
+            Staff.Name = TestData;
+            Assert.AreEqual(Staff.Name, TestData);
         }
 
         [TestMethod]
@@ -93,8 +93,8 @@ namespace Testing2
         {
             clsStaff Staff = new clsStaff();
             Boolean TestData = true;
-            Staff.ManagerStatusProperty = TestData;
-            Assert.AreEqual(Staff.ManagerStatusProperty, TestData);
+            Staff.ManagerStatus = TestData;
+            Assert.AreEqual(Staff.ManagerStatus, TestData);
 
         }
 
@@ -143,11 +143,11 @@ namespace Testing2
             //create a Boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 StaffID = 7;
+            Int32 StaffID = 9;
             //invoke the method
             Found = Staff.Find(StaffID);
             //check the town property
-            if (Staff.Name != "Claire")
+            if (Staff.Name != "Dawn")
             {
                 OK = true;
             }
@@ -165,11 +165,11 @@ namespace Testing2
             //create a boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 StaffID = 7;
+            Int32 StaffID = 9;
             //invoke the method
             Found = Staff.Find(StaffID);
             //check the post code property
-            if (Staff.Role != "Team memb")
+            if (Staff.Role != "Admin")
             {
                 OK = true;
             }

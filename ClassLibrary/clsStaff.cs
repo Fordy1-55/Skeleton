@@ -109,13 +109,13 @@ namespace ClassLibrary
             }
         }
 
-        public DateTime StartDateProperty { get; set; }
-        public string RoleProperty { get; set; }
-        public string ShiftTypeProperty { get; set; }
-        public int StaffIDProperty { get; set; }
-        public string NameProperty { get; set; }
-        public bool ManagerStatusProperty { get; set; }
-        public bool PerformanceTargetProperty { get; set; }
+        //public DateTime StartDateProperty { get; set; }
+        //public string RoleProperty { get; set; }
+        //public string ShiftTypeProperty { get; set; }
+        //public int StaffIDProperty { get; set; }
+        //public string NameProperty { get; set; }
+        //public bool ManagerStatusProperty { get; set; }
+        //public bool PerformanceTargetProperty { get; set; }
 
         public bool Find(int StaffID)
         {
@@ -139,7 +139,7 @@ namespace ClassLibrary
                 //always return true
                 return true;
             }
-            //if no record os found
+            //if no record is found
             else
             {
                 //return false indicating problem
