@@ -41,9 +41,9 @@ namespace ClassLibrary
         }
 
         //private data member for the order price property
-        private double mOrderPrice;
+        private decimal mOrderPrice;
         //orderId public property
-        public double OrderPrice
+        public decimal OrderPrice
         {
             get
             {
@@ -143,7 +143,7 @@ namespace ClassLibrary
                 mOrderId = Convert.ToInt32(DB.DataTable.Rows[0]["OrderId"]);
                 mOrderDescription = Convert.ToString(DB.DataTable.Rows[0]["OrderDescription"]);
                 mDateOrdered = Convert.ToDateTime(DB.DataTable.Rows[0]["DateOrdered"]);
-                mOrderPrice = Convert.ToDouble(DB.DataTable.Rows[0]["OrderPrice"]);
+                mOrderPrice = Convert.ToDecimal(DB.DataTable.Rows[0]["OrderPrice"]);
                 mOverseasDelivery = Convert.ToBoolean(DB.DataTable.Rows[0]["OverseasDelivery"]);
                 mReturnAddress = Convert.ToString(DB.DataTable.Rows[0]["ReturnAddress"]);
                 mDeliveryInstructions = Convert.ToString(DB.DataTable.Rows[0]["DeliveryInstructions"]);
@@ -158,13 +158,13 @@ namespace ClassLibrary
             }
         }
 
-        public string Valid(string orderDescription, string deliveryInstructions, string returnAddress, object dateOrdered, object orderPrice)
+        public string Valid(string orderDescription, string deliveryInstructions, string returnAddress, object dateOrdered, string orderPrice)
         {
             //create a string variable to store the error
             String Error = "";
             //create a temporary variable to store the date values
             DateTime DateTemp;
-            Double PriceTemp;
+            Decimal PriceTemp;
             if (orderDescription.Length > 50)
             {
                 Error = Error + "The Order Description must be less than 51 characters : ";
@@ -181,6 +181,23 @@ namespace ClassLibrary
             {
                 Error = Error + "The return Address must be less than 51 characters : ";
             }
+
+            try
+            {
+                PriceTemp = Convert.ToDecimal(orderPrice);
+                if (PriceTemp < 0.01M)
+                {
+                    Error = Error + "The Price cannot be less than £0.01 : ";
+                }
+            }
+            catch
+            {
+                Error = Error + "This is an invalid Price!";
+            }
+            
+            
+           
+
 
             DateTime DateComp = DateTime.Now.Date;
             try
@@ -200,19 +217,12 @@ namespace ClassLibrary
             {
                 Error = Error + "The date was not a valid date : ";
             }
+
+
+
+
   
-            try
-            {
-                PriceTemp = Convert.ToDouble(orderPrice);
-                if (PriceTemp < 0.01)
-                {
-                    Error = Error + "The Price cannot be less than £0.01 : ";
-                }
-            }
-            catch
-            {
-                Error = Error + "The price was not a valid price : ";
-            }
+           
 
             //return any error messages
             return Error;

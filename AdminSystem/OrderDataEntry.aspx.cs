@@ -34,13 +34,13 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //variable to store any error messages
         string Error = "";
         //validate the data
-        Error = AnOrder.Valid(OrderDescription, OrderPrice, ReturnAddress, DateOrdered, ReturnAddress);
+        Error = AnOrder.Valid(OrderDescription, DeliveryInstructions, ReturnAddress, DateOrdered, OrderPrice);
         if (Error == "")
         {
             //capture the data
             AnOrder.OrderDescription = OrderDescription;
             AnOrder.OrderId = Convert.ToInt32(OrderId);
-            AnOrder.OrderPrice = Convert.ToDouble(OrderPrice);
+            AnOrder.OrderPrice = Convert.ToDecimal(OrderPrice);
             AnOrder.DateOrdered = Convert.ToDateTime(DateOrdered);
             AnOrder.DeliveryInstructions = DeliveryInstructions;
             AnOrder.ReturnAddress = ReturnAddress;
