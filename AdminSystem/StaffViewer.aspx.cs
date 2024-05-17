@@ -15,10 +15,10 @@ public partial class _1Viewer : System.Web.UI.Page
         //Grab data from session object
         Staff = (clsStaff)Session["Staff"];
         //Display Staff ID for this emntry
-        Response.Write(Staff.StaffIDProperty);
-        Response.Write(Staff.NameProperty);
-        Response.Write(Staff.RoleProperty);
-        Response.Write(Staff.ShiftTypeProperty);
+        Response.Write(Staff.StaffID);
+        Response.Write(Staff.Name);
+        Response.Write(Staff.Role);
+        Response.Write(Staff.ShiftType);
 
 
     }

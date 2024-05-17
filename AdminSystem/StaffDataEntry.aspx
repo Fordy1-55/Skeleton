@@ -10,7 +10,7 @@
     <form id="StaffDataEntryForm" runat="server">
         <div>
         </div>
-        <asp:Label ID="lblStaffId" runat="server" style="z-index: 1; left: 10px; top: 34px; position: absolute; height: 19px" Text="Staff ID" width="120px"></asp:Label>
+        <asp:Label ID="lblStaffId" runat="server" style="z-index: 1; left: 9px; top: 38px; position: absolute; height: 19px; width: 70px;" Text="Staff ID"></asp:Label>
         <asp:TextBox ID="txtStaffId" runat="server" style="z-index: 1; left: 84px; top: 34px; position: absolute; width: 111px; height: 22px"></asp:TextBox>
         
         <p>
@@ -38,6 +38,11 @@
         <asp:Label ID="lblError" runat="server" height="19px" style="z-index: 1; left: 25px; top: 353px; position: absolute" width="120px"></asp:Label>
         <asp:Button ID="btnEnter" runat="server" OnClick="btnEnter_Click" style="z-index: 1; left: 23px; top: 299px; position: absolute" Text="Enter" />
         <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 102px; top: 299px; position: absolute; height: 25px; width: 56px" Text="Cancel" />
+        <p>
+            &nbsp;</p>
+        <p>
+            <asp:Button ID="btnFind" runat="server" style="margin-left: 189px" Text="Find" Width="97px" OnClick="btnFind_Click1" />
+        </p>
     </form>
 </body>
 </html>
