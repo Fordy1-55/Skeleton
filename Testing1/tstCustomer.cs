@@ -1,6 +1,7 @@
 ﻿using ClassLibrary;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Net;
 
 namespace Testing1
 {
@@ -100,9 +101,9 @@ namespace Testing1
             //create some test data to assign to the property
             string TestData = "Customer Telephone Number";
             //assign the data to the property
-            AnCustomer.CustomerTelphoneNo = TestData;
+            AnCustomer.CustomerTelephoneNo = TestData;
             //test to see that the two values are the same
-            Assert.AreEqual(AnCustomer.CustomerTelphoneNo, TestData);
+            Assert.AreEqual(AnCustomer.CustomerTelephoneNo, TestData);
         }
 
         [TestMethod]
@@ -155,21 +156,33 @@ namespace Testing1
             Found = AnCustomer.Find(CustomerID);
             // check the customerID
             if(AnCustomer.CustomerID != 4)
+            // check if dateAdded Property
+            if (AnCustomer.DateOfBirth != Convert.ToDateTime("12/06/2002"))
+            // check  the address Property
+            if (AnCustomer.CustomerAddress != "14 Maiden Drive")
+            // check the email property
+            if (AnCustomer.CustomerEmail !="BillyRussell@hotmail.com")
+            // check the telephone property
+            if (AnCustomer.CustomerTelephoneNo != "0734964327")
+            // check the customer name property
+            if (AnCustomer.CustomerName != "Billy")
+            //check the Subscription property
+            if (AnCustomer.Subscription != true)
+
             {
-                OK = false;
+               OK = false;
             }
             // test to see if the results is correct
             Assert.IsTrue(OK);
 
 
+            
 
 
 
 
 
-
-
-        }
+            }
 
 
 
