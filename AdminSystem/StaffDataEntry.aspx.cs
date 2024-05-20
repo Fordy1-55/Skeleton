@@ -32,26 +32,43 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
         //Create new instance of Staff Class
         clsStaff Staff = new clsStaff();
-        //Capture the StaffID
-        Staff.StaffID= Convert.ToInt32(txtStaffId.Text);
         //Capture the Name
-        Staff.Name = txtName.Text;
+        string Name = txtName.Text;
         //Capture the Role
-        Staff.Role = txtRole.Text;
+        string Role = txtRole.Text;
         //Capture Shift Type
-        Staff.ShiftType = txtShiftType.Text;
+        string ShiftType = txtShiftType.Text;
         //Capture check box manager
-        Staff.ManagerStatus = chkManagerStatus.Checked;
+        string ManagerStatus = chkManagerStatus.Text;
         //Capture check box performance target
-        Staff.PerformanceTarget = chkPerformamceTarget.Checked;
-        //Capture the date
-        Staff.StartDate = Convert.ToDateTime(txtStartDate.Text);
-        //Store staff id in session object
-        Session["Staff"] = Staff;
-        //Navigate to view
-        Response.Redirect("StaffViewer.aspx");
-
-
+        string PerformanceTarget = chkPerformamceTarget.Text;
+        ////Capture the date
+        string StartDate = txtStartDate.Text;
+        //variable to store error message
+        string Error = "";
+        //validate the data
+        Error = Staff.Valid(Name, Role, ShiftType, StartDate);
+        if(Error == "")
+        {
+            //Capture the Name
+            Staff.Name = txtName.Text;
+            //Capture the Role
+            Staff.Role = txtRole.Text;
+            //Capture Shift Type
+            Staff.ShiftType = txtShiftType.Text;
+            //Capture the date
+            Staff.StartDate = Convert.ToDateTime(txtStartDate.Text);
+            //Store staff id in session object
+            Session["Staff"] = Staff;
+            ////Navigate to view
+            Response.Redirect("StaffViewer.aspx");
+        }
+        else
+        {
+            //display error message
+            lblError.Text = Error;
+        }
+    
 
     }
 
