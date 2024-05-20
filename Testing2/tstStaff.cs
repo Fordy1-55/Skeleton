@@ -405,6 +405,339 @@ namespace Testing2
             Assert.AreNotEqual(Error, "");
         }
 
+        [TestMethod]
+        public void StartDateExtremeMin()
+        {
+            //create an instance of the class we want to create
+            clsStaff Staff = new clsStaff();
+            //string variable to store any error message
+            String Error = "";
+            //create a variable to store the test date data
+            DateTime TestDate;
+            //set the date totodays date
+            TestDate = DateTime.Now.Date;
+            //change the date to whatever the date is less 100 years
+            TestDate = TestDate.AddYears(-100);
+            //convert the date variable to a string variable
+            string StartDate = TestDate.ToString();
+            //invoke the method
+            Error = Staff.Valid(Name, Role, ShiftType, StartDate);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void StartDateMinLessOne()
+        {
+            //create an instance of the class we want to create
+            clsStaff Staff = new clsStaff();
+            //string variable to store any error message
+            String Error = "";
+            //create a variable to store the test date data
+            DateTime TestDate;
+            //set the date totodays date
+            TestDate = DateTime.Now.Date;
+            //change the date to whatever the date is less 100 years
+            TestDate = TestDate.AddDays(-1);
+            //convert the date variable to a string variable
+            string StartDate = TestDate.ToString();
+            //invoke the method
+            Error = Staff.Valid(Name, Role, ShiftType, StartDate);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void StartDateMin()
+        {
+            //create an instance of the class we want to create
+            clsStaff Staff = new clsStaff();
+            //string variable to store any error message
+            String Error = "";
+            //create a variable to store the test date data
+            DateTime TestDate;
+            //set the date totodays date
+            TestDate = DateTime.Now.Date;  
+            //convert the date variable to a string variable
+            string StartDate = TestDate.ToString();
+            //invoke the method
+            Error = Staff.Valid(Name, Role, ShiftType, StartDate);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void StartDateMinPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsStaff Staff = new clsStaff();
+            //string variable to store any error message
+            String Error = "";
+            //create a variable to store the test date data
+            DateTime TestDate;
+            //set the date totodays date
+            TestDate = DateTime.Now.Date;
+            //change the date to whatever the date is less 100 years
+            TestDate = TestDate.AddDays(1);
+            //convert the date variable to a string variable
+            string StartDate = TestDate.ToString();
+            //invoke the method
+            Error = Staff.Valid(Name, Role, ShiftType, StartDate);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void StartDateExtremeMax()
+        {
+            //create an instance of the class we want to create
+            clsStaff Staff = new clsStaff();
+            //string variable to store any error message
+            String Error = "";
+            //create a variable to store the test date data
+            DateTime TestDate;
+            //set the date totodays date
+            TestDate = DateTime.Now.Date;
+            //change the date to whatever the date is less 100 years
+            TestDate = TestDate.AddYears(100);
+            //convert the date variable to a string variable
+            string StartDate = TestDate.ToString();
+            //invoke the method
+            Error = Staff.Valid(Name, Role, ShiftType, StartDate);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void StartDateInvalidData()
+        {
+            clsStaff Staff = new clsStaff();
+            //Strig variable to store error message
+            String Error = "";
+            //set StartDate to a non date value
+            string StartDate = "This is not a date!";
+            //Invoke method
+            Error = Staff.Valid(Name, Role, ShiftType, StartDate);
+            //test to see result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void RoleMinLessOne()
+        {
+            //create an instance of the class we want to create
+            clsStaff Staff = new clsStaff();
+            //string variable to store any error message
+            String Error = "";
+            //this should fail
+            string Role = "";
+            //invoke the method
+            Error = Staff.Valid(Name, Role, ShiftType, StartDate);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void RoleMin()
+        {
+            //create an instance of the class we want to create
+            clsStaff Staff = new clsStaff();
+            //string variable to store any error message
+            String Error = "";
+            //this should pass
+            string Role = "t";
+            //invoke the method
+            Error = Staff.Valid(Name, Role, ShiftType, StartDate);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void RoleMinPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsStaff Staff = new clsStaff();
+            //string variable to store any error message
+            String Error = "";
+            //this should pass
+            string Role = "tt";
+            //invoke the method
+            Error = Staff.Valid(Name, Role, ShiftType, StartDate);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void RoleMaxLessOne() 
+        {
+            //create an instance of the class we want to create
+            clsStaff Staff = new clsStaff();
+            //string variable to store any error message
+            String Error = "";
+            //this should pass
+            string Role = "ttttttttttttttttttttttttttttt";
+            //invoke the method
+            Error = Staff.Valid(Name, Role, ShiftType, StartDate);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void RoleMax() 
+        {
+            //create an instance of the class we want to create
+            clsStaff Staff = new clsStaff();
+            //string variable to store any error message
+            String Error = "";
+            //this should pass
+            string Role = "tttttttttttttttttttttttttttttt";
+            //invoke the method
+            Error = Staff.Valid(Name, Role, ShiftType, StartDate);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void RoleMaxPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsStaff Staff = new clsStaff();
+            //string variable to store any error message
+            String Error = "";
+            //this should fail
+            string Role = "ttttttttttttttttttttttttttttttt";
+            //invoke the method
+            Error = Staff.Valid(Name, Role, ShiftType, StartDate);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void RoleMid()
+        {
+            //create an instance of the class we want to create
+            clsStaff Staff = new clsStaff();
+            //string variable to store any error message
+            String Error = "";
+            //this should pass
+            string Role = "ttttttttttttttt";
+            //invoke the method
+            Error = Staff.Valid(Name, Role, ShiftType, StartDate);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ShiftTypeMinLessOne()
+        {
+            //create an instance of the class we want to create
+            clsStaff Staff = new clsStaff();
+            //string variable to store any error message
+            String Error = "";
+            //this should fail
+            string ShiftType = "";
+            //invoke the method
+            Error = Staff.Valid(Name, Role, ShiftType, StartDate);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ShiftTypeMin()
+        {
+            //create an instance of the class we want to create
+            clsStaff Staff = new clsStaff();
+            //string variable to store any error message
+            String Error = "";
+            //this should pass
+            string ShiftType = "a";
+            //invoke the method
+            Error = Staff.Valid(Name, Role, ShiftType, StartDate);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ShiftTypeMinPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsStaff Staff = new clsStaff();
+            //string variable to store any error message
+            String Error = "";
+            //this should pass
+            string ShiftType = "aa";
+            //invoke the method
+            Error = Staff.Valid(Name, Role, ShiftType, StartDate);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ShiftTypeMaxLessOne()
+        {
+            //create an instance of the class we want to create
+            clsStaff Staff = new clsStaff();
+            //string variable to store any error message
+            String Error = "";
+            //this should pass
+            string ShiftType = "";
+            ShiftType = ShiftType.PadRight(24, 'a');
+            //invoke the method
+            Error = Staff.Valid(Name, Role, ShiftType, StartDate);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ShiftTypeMax()
+        {
+            //create an instance of the class we want to create
+            clsStaff Staff = new clsStaff();
+            //string variable to store any error message
+            String Error = "";
+            //this should pass
+            string ShiftType = "";
+            ShiftType = ShiftType.PadRight(25, 'a');
+            //invoke the method
+            Error = Staff.Valid(Name, Role, ShiftType, StartDate);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+
+        }
+
+        [TestMethod]
+        public void ShiftTypeMaxPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsStaff Staff = new clsStaff();
+            //string variable to store any error message
+            String Error = "";
+            //this should fail
+            string ShiftType = "";
+            //invoke the method
+            Error = Staff.Valid(Name, Role, ShiftType, StartDate);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ShiftTypeMid()
+        {
+            //create an instance of the class we want to create
+            clsStaff Staff = new clsStaff();
+            //string variable to store any error message
+            String Error = "";
+            //this should pass
+            string ShiftType = "";
+            ShiftType = ShiftType.PadRight(12, 'a');
+            //invoke the method
+            Error = Staff.Valid(Name, Role, ShiftType, StartDate);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+
+
 
 
 
