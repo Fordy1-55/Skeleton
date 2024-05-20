@@ -5,6 +5,13 @@ namespace ClassLibrary
 {
     public class clsOrderCollection
     {
+        //private data member for the list
+        List<clsOrder> mOrderList = new List<clsOrder>();
+        //private member data for thisOrder
+        clsOrder mThisOrder = new clsOrder();
+
+
+
         //constructor for the class
         public clsOrderCollection()
         {
@@ -46,8 +53,7 @@ namespace ClassLibrary
 
 
 
-        //private data member for the list
-        List<clsOrder> mOrderList = new List<clsOrder>();
+        
 
 
 
@@ -82,6 +88,64 @@ namespace ClassLibrary
 
 
 
-        public clsOrder ThisOrder { get; set; }
+        public clsOrder ThisOrder
+        {
+            get
+            {
+                //get the private data
+                return mThisOrder;
+            }
+            set
+            {
+                mThisOrder = value;
+            }
+        }
+        
+
+
+        public int Add()
+        {
+            //adds a record to the database based on the values of mThisOrder
+            //set the primary key value of the new record
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameters for the stored procedure
+            DB.AddParameter("@OverseasDelivery", mThisOrder.OverseasDelivery);
+            DB.AddParameter("@OrderPrice", mThisOrder.OrderPrice);
+            DB.AddParameter("@OrderDescription", mThisOrder.OrderDescription);
+            DB.AddParameter("@DateOrdered", mThisOrder.DateOrdered);
+            DB.AddParameter("@DeliveryInstructions", mThisOrder.DeliveryInstructions);
+            DB.AddParameter("@ReturnAddress", ThisOrder.ReturnAddress);
+
+            //execute the query returning the primary key value
+            return DB.Execute("sproc_tblOrder_Insert");
+
+
+
+
+        }
+
+        public void Update()
+        {
+            //update an existing record based on the values of thisOrder
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameters for the new stored procedure
+            DB.AddParameter("@OrderId", mThisOrder.OrderId);
+            DB.AddParameter("@OverseasDelivery", mThisOrder.OverseasDelivery);
+            DB.AddParameter("@OrderPrice", mThisOrder.OrderPrice);
+            DB.AddParameter("@OrderDescription", mThisOrder.OrderDescription);
+            DB.AddParameter("@DateOrdered", mThisOrder.DateOrdered);
+            DB.AddParameter("@DeliveryInstructions", mThisOrder.DeliveryInstructions);
+            DB.AddParameter("@ReturnAddress", ThisOrder.ReturnAddress);
+        }
     }
+
+
+
+
+ 
+
+
+
+
 }
