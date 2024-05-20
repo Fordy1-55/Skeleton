@@ -147,6 +147,26 @@ namespace ClassLibrary
             }
             
         }
+
+        public string Valid(string Name, string role, string shiftType, string startDate)
+        {
+            //create string variable to store the error
+            String Error = "";
+            //if name is blank
+            if (Name.Length == 0)
+            {
+                //record error
+                Error = Error + "Name may not be blank";
+            }
+            //if name is greater than 35 characters
+            if (Name.Length > 35) 
+            {
+                //record error
+                Error = Error + "Name may not be more than 35 Characters";
+            }
+            //Return any error message
+            return Error;
+        }
     }
 
     
