@@ -2,6 +2,8 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.IO;
+using System.Collections.Generic;
+using System.Net.Mail;
 
 namespace Testing5
 {
@@ -472,5 +474,110 @@ namespace Testing5
             Assert.AreNotEqual(Error, "");
         }
 
+        [TestMethod]
+        public void SupplierContactEmailvalid()
+        {
+            clsSupplier ASupplier = new clsSupplier();
+            string Error = "";
+            string SupplierContactEmail = "Geoff@gmail.com";
+            Error = ASupplier.Valid(SupplierName, SupplierContactEmail, SupplierContactPhone, SupplierCity, SupplierAddDate);
+            Assert.AreEqual(Error, "");
+
+        }
+
+        [TestMethod]
+        public void SupplierContactEmailInvalid()
+        {
+            clsSupplier ASupplier = new clsSupplier();
+            string Error = "";
+            string SupplierContactEmail = "JhonnJonesgmail.com";
+            Error = ASupplier.Valid(SupplierName, SupplierContactEmail, SupplierContactPhone, SupplierCity, SupplierAddDate);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void SupplierContactEmailMinLessOne()
+        {
+            clsSupplier ASupplier = new clsSupplier();
+            string Error = "";
+            string SupplierContactEmail = "";
+            Error = ASupplier.Valid(SupplierName, SupplierContactEmail, SupplierContactPhone, SupplierCity, SupplierAddDate);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void SupplierContactEmailMin()
+        {
+            clsSupplier ASupplier = new clsSupplier();
+            string Error = "";
+            string SupplierContactEmail = "a@simple.com";
+            Error = ASupplier.Valid(SupplierName, SupplierContactEmail, SupplierContactPhone, SupplierCity, SupplierAddDate);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void SupplierContactEmailMinPlusOne()
+        {
+            clsSupplier ASupplier = new clsSupplier();
+            string Error = "";
+            string SupplierContactEmail = "aa@simple.com";
+            Error = ASupplier.Valid(SupplierName, SupplierContactEmail, SupplierContactPhone, SupplierCity, SupplierAddDate);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void SupplierContactEmailMaxLessOne()
+        {
+            clsSupplier ASupplier = new clsSupplier();
+            string Error = "";
+            string SupplierContactEmail = "@simple.com";
+            SupplierContactEmail = SupplierContactEmail.PadLeft(49, 'a');
+            Error = ASupplier.Valid(SupplierName, SupplierContactEmail, SupplierContactPhone, SupplierCity, SupplierAddDate);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void SupplierContactEmailMax()
+        {
+            clsSupplier ASupplier = new clsSupplier();
+            string Error = "";
+            string SupplierContactEmail = "@simple.com";
+            SupplierContactEmail = SupplierContactEmail.PadLeft(50, 'a');
+            Error = ASupplier.Valid(SupplierName, SupplierContactEmail, SupplierContactPhone, SupplierCity, SupplierAddDate);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void SupplierContactEmailMaxPlusOne()
+        {
+            clsSupplier ASupplier = new clsSupplier();
+            string Error = "";
+            string SupplierContactEmail = "@simple.com";
+            SupplierContactEmail = SupplierContactEmail.PadLeft(51, 'a');
+            Error = ASupplier.Valid(SupplierName, SupplierContactEmail, SupplierContactPhone, SupplierCity, SupplierAddDate);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void SupplierContactEmailMid()
+        {
+            clsSupplier ASupplier = new clsSupplier();
+            string Error = "";
+            string SupplierContactEmail = "@simple.com";
+            SupplierContactEmail = SupplierContactEmail.PadLeft(25, 'a');
+            Error = ASupplier.Valid(SupplierName, SupplierContactEmail, SupplierContactPhone, SupplierCity, SupplierAddDate);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void SupplierContactEmailExtremeMax()
+        {
+            clsSupplier ASupplier = new clsSupplier();
+            string Error = "";
+            string SupplierContactEmail = "@simple.com";
+            SupplierContactEmail = SupplierContactEmail.PadLeft(500, 'a');
+            Error = ASupplier.Valid(SupplierName, SupplierContactEmail, SupplierContactPhone, SupplierCity, SupplierAddDate);
+            Assert.AreNotEqual(Error, "");
+        }
     }   
 }

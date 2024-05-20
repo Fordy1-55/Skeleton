@@ -19,7 +19,7 @@ public partial class _1Viewer : System.Web.UI.Page
         Response.Write(AnCustomer.CustomerName);
         Response.Write(AnCustomer.CustomerAddress);
         Response.Write(AnCustomer.CustomerEmail);
-        Response.Write(AnCustomer.CustomerTelphoneNo);
+        Response.Write(AnCustomer.CustomerTelephoneNo);
         Response.Write(AnCustomer.DateOfBirth);
     }
 }
