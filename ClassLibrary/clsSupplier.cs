@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Net.Mail;
 
 
 namespace ClassLibrary
@@ -143,18 +145,35 @@ namespace ClassLibrary
             {
                 Error = Error + "The City name cannot exceed 50 characters or be less than one character!";
             }
+
             try
             {
                 DateTemp = Convert.ToDateTime(supplierAddDate);
-                if (DateTemp < DateTime.Now.Date.AddYears(-1) || DateTemp > DateTime.Now.Date)
+                if (DateTemp < DateTime.Now.Date || DateTemp > DateTime.Now.Date)
                 {
-                    Error = Error + "The Date Added cannot exceed 1 year in the past or be in the future";
+                    Error = Error + "The Date Added cannot be in the past or the future";
                 }
             }
             catch
             {
                 Error = Error + "The date was not valid";
             }
+
+
+            try
+            {
+                var emailAddress = new MailAddress(supplierContactEmail);
+                if (supplierContactEmail.Length < 0 || supplierContactEmail.Length > 50)
+                {
+                    Error = Error + "The email length cannot exceed 50 characters or be less than 0 characters";
+                }
+            }
+            catch
+            {
+                Error = Error + "Your email address must not contain less or more thasn one @ symbol and must contain a .com or similar!";
+            }
+
+
 
             return Error;
         }
