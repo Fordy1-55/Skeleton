@@ -9,9 +9,21 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+    //variable to store the primarykey with page level scope
+    Int32 OrderId;
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        //get the number of the address to be processed
+        OrderId = Convert.ToInt32(Session["OrderId"]);
+        if (IsPostBack == false)
+        {
+            //if this is not a new record
+            if (OrderId != -1)
+            {
+                //display the current data for the record
+                DisplayOrder();
+            }
+        }
     }
 
 
@@ -25,7 +37,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //capture the order Description
         string OrderDescription = txtOrderDescription.Text;
         //capture the orderID
-        string OrderId = txtOrderId.Text;
+        int OrderId = Convert.ToInt32(txtOrderId.Text);
         string OrderPrice = txtPrice.Text;
         string DateOrdered = txtDateOrdered.Text;
         string DeliveryInstructions = txtDeliveryInstructions.Text;
@@ -38,16 +50,36 @@ public partial class _1_DataEntry : System.Web.UI.Page
         if (Error == "")
         {
             //capture the data
+            AnOrder.OrderId = OrderId;
             AnOrder.OrderDescription = OrderDescription;
-            AnOrder.OrderId = Convert.ToInt32(OrderId);
             AnOrder.OrderPrice = Convert.ToDecimal(OrderPrice);
             AnOrder.DateOrdered = Convert.ToDateTime(DateOrdered);
             AnOrder.DeliveryInstructions = DeliveryInstructions;
             AnOrder.ReturnAddress = ReturnAddress;
-            //store the description in the session object
-            Session["AnOrder"] = AnOrder;
-            //navigate to the view page
-            Response.Redirect("OrderViewer.aspx");
+            AnOrder.OverseasDelivery = chkOverseas.Checked;
+            //create a new instance of OrderCollection
+            clsOrderCollection OrderList = new clsOrderCollection();
+            
+            //if this is a new record
+            if (OrderId == -1)
+            {
+                //Set the ThisOrder Property
+                OrderList.ThisOrder = AnOrder;
+                //add the new record
+                OrderList.Add();
+            }
+            //otherwise it must be an update
+            else
+            {
+                //find the record to update
+                OrderList.ThisOrder.Find(OrderId);
+                //set the ThisOrder property
+                OrderList.ThisOrder = AnOrder;
+                //update the record
+                OrderList.Update();
+            }
+
+            Response.Redirect("OrderList.aspx");
         }
         else
         {
@@ -85,4 +117,22 @@ public partial class _1_DataEntry : System.Web.UI.Page
             chkOverseas.Checked = AnOrder.OverseasDelivery;
         }
     }
+
+    void DisplayOrder()
+    {
+        //create an instance of the address book
+        clsOrderCollection AnOrder = new clsOrderCollection();
+        //find the record to update
+        AnOrder.ThisOrder.Find(OrderId);
+        //display the data for the record
+        txtOrderId.Text = AnOrder.ThisOrder.OrderId.ToString();
+        txtOrderDescription.Text = AnOrder.ThisOrder.OrderDescription;
+        txtPrice.Text = AnOrder.ThisOrder.OrderPrice.ToString();
+        txtDateOrdered.Text = AnOrder.ThisOrder.DateOrdered.ToString();
+        txtDeliveryInstructions.Text = AnOrder.ThisOrder.DeliveryInstructions;
+        txtReturnAddress.Text = AnOrder.ThisOrder.ReturnAddress;
+        chkOverseas.Checked = AnOrder.ThisOrder.OverseasDelivery;
+    }
+
+
 }

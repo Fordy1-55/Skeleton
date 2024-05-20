@@ -28,7 +28,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //Capture customer Address
         AnCustomer.CustomerAddress = txtCustomerAddress.Text;
         //Capture Customer Telephone Number
-        AnCustomer.CustomerTelphoneNo = txtCustomerTelephone.Text;
+        AnCustomer.CustomerTelephoneNo = txtCustomerTelephone.Text;
         //Capture customers date of birth
         AnCustomer.DateOfBirth = Convert.ToDateTime(txtDateOfBirth.Text);
         //Capture Customers email address

@@ -94,7 +94,65 @@ namespace Testing4
             Assert.AreEqual(AllOrders.Count, TestList.Count);
         }
 
+        [TestMethod]
+        public void AddMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsOrderCollection AllOrders = new clsOrderCollection();
+            //create the item of test data
+            clsOrder TestItem = new clsOrder();
+            //variable to store the primary key
+            Int32 PrimaryKey = 0;
+            //set its properties
+            TestItem.OverseasDelivery = true;
+            TestItem.OrderPrice = 13;
+            TestItem.OrderDescription = "Test Description";
+            TestItem.DateOrdered = DateTime.Now;
+            TestItem.DeliveryInstructions = "Test Instructions";
+            TestItem.ReturnAddress = "Test Address";
+            //set ThisOrder to the test data
+            AllOrders.ThisOrder = TestItem;
+            //add the record
+            PrimaryKey = AllOrders.Add();
+            //set the primary key of the test data
+            TestItem.OrderId = PrimaryKey;
+            //find the record
+            AllOrders.ThisOrder.Find(PrimaryKey);
+            //test to see that the two values are the same
+            Assert.AreEqual(AllOrders.ThisOrder, TestItem);
+        }
 
+        [TestMethod]
+        public void UpdateMethodOK()
+        {
+            clsOrderCollection AllOrders = new clsOrderCollection();
+            clsOrder TestItem = new clsOrder();
+            Int32 PrimaryKey = 0;
+            TestItem.OverseasDelivery = true;
+            TestItem.OrderPrice = 15;
+            TestItem.OrderDescription = "Test Description";
+            TestItem.DateOrdered = DateTime.Now;
+            TestItem.DeliveryInstructions = "Test Instructions";
+            TestItem.ReturnAddress = "Test Address";
+            AllOrders.ThisOrder = TestItem;
+            PrimaryKey = AllOrders.Add();
+            TestItem.OrderId = PrimaryKey;
+            //Modify the test record
+            TestItem.OverseasDelivery = false;
+            TestItem.OrderPrice = 20;
+            TestItem.OrderDescription = "Modified Description";
+            TestItem.DateOrdered = DateTime.Now;
+            TestItem.DeliveryInstructions = "Modified Instructions";
+            TestItem.ReturnAddress = "Modified Address";
+            //set the record based on the new test data
+            AllOrders.ThisOrder = TestItem;
+            //update the record
+            AllOrders.Update();
+            //find the record
+            AllOrders.ThisOrder.Find(PrimaryKey);
+            //test to see if ThisOrder matches the test data
+            Assert.AreEqual(AllOrders.ThisOrder, TestItem);
+        }
     }
 }
 
