@@ -32,4 +32,53 @@ public partial class _1_List : System.Web.UI.Page
         //bind data to the list
         lstStaffList.DataBind();
     }
+
+    protected void btnAdd_Click(object sender, EventArgs e)
+    {
+        //store -1 into the session object to indicate this a new record
+        Session["StaffID"] = -1;
+        //redirect to data entry page
+        Response.Redirect("StaffDataEntry.aspx");
+    }
+
+    protected void btnEdit_Click(object sender, EventArgs e)
+    {
+        //Variable to store the primary key value of the record to be edited
+        Int32 StaffID;
+        //if record has been selected from list
+        if(lstStaffList.SelectedIndex != -1)
+        {
+            //get primary key value of record to edit
+            StaffID = Convert.ToInt32(lstStaffList.SelectedValue);
+            //store the data in the session object
+            Session["StaffID"] = StaffID;
+            //REDIRECT TO edit page
+            Response.Redirect("StaffDataEntry.aspx");
+        }
+        else  //if no record has been selected
+        {
+            lblError.Text = "Please select a record from the list to edit";
+        }
+    }
+
+    protected void btnDelete_Click(object sender, EventArgs e)
+    {
+        //Variable to store the primary key value of record to be deleted
+        Int32 StaffID;
+        //if record selected
+        if (lstStaffList.SelectedIndex != -1)
+        {
+            //grab primary key value from record delete
+            StaffID = Convert.ToInt32(lstStaffList.SelectedValue);
+            //store data in session object
+            Session["StaffID"] = StaffID;
+            //redirect to deletion page
+            Response.Redirect("StaffConfirmDelete.aspx");
+        }
+        else //if no record selected
+        {
+            //display error msg
+            lblError.Text = "Select a record from the list to delete";
+        }
+    }
 }
