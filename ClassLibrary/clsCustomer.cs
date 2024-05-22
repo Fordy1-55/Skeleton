@@ -141,22 +141,41 @@ namespace ClassLibrary
             }
         }
 
-        
-        
-        
+
+
+
 
         public bool Find(int customerID)
         {
-            //set the private data members to the test data value
-            mCustomerID = 4;
-            mDateOfBirth = Convert.ToDateTime("12/06/2002");
-            mCustomerAddress = "14 Maiden Drive";
-            mCustomerEmail = "BillyRussel@hotmail.com";
-            mCustomerTelephoneNo = "0734964327";
-            mCustomerName = "Billy";
-            mSubscription = true;
-            //always return true
-            return true;
+            //Create and Instance of the data connection
+            clsDataConnection DB = new clsDataConnection();
+            //Add the parameter for the customer id to search for 
+            DB.AddParameter("@CustomerID", customerID);
+            //execute the stored procedure
+            DB.Execute("sproc_tblCustomer_FilterByCustomerID");
+            //if one record is found (there should be either one or zero)
+            if (DB.Count == 1)
+            {
+
+                //copy the data from the database to the private data members
+                mCustomerID = Convert.ToInt32(DB.DataTable.Rows[0]["CustomerID"]);
+                mDateOfBirth = Convert.ToDateTime(DB.DataTable.Rows[0]["DateOfBirth"]);
+                mCustomerAddress = Convert.ToString(DB.DataTable.Rows[0]["CustomerAddress"]);
+                mCustomerEmail = Convert.ToString(DB.DataTable.Rows[0]["CustomerEmail"]);
+                mCustomerTelephoneNo = Convert.ToString(DB.DataTable.Rows[0]["CustomerTelephoneNo"]);
+                mCustomerName = Convert.ToString(DB.DataTable.Rows[0]["CustomerName"]);
+                mSubscription = Convert.ToBoolean(DB.DataTable.Rows[0]["Subscription"]);
+                //always return true
+                return true;
+            }
+            //if no record was found
+            else
+            {
+                //return false indicating there is a problem
+                return false;
+
+            }
+
         }
     }  
 
