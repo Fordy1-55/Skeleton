@@ -34,7 +34,7 @@
         <asp:TextBox ID="txtStartDate" runat="server" style="z-index: 1; left: 84px; top: 183px; position: absolute; width: 111px"></asp:TextBox>
         <asp:Label ID="lblPerformanceTarget" runat="server" style="z-index: 1; left: 15px; top: 218px; position: absolute" Text="Performance Target"></asp:Label>
         <asp:Label ID="lblManagerStatus" runat="server" height="19px" style="z-index: 1; left: 13px; top: 255px; position: absolute" Text="Manager Status" width="120px"></asp:Label>
-        <asp:CheckBox ID="chkPerformamceTarget" runat="server" style="z-index: 1; left: 149px; top: 217px; position: absolute; bottom: 438px" Text="Met" />
+        <asp:CheckBox ID="chkPerformanceTarget" runat="server" style="z-index: 1; left: 149px; top: 217px; position: absolute; bottom: 438px" Text="Met" />
         <asp:Label ID="lblError" runat="server" height="19px" style="z-index: 1; left: 25px; top: 353px; position: absolute" width="120px"></asp:Label>
         <asp:Button ID="btnEnter" runat="server" OnClick="btnEnter_Click" style="z-index: 1; left: 23px; top: 299px; position: absolute" Text="Enter" />
         <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 102px; top: 299px; position: absolute; height: 25px; width: 56px" Text="Cancel" />

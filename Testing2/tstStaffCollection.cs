@@ -138,6 +138,80 @@ namespace Testing2
 
         }
 
+        [TestMethod]
+        public void UpdateMethodOK()
+        {
+            //CREATE INSTANCE OF CLASS
+            clsStaffCollection AllStaff = new clsStaffCollection();
+            //create item of testdata
+            clsStaff TestItem = new clsStaff();
+            //variable to store primary key
+            Int32 PrimaryKey = 0;
+            //set properties
+            TestItem.Name = "kelly";
+            TestItem.Role = "Team Memb";
+            TestItem.StartDate = DateTime.Now;
+            TestItem.ShiftType = "Dispatch";
+            TestItem.PerformanceTarget = true;
+            TestItem.ManagerStatus = true;
+            //set this staff to testdata
+            AllStaff.ThisStaff = TestItem;
+            //add the record
+            PrimaryKey = AllStaff.Add();
+            //set primary key of the testdata
+            TestItem.StaffID = PrimaryKey;
+            //modify the test record
+            TestItem.Name = "Grace";
+            TestItem.Role = "Admin";
+            TestItem.StartDate = DateTime.Now;
+            //TestItem.ShiftType = "Dispatch";
+            TestItem.PerformanceTarget = false;
+            TestItem.ManagerStatus = false;
+            //set the record based on the new test data
+            AllStaff.ThisStaff= TestItem;
+            //update record
+            AllStaff.Update();
+            //find record
+            AllStaff.ThisStaff.Find(PrimaryKey);
+            //test to see if thisaddress matches data
+            Assert.AreEqual(AllStaff.ThisStaff, TestItem);
+
+
+        }
+
+        [TestMethod]
+        public void DeleteMethodOK() 
+        {
+            //create instance of class we want to create
+            clsStaffCollection AllStaff = new clsStaffCollection();
+            //create item of testdata
+            clsStaff TestItem = new clsStaff();
+            //variable to store the primary key
+            Int32 PrimaryKey = 0;
+            //set properties
+            TestItem.StaffID = 1;
+            TestItem.Name = "mia";
+            TestItem.Role = "Manager";
+            TestItem.StartDate = DateTime.Now;
+            TestItem.ShiftType = "Dispatch";
+            TestItem.PerformanceTarget = true;
+            TestItem.ManagerStatus = true;
+            //set ThisStaff to the testdata
+            AllStaff.ThisStaff = TestItem;
+            //add record
+            PrimaryKey = AllStaff.Add();
+            //set the primary key of the testdata
+            TestItem.StaffID = PrimaryKey;
+            //find record
+            AllStaff.ThisStaff.Find(PrimaryKey);
+            //delete the record
+            AllStaff.Delete();
+            //now find the record
+            Boolean Found = AllStaff.ThisStaff.Find(PrimaryKey);
+            //TEST TOI SEE THAT RECORD WAS NOT FOUND
+            Assert.IsFalse(Found);
+        }
+
   
     }
 }

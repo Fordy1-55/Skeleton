@@ -8,8 +8,21 @@ using System.Web.UI.WebControls;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+    //variable to store primary key with page level scope
+    Int32 StaffID;
     protected void Page_Load(object sender, EventArgs e)
     {
+        //get number of staff member to be processed
+        StaffID = Convert.ToInt32(Session["StaffID"]);
+        if (IsPostBack == false)
+        {
+            //if this is not the new record
+            if (StaffID != -1)
+            {
+                //display the current data for the record
+                DisplayStaff();
+            }
+        }
 
     }
 
@@ -41,7 +54,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //Capture check box manager
         string ManagerStatus = chkManagerStatus.Text;
         //Capture check box performance target
-        string PerformanceTarget = chkPerformamceTarget.Text;
+        string PerformanceTarget = chkPerformanceTarget.Text;
         ////Capture the date
         string StartDate = txtStartDate.Text;
         //variable to store error message
@@ -50,18 +63,47 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Error = Staff.Valid(Name, Role, ShiftType, StartDate);
         if(Error == "")
         {
+            //Capture the staff id
+            Staff.StaffID = StaffID;
             //Capture the Name
-            Staff.Name = txtName.Text;
+            Staff.Name = Name;
             //Capture the Role
-            Staff.Role = txtRole.Text;
+            Staff.Role = Role;
             //Capture Shift Type
-            Staff.ShiftType = txtShiftType.Text;
+            Staff.ShiftType = ShiftType;
             //Capture the date
             Staff.StartDate = Convert.ToDateTime(txtStartDate.Text);
-            //Store staff id in session object
-            Session["Staff"] = Staff;
-            ////Navigate to view
-            Response.Redirect("StaffViewer.aspx");
+            //Capture performance target
+            Staff.PerformanceTarget = chkPerformanceTarget.Checked;
+            //capture manager status
+            Staff.ManagerStatus = chkManagerStatus.Checked;
+            //create new instance of staff collection
+            clsStaffCollection StaffList = new clsStaffCollection();
+
+            //If this is a new record, then add the data
+            if(StaffID == -1)
+            {
+                //set thisstaff property
+                StaffList.ThisStaff = Staff;
+                //add new record
+                StaffList.Add();
+
+            }
+            //otherwise it must be an update
+            else
+            {
+                //find the record to update
+                StaffList.ThisStaff.Find(StaffID);
+                //set thisstaff property
+                StaffList.ThisStaff = Staff;
+                //update the record
+                StaffList.Update();
+
+
+            }
+
+            //Navigate to list page
+            Response.Redirect("StaffList.aspx");
         }
         else
         {
@@ -121,7 +163,23 @@ public partial class _1_DataEntry : System.Web.UI.Page
             txtShiftType.Text = Staff.ShiftType;
             txtStartDate.Text = Staff.StartDate.ToString();
             chkManagerStatus.Checked = Staff.ManagerStatus;
-            chkPerformamceTarget.Checked = Staff.PerformanceTarget;
+            chkPerformanceTarget.Checked = Staff.PerformanceTarget;
         }
+    }
+
+    void DisplayStaff()
+    {
+        //create instance of staff book
+        clsStaffCollection StaffBook = new clsStaffCollection();
+        //find record to update
+        StaffBook.ThisStaff.Find(StaffID);
+        //display data for the record
+        txtStaffId.Text = StaffBook.ThisStaff.StaffID.ToString();
+        txtName.Text = StaffBook.ThisStaff.Name.ToString();
+        txtRole.Text = StaffBook.ThisStaff.Role.ToString();
+        txtShiftType.Text = StaffBook.ThisStaff.ShiftType.ToString();
+        txtStartDate.Text = StaffBook.ThisStaff.StartDate.ToString();
+        chkPerformanceTarget.Checked = StaffBook.ThisStaff.PerformanceTarget;
+        chkManagerStatus.Checked = StaffBook.ThisStaff.ManagerStatus;
     }
 }

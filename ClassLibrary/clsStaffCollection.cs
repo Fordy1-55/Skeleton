@@ -108,5 +108,30 @@ namespace ClassLibrary
 
             ////throw new NotImplementedException();
         }
+
+        public void Delete()
+        {
+            //deletes record pointed at by ThisStaff
+            //Connect to DB
+            clsDataConnection DB = new clsDataConnection();
+            //set parameters for stored procedure
+            DB.AddParameter("@StaffID", mThisStaff.StaffID);
+            //EXECUTE STORED PROCEDURE
+            DB.Execute("sproc_tblStaff_Delete");
+        }
+
+        public void Update()
+        {
+            //Update existing record based on the values of ThisStaff
+            //connect to database
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@StaffID", mThisStaff.StaffID);
+            DB.AddParameter("@Name", mThisStaff.Name);
+            DB.AddParameter("@ShiftType", mThisStaff.ShiftType);
+            DB.AddParameter("@StartDate", mThisStaff.StartDate);
+            DB.AddParameter("@Role", mThisStaff.Role);
+            DB.AddParameter("@PerformanceTarget", mThisStaff.PerformanceTarget);
+            DB.AddParameter("@ManagerStatus", mThisStaff.ManagerStatus);
+        }
     }
 }
