@@ -37,7 +37,6 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //capture the order Description
         string OrderDescription = txtOrderDescription.Text;
         //capture the orderID
-        int OrderId = Convert.ToInt32(txtOrderId.Text);
         string OrderPrice = txtPrice.Text;
         string DateOrdered = txtDateOrdered.Text;
         string DeliveryInstructions = txtDeliveryInstructions.Text;

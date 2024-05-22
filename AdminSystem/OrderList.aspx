@@ -12,7 +12,12 @@
             <asp:ListBox ID="lstOrderList" runat="server" style="z-index: 1; left: 10px; top: 15px; position: absolute; height: 432px; width: 396px"></asp:ListBox>
             <asp:Button ID="btnAdd" runat="server" OnClick="btnAdd_Click" style="z-index: 1; left: 20px; top: 459px; position: absolute" Text="Add" />
             <asp:Button ID="btnEdit" runat="server" OnClick="btnEdit_Click" style="z-index: 1; left: 85px; top: 459px; position: absolute" Text="Edit" />
-            <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 31px; top: 497px; position: absolute" Text="lblError"></asp:Label>
+            <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 497px; top: 180px; position: absolute" Text="lblError"></asp:Label>
+            <asp:Button ID="btnDelete" runat="server" OnClick="btnDelete_Click" style="z-index: 1; left: 147px; top: 458px; position: absolute" Text="Delete" />
+            <asp:Label ID="txtReturn" runat="server" style="z-index: 1; left: 29px; top: 544px; position: absolute" Text="Enter a Return Address"></asp:Label>
+            <asp:TextBox ID="txtReturnAddressFilter" runat="server" style="z-index: 1; left: 181px; top: 544px; position: absolute"></asp:TextBox>
+            <asp:Button ID="btnApplyFilter" runat="server"  style="z-index: 1; left: 24px; top: 575px; position: absolute" Text="Apply Filter" />
+            <asp:Button ID="btnClearFilter" runat="server" OnClick="btnClearFilter_Click" style="z-index: 1; top: 575px; position: absolute; left: 183px" Text="Clear Filter" />
         </div>
     </form>
 </body>

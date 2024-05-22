@@ -8,8 +8,6 @@ using ClassLibrary;
 
 public partial class _1_List : System.Web.UI.Page
 {
-
-
     protected void Page_Load(object sender, EventArgs e)
     {
         //if this is the first time the page is displayed
@@ -61,6 +59,52 @@ public partial class _1_List : System.Web.UI.Page
             lblError.Text = "Please select a record from the list to edit :";
         }
     }
+
+    protected void btnDelete_Click(object sender, EventArgs e)
+    {
+        //variable to store the primary key value of the recrod to be deleted
+        Int32 OrderId;
+        // if the recrod has been selected from the list
+        if (lstOrderList.SelectedIndex != -1)
+        {
+            //get the primary key value of the record delete
+            OrderId = Convert.ToInt32(lstOrderList.SelectedValue);
+            //store the data in the session object
+            Session["OrderId"] = OrderId;
+            //redirect
+            Response.Redirect("OrderConfirmDelete.aspx");
+        }
+        else //if no record has been selected
+        {
+            //display an error message
+            lblError.Text = "Please select a record from the list to delete";
+        }
+    }
+
+    protected void btnApplyFilter_Click(object sender, EventArgs e)
+    {
+        //create an instance of the address object
+        clsOrderCollection AnOrder = new clsOrderCollection();
+        //retrieve the value of address from the presentation layer
+        AnOrder.ReportByReturnAddress(txtReturnAddressFilter.Text);
+        //set the data source to the list of addresses in the collection
+        lstOrderList.DataSource = AnOrder.OrderList;
+        lstOrderList.DataValueField = "OrderId";
+        lstOrderList.DataTextField = "ReturnAddress";
+        lstOrderList.DataBind();
+    }
+
+    protected void btnClearFilter_Click(object sender, EventArgs e)
+    {
+        clsOrderCollection AnOrder = new clsOrderCollection();
+        AnOrder.ReportByReturnAddress("");
+        txtReturnAddressFilter.Text = "";
+        lstOrderList.DataSource = AnOrder.OrderList;
+        lstOrderList.DataValueField = "OrderId";
+        lstOrderList.DataTextField = "ReturnAddress";
+        lstOrderList.DataBind();
+    }
 }
+
 
 
