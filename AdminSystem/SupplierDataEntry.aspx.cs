@@ -18,23 +18,40 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //new instance of clsSupplier
         clsSupplier ASupplier = new clsSupplier();
         //Capture the supplier name
-        ASupplier.SupplierName = txtSupplierName.Text;
+        string SupplierName = txtSupplierName.Text;
         //Capture the Supplier ID
-        ASupplier.SupplierID = Convert.ToInt32(txtSupplierID.Text);
+        string SupplierID = txtSupplierID.Text;
         //Capture the Supplier email
-        ASupplier.SupplierContactEmail = txtSupplierContactEmail.Text;
+        string SupplierContactEmail = txtSupplierContactEmail.Text;
         //Capture the supplier phone
-        ASupplier.SupplierContactPhone = txtSupplierContactPhone.Text;
+        string SupplierContactPhone = txtSupplierContactPhone.Text;
         //Capture the supplier City
-        ASupplier.SupplierCity = txtSupplierCity.Text;
+        string SupplierCity = txtSupplierCity.Text;
         //Capture the date added
-        ASupplier.SupplierAddDate = Convert.ToDateTime(txtSupplierAddDate.Text);
+        string SupplierAddDate = txtSupplierAddDate.Text;
         //Capture the availabitlity
-        ASupplier.Availability = Convert.ToBoolean(chkAvailability.Checked);
-        //Sotre the name in the session object
-        Session["ASupplier"] = ASupplier;
-        //navigate to the supplier view page
-        Response.Redirect("SupplierViewer.aspx");
+        string Availability = chkAvailability.Text;
+
+        string Error = "";
+        Error = ASupplier.Valid(SupplierName, SupplierContactEmail, SupplierContactPhone, SupplierCity, SupplierAddDate);
+        if (Error == "")
+        {
+            ASupplier.SupplierName = SupplierName;
+            ASupplier.SupplierContactEmail = SupplierContactEmail;
+            ASupplier.SupplierCity = SupplierCity;  
+            ASupplier.SupplierContactPhone = SupplierContactPhone;
+            ASupplier.SupplierAddDate = Convert.ToDateTime(SupplierAddDate);
+
+            //Sotre the name in the session object
+            Session["ASupplier"] = ASupplier;
+            //navigate to the supplier view page
+            Response.Redirect("SupplierViewer.aspx");
+        }
+        else
+        {
+            //Display the error message
+            lblError.Text = Error;
+        }
 
     }
 
