@@ -11,6 +11,12 @@ namespace ClassLibrary
         clsOrder mThisOrder = new clsOrder();
 
 
+        /// IMPORTANT IN NEXT LAB ///
+        /// RENAME AND FIX THE FILTERBYRETURNADDRESS PROCEDURE TO FILTERBYORDERDESCRIPTION ///
+
+
+
+
 
         //constructor for the class
         public clsOrderCollection()
@@ -113,15 +119,15 @@ namespace ClassLibrary
             DB.Execute("sproc_tblOrder_Delete");
         }
 
-        public void ReportByReturnAddress(string ReturnAddress)
+        public void ReportByDescription(string OrderDescription)
         {
             //filters the records based on a full or partial return address
             //connect to the database
             clsDataConnection DB = new clsDataConnection();
             //send the ReturnAddress parameter to the database
-            DB.AddParameter("@ReturnAddress", ReturnAddress);
+            DB.AddParameter("@OrderDescription", OrderDescription);
             //execute the stored procedure
-            DB.Execute("sproc_tblOrder_FilterByReturnAddress");
+            DB.Execute("sproc_tblOrder_FilterByOrderDescription");
             //populate the array list with the data table
             PopulateArray(DB);
 

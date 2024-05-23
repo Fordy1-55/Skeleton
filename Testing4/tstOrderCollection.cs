@@ -188,47 +188,47 @@ namespace Testing4
 
 
         [TestMethod]
-        public void ReportByReturnAddressMethodOK()
+        public void ReportByDescriptionMethodOK()
         {
             //create an instance of the class containing unfiltered results
             clsOrderCollection AllOrders = new clsOrderCollection();
             //create an instance of the filtered data
             clsOrderCollection FilteredOrders = new clsOrderCollection();
             //apply a blank string (should return all records)
-            FilteredOrders.ReportByReturnAddress("");
+            FilteredOrders.ReportByDescription("");
             //test to see that the two values are equal
             Assert.AreEqual(AllOrders.Count, FilteredOrders.Count);
         }
 
-        public void ReportByReturnAddressNoneFound()
+        public void ReportByDescriptionNoneFound()
         {
             //create a instance of the class we want to create
             clsOrderCollection FilteredOrders = new clsOrderCollection();
             //apply a Return Address that doesnt exist
-            FilteredOrders.ReportByReturnAddress("xxx");
+            FilteredOrders.ReportByDescription("xxx");
             //test to see that there are no records
             Assert.AreEqual(0, FilteredOrders.Count);
 
         }
 
-        public void ReportByReturnAddressTestDataFound()
+        public void ReportByDescriptionTestDataFound()
         {
             //create an instance of the filtered data
-            clsOrderCollection FilteredAddresses = new clsOrderCollection();
+            clsOrderCollection FilteredDescriptions = new clsOrderCollection();
             //variable to store the outcome
             Boolean OK = true;
             //apply a address that doesnt exist
-            FilteredAddresses.ReportByReturnAddress("yyyyy");
+            FilteredDescriptions.ReportByReturnAddress("yyyyy");
             //check that the correct number of records are found
-            if (FilteredAddresses.Count == 2)
+            if (FilteredDescriptions.Count == 2)
             {
                 //check to see that the first record is 25
-                if (FilteredAddresses.OrderList[0].OrderId != 69)
+                if (FilteredDescriptions.OrderList[0].OrderId != 69)
                 {
                     OK = false;
                 }
                 //check to see that the first record is 26
-                if (FilteredAddresses.OrderList[1].OrderId != 70)
+                if (FilteredDescriptions.OrderList[1].OrderId != 70)
                 {
                     OK = false;
                 }
