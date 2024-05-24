@@ -45,23 +45,46 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //create a new instance of clsStock
         clsStock AnStock = new clsStock();
         //capture the Product Title, Product Description, Product Colour, Product Id, Product Price, Date Added, Available check box
-        AnStock.ProductTitle = txtProductTitle.Text;
+        string ProductTitle = txtProductTitle.Text;
 
-        AnStock.ProductDescription = txtProductDescription.Text;
+        string ProductDescription = txtProductDescription.Text;
 
-        AnStock.ProductColour = txtProductColour.Text;
+        string ProductColour = txtProductColour.Text;
  
-        AnStock.ProductId = Convert.ToInt32(txtProductId.Text);
+        string ProductId = txtProductId.Text;
  
-        AnStock.ProductPrice = Convert.ToDouble(txtProductPrice.Text);
+        string ProductPrice = txtProductPrice.Text;
 
-        AnStock.ProductDate = Convert.ToDateTime(DateTime.Now);
+        string ProductDate = txtProductDate.Text;
 
-        AnStock.ProductAvailable = ChkAvaible.Checked;  
-        //store the data in the session object
-        Session["AnStock"] = AnStock;
-        //display the prodcut id for this entry
-        Response.Redirect("StockViewer.aspx");
+        string ProductAvailable = ChkAvaible.Text;
+        //variable to store any error message
+        string Error = "";
+        //validate the data
+        Error = AnStock.Valid(ProductDescription, ProductTitle, ProductColour, ProductDate, ProductPrice);
+        if (Error == "")
+        {
+            //capture the Product Title, Product Description, Product Colour, Product Price, Date Added
+            AnStock.ProductTitle = ProductTitle;
+
+            AnStock.ProductDescription = ProductDescription;
+
+            AnStock.ProductColour = ProductColour;
+
+            AnStock.ProductDate = Convert.ToDateTime(ProductDate);
+            
+            AnStock.ProductPrice = Convert.ToDecimal(ProductPrice);
+            //store the data in the session object
+            Session["AnStock"] = AnStock;
+            //display the prodcut id for this entry
+            Response.Redirect("StockViewer.aspx");
+        }
+        else
+        {
+            //display the error message
+            lblError.Text = Error;
+        }
+      
     }
 
 

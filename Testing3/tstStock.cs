@@ -304,7 +304,7 @@ namespace Testing3
             //string variable to store any error message
             String Error = "";
             //invoke the method
-            Error = AnStock1.Valid(ProductDescription, ProductTitle, ProductColour, ProductDate, ProductPrice);
+            Error = AnStock.Valid(ProductDescription, ProductTitle, ProductColour, ProductDate, ProductPrice);
             //test to see that he result is correct
             Assert.AreEqual(Error, "");
         }
