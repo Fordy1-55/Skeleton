@@ -16,7 +16,10 @@
             <asp:Button ID="btnEdit" runat="server" OnClick="btnEdit_Click" style="margin-left: 30px" Text="Edit" />
             <asp:Button runat="server" Text="Delete" ID="btnDelete" OnClick="btnDelete_Click"></asp:Button>
         </p>
+        <asp:Label ID="lblEnterName" runat="server" Text="Enter a Name"></asp:Label>
+        <p>
         <asp:Label ID="lblError" runat="server" Text="[lblError]"></asp:Label>
+        </p>
     </form>
 </body>
 </html>

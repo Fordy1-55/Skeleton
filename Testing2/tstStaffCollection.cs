@@ -212,6 +212,60 @@ namespace Testing2
             Assert.IsFalse(Found);
         }
 
+        [TestMethod]
+        public void ReportByNameMethodOK()
+        {
+            clsStaffCollection AllStaff = new clsStaffCollection();
+            //create an instance of the filtered data
+            clsStaffCollection FilteredStaff = new clsStaffCollection();
+            //apply a blank string (this should return all records)
+            FilteredStaff.ReportByName("");
+            //Test to see the two values are the same
+            Assert.AreEqual(AllStaff.Count, FilteredStaff.Count);
+        }
+
+        [TestMethod]
+        public void ReportByNameNoneFound()
+        {
+            //create instance of class
+            clsStaffCollection FilteredStaff = new clsStaffCollection();
+            //apply a name that doesnt exist
+            FilteredStaff.ReportByName("unknown");
+            //test to see that there are no records
+            Assert.AreEqual(0, FilteredStaff.Count);
+        }
+
+        [TestMethod]
+        public void ReportByNameTestDataFound()
+        {
+            clsStaffCollection FilteredStaff = new clsStaffCollection();
+            //variable to store the outcome
+            Boolean OK = true;
+            //apply name that doesnt exist
+            FilteredStaff.ReportByName("unknown");
+            //check the correct number of records are found
+            if (FilteredStaff.Count == 2)
+            {
+                //check to see the first record is 20
+                if (FilteredStaff.StaffList[0].StaffID != 20)
+                {
+                    OK = false;
+                }
+                //CHECK to see next record is 24
+                if (FilteredStaff.StaffList[1].StaffID != 24) 
+                {
+                    OK = false;
+                }
+
+            }
+            else 
+            {
+                OK = false;
+            }
+            //test to see there are no records
+            Assert.IsTrue(true);
+        }
+
   
     }
 }
