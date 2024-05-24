@@ -188,37 +188,37 @@ namespace Testing4
 
 
         [TestMethod]
-        public void ReportByDescriptionMethodOK()
+        public void ReportByOrderDescriptionMethodOK()
         {
             //create an instance of the class containing unfiltered results
             clsOrderCollection AllOrders = new clsOrderCollection();
             //create an instance of the filtered data
             clsOrderCollection FilteredOrders = new clsOrderCollection();
             //apply a blank string (should return all records)
-            FilteredOrders.ReportByDescription("");
+            FilteredOrders.ReportByOrderDescription("");
             //test to see that the two values are equal
             Assert.AreEqual(AllOrders.Count, FilteredOrders.Count);
         }
 
-        public void ReportByDescriptionNoneFound()
+        public void ReportByOrderDescriptionNoneFound()
         {
             //create a instance of the class we want to create
             clsOrderCollection FilteredOrders = new clsOrderCollection();
             //apply a Return Address that doesnt exist
-            FilteredOrders.ReportByDescription("xxx");
+            FilteredOrders.ReportByOrderDescription("xxx");
             //test to see that there are no records
             Assert.AreEqual(0, FilteredOrders.Count);
 
         }
 
-        public void ReportByDescriptionTestDataFound()
+        public void ReportByOrderDescriptionTestDataFound()
         {
             //create an instance of the filtered data
             clsOrderCollection FilteredDescriptions = new clsOrderCollection();
             //variable to store the outcome
             Boolean OK = true;
             //apply a address that doesnt exist
-            FilteredDescriptions.ReportByReturnAddress("yyyyy");
+            FilteredDescriptions.ReportByOrderDescription("yyyyy");
             //check that the correct number of records are found
             if (FilteredDescriptions.Count == 2)
             {

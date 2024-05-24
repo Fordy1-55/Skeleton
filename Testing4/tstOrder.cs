@@ -308,11 +308,21 @@ namespace Testing4
         }
 
         [TestMethod]
-        public void OrderDescriptionMin()
+        public void OrderDescriptionMinLessOne()
         {
             clsOrder AnOrder = new clsOrder();
             String Error = "";
             string OrderDescription = "";
+            Error = AnOrder.Valid(OrderDescription, DeliveryInstructions, ReturnAddress, DateOrdered, OrderPrice);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void OrderDescriptionMin()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String Error = "";
+            string OrderDescription = "a";
             Error = AnOrder.Valid(OrderDescription, DeliveryInstructions, ReturnAddress, DateOrdered, OrderPrice);
             Assert.AreEqual(Error, "");
         }
@@ -322,7 +332,7 @@ namespace Testing4
         {
             clsOrder AnOrder = new clsOrder();
             String Error = "";
-            string OrderDescription = "a";
+            string OrderDescription = "aa";
             Error = AnOrder.Valid(OrderDescription, DeliveryInstructions, ReturnAddress, DateOrdered, OrderPrice);
             Assert.AreEqual(Error, "");
         }
@@ -379,6 +389,15 @@ namespace Testing4
             Assert.AreNotEqual(Error, "");
         }
 
+        [TestMethod]
+        public void DeliveryInstructionsMinLessOne()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String Error = "";
+            string DeliveryInstructions = "";
+            Error = AnOrder.Valid(OrderDescription, DeliveryInstructions, ReturnAddress, DateOrdered, OrderPrice);
+            Assert.AreNotEqual(Error, "");
+        }
 
 
 
@@ -387,7 +406,7 @@ namespace Testing4
         {
             clsOrder AnOrder = new clsOrder();
             String Error = "";
-            string DeliveryInstructions = "";
+            string DeliveryInstructions = "a";
             Error = AnOrder.Valid(OrderDescription, DeliveryInstructions, ReturnAddress, DateOrdered, OrderPrice);
             Assert.AreEqual(Error, "");
         }

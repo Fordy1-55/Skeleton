@@ -86,24 +86,25 @@ public partial class _1_List : System.Web.UI.Page
         //create an instance of the address object
         clsOrderCollection AnOrder = new clsOrderCollection();
         //retrieve the value of address from the presentation layer
-        AnOrder.ReportByReturnAddress(txtReturnAddressFilter.Text);
+        AnOrder.ReportByOrderDescription(txtOrderDescriptionFilter.Text);
         //set the data source to the list of addresses in the collection
         lstOrderList.DataSource = AnOrder.OrderList;
         lstOrderList.DataValueField = "OrderId";
-        lstOrderList.DataTextField = "ReturnAddress";
+        lstOrderList.DataTextField = "OrderDescription";
         lstOrderList.DataBind();
     }
 
     protected void btnClearFilter_Click(object sender, EventArgs e)
     {
         clsOrderCollection AnOrder = new clsOrderCollection();
-        AnOrder.ReportByReturnAddress("");
-        txtReturnAddressFilter.Text = "";
+        AnOrder.ReportByOrderDescription("");
+        txtOrderDescriptionFilter.Text = "";
         lstOrderList.DataSource = AnOrder.OrderList;
         lstOrderList.DataValueField = "OrderId";
-        lstOrderList.DataTextField = "ReturnAddress";
+        lstOrderList.DataTextField = "OrderDescription";
         lstOrderList.DataBind();
     }
+
 }
 
 
