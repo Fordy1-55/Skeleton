@@ -165,9 +165,17 @@ namespace ClassLibrary
             //create a temporary variable to store the date values
             DateTime DateTemp;
             Decimal PriceTemp;
+            if (orderDescription.Length == 0)
+            {
+                Error = Error + "The Order Description may not be blank : ";
+            }
             if (orderDescription.Length > 50)
             {
                 Error = Error + "The Order Description must be less than 51 characters : ";
+            }
+            if (deliveryInstructions.Length == 0)
+            {
+                Error = Error + "The Delivery Instructions may not be blank : ";
             }
             if (deliveryInstructions.Length > 50)
             {

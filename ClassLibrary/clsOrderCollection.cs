@@ -11,8 +11,7 @@ namespace ClassLibrary
         clsOrder mThisOrder = new clsOrder();
 
 
-        /// IMPORTANT IN NEXT LAB ///
-        /// RENAME AND FIX THE FILTERBYRETURNADDRESS PROCEDURE TO FILTERBYORDERDESCRIPTION ///
+        
 
 
 
@@ -119,7 +118,7 @@ namespace ClassLibrary
             DB.Execute("sproc_tblOrder_Delete");
         }
 
-        public void ReportByDescription(string OrderDescription)
+        public void ReportByOrderDescription(string OrderDescription)
         {
             //filters the records based on a full or partial return address
             //connect to the database
@@ -151,19 +150,19 @@ namespace ClassLibrary
                 clsOrder AnOrder = new clsOrder();
                 //read in the fields from the current record
                 AnOrder.OrderId = Convert.ToInt32(DB.DataTable.Rows[Index]["OrderId"]);
+                AnOrder.OverseasDelivery = Convert.ToBoolean(DB.DataTable.Rows[Index]["OverseasDelivery"]);
+                AnOrder.OrderPrice = Convert.ToDecimal(DB.DataTable.Rows[Index]["OrderPrice"]);
                 AnOrder.OrderDescription = Convert.ToString(DB.DataTable.Rows[Index]["OrderDescription"]);
                 AnOrder.DateOrdered = Convert.ToDateTime(DB.DataTable.Rows[Index]["DateOrdered"]);
-                AnOrder.OrderPrice = Convert.ToDecimal(DB.DataTable.Rows[Index]["OrderPrice"]);
-                AnOrder.OverseasDelivery = Convert.ToBoolean(DB.DataTable.Rows[Index]["OverseasDelivery"]);
-                AnOrder.ReturnAddress = Convert.ToString(DB.DataTable.Rows[Index]["ReturnAddress"]);
                 AnOrder.DeliveryInstructions = Convert.ToString(DB.DataTable.Rows[Index]["DeliveryInstructions"]);
+                AnOrder.ReturnAddress = Convert.ToString(DB.DataTable.Rows[Index]["ReturnAddress"]);
                 //add the record to the private data member
                 mOrderList.Add(AnOrder);
                 //point at the next record
                 Index++;
             }
         }
-
+        //20 + 24
 
 
         public void Update()
