@@ -42,9 +42,9 @@ namespace ClassLibrary
 
 
         //private data member for the  property
-        private double mProductPrice;
+        private decimal mProductPrice;
         // public property    
-        public double ProductPrice
+        public decimal ProductPrice
         {
             get
             {
@@ -147,7 +147,7 @@ namespace ClassLibrary
                 mProductId = Convert.ToInt32(DB.DataTable.Rows[0]["ProductId"]);
                 mProductDate = Convert.ToDateTime(DB.DataTable.Rows[0]["ProductDate"]);
                 mProductAvailable = Convert.ToBoolean(DB.DataTable.Rows[0]["ProductAvailable"]);
-                mProductPrice = Convert.ToDouble(DB.DataTable.Rows[0]["ProductPrice"]);
+                mProductPrice = Convert.ToDecimal(DB.DataTable.Rows[0]["ProductPrice"]);
                 mProductDescription = Convert.ToString(DB.DataTable.Rows[0]["ProductDescription"]);
                 mProductTitle = Convert.ToString(DB.DataTable.Rows[0]["ProductTitle"]);
                 mProductColour = Convert.ToString(DB.DataTable.Rows[0]["ProductColour"]);
@@ -161,6 +161,97 @@ namespace ClassLibrary
                 return false;
             }
            
+        }
+
+        public string Valid(string productDescription, string productTitle, string productColour, string productDate, string productPrice)
+        {
+            //create a string variable to store the error
+            String Error = "";
+            //create a temporary variable to store the date values
+            DateTime DateTemp;
+            Decimal PriceTemp;
+
+            /*********************** Product Description ***********************/
+            if (productDescription.Length == 0) 
+            {
+                
+                Error = Error + "The product description may not be blank : ";
+            }
+            if (productDescription.Length > 250) 
+            {
+                
+                Error = Error + "The product description must be less than 250 : ";
+            }
+
+            /*********************** Product Colour ***********************/
+       
+            if (productTitle.Length == 0)
+            {
+                
+                Error = Error + "The product title may not be blank : ";
+            }
+            if (productTitle.Length > 50)
+            {
+                
+                Error = Error + "The product title must be less than 50 : ";
+            }
+
+            /*********************** Product Colour ***********************/
+
+            if (productColour.Length == 0)
+            {
+
+                Error = Error + "The product colour may not be blank : ";
+            }
+            if (productColour.Length > 50)
+            {
+
+                Error = Error + "The product colour must be less than 50 : ";
+            }
+
+            //create an instance of DateTime to compare with DateTemp
+            //in the if statement
+            DateTime DateComp = DateTime.Now.Date;
+
+            try
+            {
+                
+                DateTemp = Convert.ToDateTime(productDate);
+              
+                if (DateTemp < DateComp)
+                {
+                    Error = Error + "The date cannot be in the past : ";
+                }
+                
+                if (DateTemp > DateComp)
+                {
+                    
+                    Error = Error + "The date cannot be in the future : ";
+                }
+            }
+            catch
+            {
+                //record the error
+                Error = Error + "The date was not a valid date : ";
+            }
+
+            //create an instance of the Decimal to compare with PriceTemp
+            //in the if statement
+            try
+            {
+                PriceTemp = Convert.ToDecimal(productPrice);
+                if (PriceTemp < 0.01M)
+                {
+                    Error = Error + "The Price cannot be less than £0.01 : ";
+                }
+            }
+            catch
+            {
+                Error = Error + "This is an invalid Price!";
+            }
+
+            //return any error message
+            return Error;
         }
     }
 }

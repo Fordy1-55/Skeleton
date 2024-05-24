@@ -7,6 +7,13 @@ namespace Testing3
     [TestClass]
     public class tstStock
     {
+        //good test data
+        //create some test data to pass the method
+        string ProductDescription = "Test Description";
+        string ProductTitle = "Test Title";
+        string ProductColour = "Test colour";
+        string ProductDate = DateTime.Now.ToShortDateString();
+        string ProductPrice = "6.25";
 
         /*******INSTANCE OF THE CLASS TEST********/
 
@@ -65,7 +72,7 @@ namespace Testing3
             //create am instance of the new class we want to create
             clsStock AnStock = new clsStock();
             //create some test data to assign to the property
-            Double TestData = 6.25;
+            Decimal TestData = 6.25M;
             //aasign the data to the property
             AnStock.ProductPrice = TestData;
             //test to see that the two values are the same
@@ -278,13 +285,389 @@ namespace Testing3
             //invoke the method
             Found = AnStock.Find(ProductId);
             //check the street property
-            if (AnStock.ProductPrice != 6.25)
+            if (AnStock.ProductPrice != Convert.ToDecimal("6.25"))  
             {
                 OK = false;
             }
             //test to see that the result is correct
             Assert.IsTrue(OK);
 
+        }
+
+        /************************** VALID METHOD ********************************/
+
+        [TestMethod]
+        public void ValidMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsStock AnStock1 = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //invoke the method
+            Error = AnStock1.Valid(ProductDescription, ProductTitle, ProductColour, ProductDate, ProductPrice);
+            //test to see that he result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        /************************* Product Description ***********************************/
+
+        [TestMethod]
+        public void ProductDescriptionMinLessOne()
+        {
+            clsStock AnStock = new clsStock();
+            String Error = "";
+            string ProductDescription = "";
+            Error = AnStock.Valid(ProductDescription, ProductTitle, ProductColour, ProductDate, ProductPrice);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ProductDescriptionMin()
+        {
+            clsStock AnStock = new clsStock();
+            String Error = "";
+            string ProductDescription = "a";
+            Error = AnStock.Valid(ProductDescription, ProductTitle, ProductColour, ProductDate, ProductPrice);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ProductDescriptionMinPlusOne()
+        {
+            clsStock AnStock = new clsStock();
+            String Error = "";
+            string ProductDescription = "aa";
+            Error = AnStock.Valid(ProductDescription, ProductTitle, ProductColour, ProductDate, ProductPrice);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ProductDescriptionMaxLessOne()
+        {
+            clsStock Anstock = new clsStock();
+            String Error = "";
+            string ProductDescription = "";
+            ProductDescription = ProductDescription.PadRight(249, 'a');
+            Error = Anstock.Valid(ProductDescription, ProductTitle, ProductColour, ProductDate, ProductPrice);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ProductDescriptionMax()
+        {
+            clsStock Anstock = new clsStock();
+            String Error = "";
+            string ProductDescription = "";
+            ProductDescription = ProductDescription.PadRight(250, 'a');
+            Error = Anstock.Valid(ProductDescription, ProductTitle, ProductColour, ProductDate, ProductPrice);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ProductDescriptionMid()
+        {
+            clsStock Anstock = new clsStock();
+            String Error = "";
+            string ProductDescription = "";
+            ProductDescription = ProductDescription.PadRight(125, 'a');
+            Error = Anstock.Valid(ProductDescription, ProductTitle, ProductColour, ProductDate, ProductPrice);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ProductDescriptionMaxPlussOne()
+        {
+            clsStock Anstock = new clsStock();
+            String Error = "";
+            string ProductDescription = "";
+            ProductDescription = ProductDescription.PadRight(251, 'a');
+            Error = Anstock.Valid(ProductDescription, ProductTitle, ProductColour, ProductDate, ProductPrice);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ProductDescriptionExtremeMax()
+        {
+            clsStock Anstock = new clsStock();
+            String Error = "";
+            string ProductDescription = "";
+            ProductDescription = ProductDescription.PadRight(500, 'a');
+            Error = Anstock.Valid(ProductDescription, ProductTitle, ProductColour, ProductDate, ProductPrice);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        /************************** Product Title***********************************/
+
+        [TestMethod]
+        public void ProductTitleMinLessOne()
+        {
+            clsStock AnStock = new clsStock();
+            String Error = "";
+            string ProductTitle = "";
+            Error = AnStock.Valid(ProductDescription, ProductTitle, ProductColour, ProductDate, ProductPrice);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ProductTitleMin()
+        {
+            clsStock AnStock = new clsStock();
+            String Error = "";
+            string ProductTitle = "a";
+            Error = AnStock.Valid(ProductDescription, ProductTitle, ProductColour, ProductDate, ProductPrice);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ProductTitleMinPlusOne()
+        {
+            clsStock AnStock = new clsStock();
+            String Error = "";
+            string ProductTitle = "aa";
+            Error = AnStock.Valid(ProductDescription, ProductTitle, ProductColour, ProductDate, ProductPrice);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ProductTitleMaxLessOne()
+        {
+            clsStock Anstock = new clsStock();
+            String Error = "";
+            string ProductTitle = "";
+            ProductTitle = ProductTitle.PadRight(49, 'a');
+            Error = Anstock.Valid(ProductDescription, ProductTitle, ProductColour, ProductDate, ProductPrice);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ProductTitleMax()
+        {
+            clsStock Anstock = new clsStock();
+            String Error = "";
+            string ProductTitle = "";
+            ProductTitle = ProductTitle.PadRight(50, 'a');
+            Error = Anstock.Valid(ProductDescription, ProductTitle, ProductColour, ProductDate, ProductPrice);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ProductTitleMaxPlusOne()
+        {
+            clsStock Anstock = new clsStock();
+            String Error = "";
+            string ProductTitle = "";
+            ProductTitle = ProductTitle.PadRight(51, 'a');
+            Error = Anstock.Valid(ProductDescription, ProductTitle, ProductColour, ProductDate, ProductPrice);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ProductTitleMid()
+        {
+            clsStock Anstock = new clsStock();
+            String Error = "";
+            string ProductTitle = "";
+            ProductTitle = ProductTitle.PadRight(25, 'a');
+            Error = Anstock.Valid(ProductDescription, ProductTitle, ProductColour, ProductDate, ProductPrice);
+            Assert.AreEqual(Error, "");
+        }
+
+        /*************************** Prdouct Colour **************************/
+
+
+        [TestMethod]
+        public void ProductColourMinLessOne()
+        {
+            clsStock AnStock = new clsStock();
+            String Error = "";
+            string ProductColour = "";
+            Error = AnStock.Valid(ProductDescription, ProductTitle, ProductColour, ProductDate, ProductPrice);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ProductColourMin()
+        {
+            clsStock AnStock = new clsStock();
+            String Error = "";
+            string ProductColour = "a";
+            Error = AnStock.Valid(ProductDescription, ProductTitle, ProductColour, ProductDate, ProductPrice);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ProductColourMinPlusOne()
+        {
+            clsStock AnStock = new clsStock();
+            String Error = "";
+            string ProductColour = "aa";
+            Error = AnStock.Valid(ProductDescription, ProductTitle, ProductColour, ProductDate, ProductPrice);
+            Assert.AreEqual(Error, "");
+        }
+
+
+        [TestMethod]
+        public void ProductColourMaxLessOne()
+        {
+            clsStock Anstock = new clsStock();
+            String Error = "";
+            string ProductColour = "";
+            ProductColour = ProductColour.PadRight(49, 'a');
+            Error = Anstock.Valid(ProductDescription, ProductTitle, ProductColour, ProductDate, ProductPrice);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ProductColourMax()
+        {
+            clsStock Anstock = new clsStock();
+            String Error = "";
+            string ProductColour = "";
+            ProductColour = ProductColour.PadRight(50, 'a');
+            Error = Anstock.Valid(ProductDescription, ProductTitle, ProductColour, ProductDate, ProductPrice);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ProductColourMaxPlusOne()
+        {
+            clsStock Anstock = new clsStock();
+            String Error = "";
+            string ProductColour = "";
+            ProductColour = ProductColour.PadRight(51, 'a');
+            Error = Anstock.Valid(ProductDescription, ProductTitle, ProductColour, ProductDate, ProductPrice);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ProductColourMid()
+        {
+            clsStock Anstock = new clsStock();
+            String Error = "";
+            string ProductColour = "";
+            ProductColour = ProductColour.PadRight(25, 'a');
+            Error = Anstock.Valid(ProductDescription, ProductTitle, ProductColour, ProductDate, ProductPrice);
+            Assert.AreEqual(Error, "");
+        }
+        /*************************** Product Date *********************************/
+
+        [TestMethod]
+        public void ProductDateExtremeMin()
+        {
+            clsStock Anstock = new clsStock();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddYears(-100);
+            string ProductDate = TestDate.ToString();
+            Error = Anstock.Valid(ProductDescription, ProductTitle, ProductColour, ProductDate, ProductPrice);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ProductDateMinLessOne()
+        {
+            clsStock Anstock = new clsStock();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddDays(-1);
+            string ProductDate = TestDate.ToString();
+            Error = Anstock.Valid(ProductDescription, ProductTitle, ProductColour, ProductDate, ProductPrice);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ProductDateMin()
+        {
+            clsStock Anstock = new clsStock();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            string ProductDate = TestDate.ToString();
+            Error = Anstock.Valid(ProductDescription, ProductTitle, ProductColour, ProductDate, ProductPrice);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ProductDateMinPlusOne()
+        {
+            clsStock Anstock = new clsStock();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddDays(1);
+            string ProductDate = TestDate.ToString();
+            Error = Anstock.Valid(ProductDescription, ProductTitle, ProductColour, ProductDate, ProductPrice);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ProductDateExtremeMax()
+        {
+            clsStock Anstock = new clsStock();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddYears(100);
+            string ProductDate = TestDate.ToString();
+            Error = Anstock.Valid(ProductDescription, ProductTitle, ProductColour, ProductDate, ProductPrice);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ProductDateInvalidData() 
+        {
+            clsStock Anstock = new clsStock();
+            String Error = "";
+            string ProductDate = "this is not a date!";
+            Error = Anstock.Valid(ProductDescription, ProductTitle, ProductColour, ProductDate, ProductPrice);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        /********************** Product Price *******************************/
+
+        [TestMethod]
+        public void ProductPriceExtremeMin()
+        {
+            clsStock Anstock = new clsStock();
+            String Error = "";
+            Decimal Price = 0M;
+            string ProductPrice = Price.ToString();
+            Error = Anstock.Valid(ProductDescription, ProductTitle, ProductColour, ProductDate, ProductPrice);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ProductPriceMin()
+        {
+            clsStock Anstock = new clsStock();
+            String Error = "";
+            Decimal Price = 0.01M;
+            string ProductPrice = Price.ToString();
+            Error = Anstock.Valid(ProductDescription, ProductTitle, ProductColour, ProductDate, ProductPrice);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ProductPriceMinPlusOne()
+        {
+            clsStock Anstock = new clsStock();
+            String Error = "";
+            Decimal Price = 1.00M;
+            string ProductPrice = Price.ToString();
+            Error = Anstock.Valid(ProductDescription, ProductTitle, ProductColour, ProductDate, ProductPrice);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ProductPriceInvaliddata()
+        {
+            clsStock Anstock = new clsStock();
+            String Error = "";
+            string ProductPrice = "This is not a price!";
+            Error = Anstock.Valid(ProductDescription, ProductTitle, ProductColour, ProductDate, ProductPrice);
+            Assert.AreNotEqual(Error, "");
         }
     }
 }
