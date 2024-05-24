@@ -300,7 +300,7 @@ namespace Testing3
         public void ValidMethodOK()
         {
             //create an instance of the class we want to create
-            clsStock AnStock1 = new clsStock();
+            clsStock AnStock = new clsStock();
             //string variable to store any error message
             String Error = "";
             //invoke the method
