@@ -19,28 +19,47 @@ public partial class _1_DataEntry : System.Web.UI.Page
     protected void btnOK_Click(object sender, EventArgs e)
 
     {
-      //create a new instance of clsCustomer
-      clsCustomer AnCustomer = new clsCustomer();
+        //create a new instance of clsCustomer
+        clsCustomer AnCustomer = new clsCustomer();
         //capture Customer Name
-        AnCustomer.CustomerName = txtCustomerName.Text;
-        //Capture customerID
-        AnCustomer.CustomerID = Convert.ToInt32(txtCustomerID.Text);
+        string CustomerName = txtCustomerName.Text;
         //Capture customer Address
-        AnCustomer.CustomerAddress = txtCustomerAddress.Text;
+        string CustomerAddress = txtCustomerAddress.Text;
         //Capture Customer Telephone Number
-        AnCustomer.CustomerTelephoneNo = txtCustomerTelephone.Text;
+        string CustomerTelephoneNo = txtCustomerTelephone.Text;
         //Capture customers date of birth
-        AnCustomer.DateOfBirth = Convert.ToDateTime(txtDateOfBirth.Text);
+        string DateOfBirth = txtDateOfBirth.Text;
         //Capture Customers email address
-        AnCustomer.CustomerEmail = txtCustomerEmail.Text;
+        string CustomerEmail = txtCustomerEmail.Text;
         //Capture active checkbox
-        AnCustomer.Subscription = chkSubscription.Checked;
-        //Store the Customer Name in the session object
-        Session["AnCustomer"] = AnCustomer;
-        //navigate to view page
-        Response.Redirect("CustomerViewer.aspx");
+        string Subscription = chkSubscription.Text;
+        //variable to store any error message
+        string Error = "";
+        //validate the data
+        Error = AnCustomer.Valid(CustomerName, CustomerAddress, CustomerTelephoneNo, CustomerEmail, DateOfBirth);
+        if (Error == "")
+        {
+            //capture the customer name
+            AnCustomer.CustomerName = CustomerName;
+            //capture the customer email
+            AnCustomer.CustomerEmail = CustomerEmail;
+            //capture customer address
+            AnCustomer.CustomerAddress = CustomerAddress;
+            //capture customer TelephoneNo
+            AnCustomer.CustomerTelephoneNo = CustomerTelephoneNo;
+            //capture the customers date of birth
+            AnCustomer.DateOfBirth = Convert.ToDateTime(DateOfBirth);
+            //Store the Customer Name in the session object
+            Session["AnCustomer"] = AnCustomer;
+            //navigate to view page
+            Response.Redirect("CustomerViewer.aspx");
+        }
+        else
+        {
+            //display the error message
+            lblError.Text = Error;
+        }
     }
-
 
 
     
