@@ -1,4 +1,8 @@
 ﻿using System;
+using System.IO;
+using System.Linq.Expressions;
+using System.Runtime.InteropServices.ComTypes;
+using System.Xml.Linq;
 
 namespace ClassLibrary
 {
@@ -11,10 +15,10 @@ namespace ClassLibrary
         public Int32 CustomerID
         {
 
-            get 
+            get
             {
-            //This line of code sends data outside the property
-            return mCustomerID;
+                //This line of code sends data outside the property
+                return mCustomerID;
             }
             set
             {
@@ -44,7 +48,7 @@ namespace ClassLibrary
 
         }
 
-             // private data member for the date added property
+        // private data member for the date added property
         private String mCustomerAddress;
         // DateAdded Public Property
 
@@ -100,7 +104,7 @@ namespace ClassLibrary
             set
             {
                 // This line of code allows data inside of the property
-                mCustomerTelephoneNo= value;
+                mCustomerTelephoneNo = value;
             }
         }
 
@@ -141,7 +145,7 @@ namespace ClassLibrary
             }
         }
 
-
+        
 
 
 
@@ -175,10 +179,118 @@ namespace ClassLibrary
                 return false;
 
             }
+        }
+
+        public string Valid(string CustomerName, string CustomerAddress, string CustomerTelephoneNo, string CustomerEmail, string DateOfBirth)
+
+        {
+            //create a string variable to store the error
+            String Error = "";
+            //create a temporary variable to store date values
+            DateTime DateTemp;
+            //if the Customer Name is blank
+            if (CustomerName.Length == 0)
+            {
+                //record the error
+                Error = Error + "The Customers Name may not be blank : ";
+            }
+            //if the house no is greater than 6 characters
+            if (CustomerName.Length > 10)
+            {
+                //record the error
+                Error = Error + "The house no must be less than 10 characters : ";
+            }
+
+
+            // create an instance of DateTime to compare with DateTemp 
+            // in the if statement 
+            DateTime DateComp = DateTime.Now.Date;
+
+            try
+            {
+                //copy the dateOfBirth value to the DateTemp variable
+                DateTemp = Convert.ToDateTime(DateOfBirth);
+
+                if (DateTemp < DateComp)
+                {
+                    //record the error
+                    Error = Error + "The date cannot be in the past : ";
+                }
+                //check to see if the date is greater than today's date
+                if (DateTemp > DateComp)
+                {
+                    //record the error
+                    Error = Error + "The date cannot be in the future : ";
+                }
+
+            }
+            catch
+            {
+                //record the error
+                Error = Error + "The date was not a valid date : ";
+            }
+           
+            
+            
+            //is the Address blank
+            if (CustomerAddress.Length == 0)
+            {
+                //record the error
+                Error = Error + "The Address may not be blank : ";
+            }
+            //if the Address is too long
+            if (CustomerAddress.Length > 50)
+            {
+                //record the error
+                Error = Error + "The Address must be less than 50 characters : ";
+            }
+
+            //is the Email blank
+            if (CustomerEmail.Length == 0)
+            {
+                //record the error
+                Error = Error + "The Email may not be blank : ";
+            }
+            //if the Email is too long
+            if (CustomerEmail.Length > 50)
+            {
+                //record the error
+                Error = Error + "The Email must be less than 50 characters : ";
+            }
+
+            //is the Telephone No blank
+            if (CustomerTelephoneNo.Length == 0)
+            {
+                //record the error
+                Error = Error + "The Telephone No may not be blank : ";
+            }
+            //if the TeleNo is too long
+            if (CustomerTelephoneNo.Length > 50)
+            {
+                //record the error
+                Error = Error + "The Telephone No must be less than 50 characters : ";
+            }
+
+            //return any error messages        
+            return Error;
+
+
+
+
+
 
         }
-    }  
+
+
+
+
+
+
 
     }
+
+
+
+}
 
 
