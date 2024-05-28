@@ -18,7 +18,7 @@ namespace Testing3
         }
 
         [TestMethod]
-        public void StockListOK() 
+        public void StockListOK()
         {
             //create an instance of the class we want to create 
             clsStockCollection AllStocks = new clsStockCollection();
@@ -29,7 +29,7 @@ namespace Testing3
             //create the item of the test data
             clsStock TestItem = new clsStock();
             //set its properties
-            TestItem.ProductAvailable = true;  
+            TestItem.ProductAvailable = true;
             TestItem.ProductId = 1;
             TestItem.ProductDate = DateTime.Now;
             TestItem.ProductPrice = 6.25M;
@@ -41,7 +41,7 @@ namespace Testing3
             //assign the data to the property
             AllStocks.StockList = TestList;
             //test to see that the two values are the same
-            Assert.AreEqual(AllStocks.StockList, TestList);           
+            Assert.AreEqual(AllStocks.StockList, TestList);
         }
 
 
@@ -123,5 +123,46 @@ namespace Testing3
             Assert.AreEqual(AllStocks.ThisStock, TestItem);
         }
 
+        [TestMethod]
+        public void StockUpdateMethodOK()
+        {
+            //create an instance of the class we want to create 
+            clsStockCollection AllStocks = new clsStockCollection();
+            //create some test data to assign the property
+            clsStock TestItem = new clsStock();
+            //variable to store the primary key
+            Int32 PrimaryKey = 0;
+            //set its properties
+            TestItem.ProductAvailable = true;
+            TestItem.ProductId = 1;
+            TestItem.ProductDate = DateTime.Now;
+            TestItem.ProductPrice = 6.25M;
+            TestItem.ProductDescription = "Test Description";
+            TestItem.ProductTitle = "Test Title";
+            TestItem.ProductColour = "Test Colour";
+            //set ThisStock to the test data
+            AllStocks.ThisStock = TestItem;
+            //add the recored
+            PrimaryKey =AllStocks.Add();
+            //set the primary key of the test data
+            TestItem.ProductId = PrimaryKey;
+            //modify the test record
+            TestItem.ProductAvailable = true;
+            TestItem.ProductId = 2;
+            TestItem.ProductDate = DateTime.Now;
+            TestItem.ProductPrice = 6.50M;
+            TestItem.ProductDescription = "Test Didderent Description";
+            TestItem.ProductTitle = "Test Another Title";
+            TestItem.ProductColour = "Test Diiferent Colour";
+            //set the record based on  the new test data
+            AllStocks.ThisStock = TestItem;
+            //update the reocrd
+            AllStocks.Update();
+            //find the record
+            AllStocks.ThisStock.Find(PrimaryKey);
+            //test to see if ThisStock matches the test data
+            Assert.AreEqual(AllStocks.ThisStock, TestItem);
+
+        }
     }
 }

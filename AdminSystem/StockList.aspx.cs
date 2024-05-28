@@ -44,4 +44,24 @@ public partial class _1_List : System.Web.UI.Page
         //redirect to the data entry page
         Response.Redirect("StockDataEntry.aspx");
     }
+
+    protected void btnEdit_Click(object sender, EventArgs e)
+    {
+        //variable to store the primary key value  of the record to be edited
+        Int32 ProductId;
+        //if a record has been selected from the list
+        if (lstStockList.SelectedIndex != -1)
+        {
+            //get the primary key of the record to edit
+            ProductId = Convert.ToInt32(lstStockList.SelectedValue);
+            //store the adata in the session object
+            Session["ProductId"] = ProductId;
+            //redirect to the edit page
+            Response.Redirect("StockDataEntry.aspx");
+        }
+        else       //if no record has been selected
+        {
+            lblError.Text = "Please select a record from the list to edit :";
+        }
+    }
 }
