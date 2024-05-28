@@ -9,6 +9,8 @@ namespace ClassLibrary
 
         //private data member for the list
         List<clsStock> mStockList = new List<clsStock>();
+        //private member data ofr thisStock
+        clsStock mThisStock = new clsStock();
 
         public List<clsStock> StockList
         { get
@@ -35,8 +37,37 @@ namespace ClassLibrary
 
             }
         }
-        public clsStock ThisStock { get; set; }
+        public clsStock ThisStock 
+        {
+            get 
+            {
+                //return private data
+                return mThisStock;
+            }
+            set 
+            {
+                //set the private data
+                mThisStock = value;
+            } 
+        }
 
+
+        public int Add()
+        {
+            //adds a record to the database based on the value of mThisSTock
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameters for the stored procedure
+            DB.AddParameter("@ProductAvailable", mThisStock.ProductAvailable);
+            DB.AddParameter("@ProductPrice", mThisStock.ProductPrice);
+            DB.AddParameter("@ProductDate", mThisStock.ProductDate);
+            DB.AddParameter("@ProductDescription", mThisStock.ProductDescription);
+            DB.AddParameter("@ProductTitle", mThisStock.ProductTitle);
+            DB.AddParameter("@ProductColour", mThisStock.ProductColour);
+
+            //return the primary key of the new record
+            return DB.Execute("sproc_tblProduct_Insert");
+        }
 
 
         //constructor for the class
@@ -59,7 +90,6 @@ namespace ClassLibrary
                 clsStock AnStock = new clsStock();
                 //read i the fields for the currecnt reocrd
                 AnStock.ProductId = Convert.ToInt32(DB.DataTable.Rows[Index]["ProductId"]);
-                AnStock.ProductDate = Convert.ToDateTime(DB.DataTable.Rows[Index]["ProductDate"]);
                 AnStock.ProductDate = Convert.ToDateTime(DB.DataTable.Rows[Index]["ProductDate"]);
                 AnStock.ProductAvailable = Convert.ToBoolean(DB.DataTable.Rows[Index]["ProductAvailable"]);
                 AnStock.ProductPrice = Convert.ToDecimal(DB.DataTable.Rows[Index]["ProductPrice"]);

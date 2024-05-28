@@ -46,17 +46,11 @@ public partial class _1_DataEntry : System.Web.UI.Page
         clsStock AnStock = new clsStock();
         //capture the Product Title, Product Description, Product Colour, Product Id, Product Price, Date Added, Available check box
         string ProductTitle = txtProductTitle.Text;
-
         string ProductDescription = txtProductDescription.Text;
-
         string ProductColour = txtProductColour.Text;
- 
         string ProductId = txtProductId.Text;
- 
         string ProductPrice = txtProductPrice.Text;
-
         string ProductDate = txtProductDate.Text;
-
         string ProductAvailable = ChkAvaible.Text;
         //variable to store any error message
         string Error = "";
@@ -66,18 +60,20 @@ public partial class _1_DataEntry : System.Web.UI.Page
         {
             //capture the Product Title, Product Description, Product Colour, Product Price, Date Added
             AnStock.ProductTitle = ProductTitle;
-
             AnStock.ProductDescription = ProductDescription;
-
             AnStock.ProductColour = ProductColour;
-
-            AnStock.ProductDate = Convert.ToDateTime(ProductDate);
-            
+            AnStock.ProductId = Convert.ToInt32(ProductId);
+            AnStock.ProductDate = Convert.ToDateTime(ProductDate);            
             AnStock.ProductPrice = Convert.ToDecimal(ProductPrice);
-            //store the data in the session object
-            Session["AnStock"] = AnStock;
+            AnStock.ProductAvailable = ChkAvaible.Checked;
+            //create a new instance of this stock collection
+            clsStockCollection StockList = new clsStockCollection();
+            //set the ThisStock property
+            StockList.ThisStock = AnStock;
+            //add the new record
+            StockList.Add();
             //display the prodcut id for this entry
-            Response.Redirect("StockViewer.aspx");
+            Response.Redirect("StockList.aspx");
         }
         else
         {
