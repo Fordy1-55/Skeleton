@@ -143,7 +143,7 @@ namespace Testing3
             //set ThisStock to the test data
             AllStocks.ThisStock = TestItem;
             //add the recored
-            PrimaryKey =AllStocks.Add();
+            PrimaryKey = AllStocks.Add();
             //set the primary key of the test data
             TestItem.ProductId = PrimaryKey;
             //modify the test record
@@ -163,6 +163,39 @@ namespace Testing3
             //test to see if ThisStock matches the test data
             Assert.AreEqual(AllStocks.ThisStock, TestItem);
 
+        }
+
+        [TestMethod]
+        public void StockDeleteMethodOK()
+        {
+            //create an instance of the class we want to create 
+            clsStockCollection AllStocks = new clsStockCollection();
+            //create some test data to assign the property
+            clsStock TestItem = new clsStock();
+            //variable to store the primary key
+            Int32 PrimaryKey = 0;
+            //set its properties
+            TestItem.ProductAvailable = true;
+            TestItem.ProductId = 1;
+            TestItem.ProductDate = DateTime.Now;
+            TestItem.ProductPrice = 6.25M;
+            TestItem.ProductDescription = "Test Description";
+            TestItem.ProductTitle = "Test Title";
+            TestItem.ProductColour = "Test Colour";
+            //set ThisStock to the test data
+            AllStocks.ThisStock = TestItem;
+            //add the recored
+            PrimaryKey = AllStocks.Add();
+            //set the primary key of the test data
+            TestItem.ProductId = PrimaryKey;
+            //findthe record
+            AllStocks.ThisStock.Find(PrimaryKey);
+            //delete the record
+            AllStocks.Delete();
+            //now find the record 
+            Boolean Found = AllStocks.ThisStock.Find(PrimaryKey);
+            //test to see that the record was not found
+            Assert.IsFalse(Found);
         }
     }
 }
