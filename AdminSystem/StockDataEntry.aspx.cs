@@ -130,4 +130,34 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
         }
     }
+
+    protected void txtProductId_TextChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void txtProductTitle_TextChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void txtProductDescription_TextChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void txtProductColour_TextChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void txtProductPrice_TextChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void txtProductDate_TextChanged(object sender, EventArgs e)
+    {
+
+    }
 }

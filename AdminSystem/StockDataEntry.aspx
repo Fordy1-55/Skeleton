@@ -40,7 +40,7 @@
         <br />
         <br />
         <asp:Label ID="lblProductDate" runat="server" height="19px" style="z-index: 1; left: 8px; top: 350px; position: absolute" Text="Product Date" width="121px"></asp:Label>
-        <asp:TextBox ID="txtProductDate" runat="server" height="22px" style="z-index: 1; left: 177px; top: 343px; position: absolute" width="128px"></asp:TextBox>
+        <asp:TextBox ID="txtProductDate" runat="server" Height="22px" Style="z-index: 1; left: 177px; top: 343px; position: absolute" Width="128px" OnTextChanged="txtProductDate_TextChanged"></asp:TextBox>
         <br />
         <br />
         <br />
