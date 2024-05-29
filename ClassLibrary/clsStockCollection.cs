@@ -97,26 +97,48 @@ namespace ClassLibrary
             DB.Execute("sproc_tblProduct_Delete");
         }
 
+        public void ReportByProductTitle(string ProductTitle)
+        {
+            //filters the record based on a full or partial proiduct title
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //
+            DB.AddParameter("@ProductTitle", ProductTitle);
+            //excute the stored procedure
+            DB.Execute("sproc_tblProduct_FilteredByProductTitle");
+            //populate the array list with the data table
+            PopulateArray(DB);
+        }
+
 
         //constructor for the class
         public clsStockCollection()
         {
+            //object for the data connection
+            clsDataConnection DB = new clsDataConnection();
+            //excute stored proceudre
+            DB.Execute("sproc_tblProduct_SelectAll");
+            //populate the array list with the data table
+            PopulateArray(DB);
+        }
+
+        void PopulateArray(clsDataConnection DB)
+        {
+            //populate the array list based on the data table in the parameter
             //variable for the index
             Int32 Index = 0;
-            //variable for index
-            Int32 RecordCount = 0;
-            //object for the data
-            clsDataConnection DB = new clsDataConnection();
-            //excute the stored procedure
-            DB.Execute("sproc_tblProduct_SelectAll");
-            //get the count of records
+            //variable to store the record count
+            Int32 RecordCount;
+            //get the count of reocrd
             RecordCount = DB.Count;
+            //clear the private array list
+            mStockList = new List<clsStock>();
             //while there are records to process
-            while (Index < RecordCount) 
+            while (Index < RecordCount)
             {
-                //create a blank stock
+                //create a blank stock object
                 clsStock AnStock = new clsStock();
-                //read i the fields for the currecnt reocrd
+                //raed in the fields from the current record
                 AnStock.ProductId = Convert.ToInt32(DB.DataTable.Rows[Index]["ProductId"]);
                 AnStock.ProductDate = Convert.ToDateTime(DB.DataTable.Rows[Index]["ProductDate"]);
                 AnStock.ProductAvailable = Convert.ToBoolean(DB.DataTable.Rows[Index]["ProductAvailable"]);
@@ -128,33 +150,8 @@ namespace ClassLibrary
                 mStockList.Add(AnStock);
                 //point at the next record
                 Index++;
+
             }
-
-            //create the item of the test data
-            clsStock TestItem = new clsStock();
-            //set its properties
-            TestItem.ProductAvailable = true;
-            TestItem.ProductId = 1;
-            TestItem.ProductDate = DateTime.Now;
-            TestItem.ProductPrice = 6.25M;
-            TestItem.ProductDescription = "Test Description";
-            TestItem.ProductTitle = "Test Title";
-            TestItem.ProductColour = "Test Colour";
-            //add the test item to the test list
-            mStockList.Add(TestItem);
-            //re intialise the object for some new data
-            TestItem = new clsStock();
-            //set its properties
-            TestItem.ProductAvailable = true;
-            TestItem.ProductId = 2;
-            TestItem.ProductDate = DateTime.Now;
-            TestItem.ProductPrice = 6.50M;
-            TestItem.ProductDescription = "Test Didderent Description";
-            TestItem.ProductTitle = "Test Another Title";
-            TestItem.ProductColour = "Test Diiferent Colour";
-            //add the item to the test list
-            mStockList.Add(TestItem);
         }
-
     }
 }
