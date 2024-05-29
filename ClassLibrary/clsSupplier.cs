@@ -129,6 +129,7 @@ namespace ClassLibrary
             String Error = "";
             DateTime DateTemp;
             DateTime DateComp = DateTime.Now.Date;
+            String OldDate = "01/01/2023";
 
             if (supplierName.Length < 1 || supplierName.Length > 50)
             {
@@ -149,7 +150,7 @@ namespace ClassLibrary
             try
             {
                 DateTemp = Convert.ToDateTime(supplierAddDate);
-                if (DateTemp < DateTime.Now.Date || DateTemp > DateTime.Now.Date)
+                if (DateTemp < Convert.ToDateTime(OldDate) || DateTemp > DateTime.Now.Date)
                 {
                     Error = Error + "The Date Added cannot be in the past or the future";
                 }
