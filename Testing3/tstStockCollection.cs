@@ -30,9 +30,9 @@ namespace Testing3
             clsStock TestItem = new clsStock();
             //set its properties
             TestItem.ProductAvailable = true;
-            TestItem.ProductId = 1;
+            TestItem.ProductId = 6;
             TestItem.ProductDate = DateTime.Now;
-            TestItem.ProductPrice = 6.25M;
+            TestItem.ProductPrice = 10;
             TestItem.ProductDescription = "Test Description";
             TestItem.ProductTitle = "Test Title";
             TestItem.ProductColour = "Test Colour";
@@ -54,9 +54,9 @@ namespace Testing3
             clsStock TestStock = new clsStock();
             //set the properties of the test object
             TestStock.ProductAvailable = true;
-            TestStock.ProductId = 1;
+            TestStock.ProductId = 7;
             TestStock.ProductDate = DateTime.Now;
-            TestStock.ProductPrice = 6.25M;
+            TestStock.ProductPrice = 10;
             TestStock.ProductDescription = "Test Description";
             TestStock.ProductTitle = "Test Title";
             TestStock.ProductColour = "Test Colour";
@@ -80,9 +80,9 @@ namespace Testing3
             clsStock TestItem = new clsStock();
             //set its properties
             TestItem.ProductAvailable = true;
-            TestItem.ProductId = 1;
+            TestItem.ProductId = 8;
             TestItem.ProductDate = DateTime.Now;
-            TestItem.ProductPrice = 6.25M;
+            TestItem.ProductPrice = 10;
             TestItem.ProductDescription = "Test Description";
             TestItem.ProductTitle = "Test Title";
             TestItem.ProductColour = "Test Colour";
@@ -107,7 +107,7 @@ namespace Testing3
             TestItem.ProductAvailable = true;
             TestItem.ProductId = 1;
             TestItem.ProductDate = DateTime.Now;
-            TestItem.ProductPrice = 6.25M;
+            TestItem.ProductPrice = 12;
             TestItem.ProductDescription = "Test Description";
             TestItem.ProductTitle = "Test Title";
             TestItem.ProductColour = "Test Colour";
@@ -134,9 +134,8 @@ namespace Testing3
             Int32 PrimaryKey = 0;
             //set its properties
             TestItem.ProductAvailable = true;
-            TestItem.ProductId = 1;
             TestItem.ProductDate = DateTime.Now;
-            TestItem.ProductPrice = 6.25M;
+            TestItem.ProductPrice = 15;
             TestItem.ProductDescription = "Test Description";
             TestItem.ProductTitle = "Test Title";
             TestItem.ProductColour = "Test Colour";
@@ -148,12 +147,11 @@ namespace Testing3
             TestItem.ProductId = PrimaryKey;
             //modify the test record
             TestItem.ProductAvailable = true;
-            TestItem.ProductId = 2;
             TestItem.ProductDate = DateTime.Now;
-            TestItem.ProductPrice = 6.50M;
-            TestItem.ProductDescription = "Test Didderent Description";
-            TestItem.ProductTitle = "Test Another Title";
-            TestItem.ProductColour = "Test Diiferent Colour";
+            TestItem.ProductPrice = 20;
+            TestItem.ProductDescription = "Modified Description";
+            TestItem.ProductTitle = "Modified Title";
+            TestItem.ProductColour = "Modified Colour";
             //set the record based on  the new test data
             AllStocks.ThisStock = TestItem;
             //update the reocrd
@@ -176,9 +174,8 @@ namespace Testing3
             Int32 PrimaryKey = 0;
             //set its properties
             TestItem.ProductAvailable = true;
-            TestItem.ProductId = 1;
             TestItem.ProductDate = DateTime.Now;
-            TestItem.ProductPrice = 6.25M;
+            TestItem.ProductPrice = 15;
             TestItem.ProductDescription = "Test Description";
             TestItem.ProductTitle = "Test Titles";
             TestItem.ProductColour = "Test Colour";
@@ -212,14 +209,46 @@ namespace Testing3
         }
 
         [TestMethod]
-        public void ReportByProductTitleNoneFound() 
+        public void ReportByProductTitleNoneFound()
         {
             //create an instance of the class we want to create
             clsStockCollection FilteredStocks = new clsStockCollection();
             //apply a code that doesn't exist
-            FilteredStocks.ReportByProductTitle("xxxx xxxxx");
+            FilteredStocks.ReportByProductTitle("xxxxx");
             //test to see that there are no records
             Assert.AreEqual(0, FilteredStocks.StockCount);
         }
+
+        [TestMethod]
+        public void ReportByProductTitleTestDataFound()
+        {
+            //create an instance of the filtered data
+            clsStockCollection FilteredStocks = new clsStockCollection();
+            //variable to store the outcome
+            Boolean OK = true;
+            //apply a proiduct title that doesnt exist
+            FilteredStocks.ReportByProductTitle("yyyy yyyyy");
+            //check to see that the number of records are found
+            if (FilteredStocks.StockCount == 2)
+            {
+                //check to see thast the first record is 25
+                if (FilteredStocks.StockList[0].ProductId != 120)
+                {
+                    OK = false;
+                }
+                //check to see that the first record is 26 
+                if (FilteredStocks.StockList[1].ProductId != 121)
+                {
+                    OK = false;
+                }
+            }
+            else
+            {
+                OK = false;
+            }
+            //test to see that there is no data
+            Assert.IsTrue(OK);
+        }
+
     }
 }

@@ -34,7 +34,7 @@ namespace ClassLibrary
             }
             set
             {
-
+                //
             }
         }
         public clsStock ThisStock 
@@ -105,7 +105,7 @@ namespace ClassLibrary
             //
             DB.AddParameter("@ProductTitle", ProductTitle);
             //excute the stored procedure
-            DB.Execute("sproc_tblProduct_FilteredByProductTitle");
+            DB.Execute("sproc_tblProduct_FilterByProductTitle");
             //populate the array list with the data table
             PopulateArray(DB);
         }
