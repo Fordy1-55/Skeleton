@@ -180,7 +180,7 @@ namespace Testing3
             TestItem.ProductDate = DateTime.Now;
             TestItem.ProductPrice = 6.25M;
             TestItem.ProductDescription = "Test Description";
-            TestItem.ProductTitle = "Test Title";
+            TestItem.ProductTitle = "Test Titles";
             TestItem.ProductColour = "Test Colour";
             //set ThisStock to the test data
             AllStocks.ThisStock = TestItem;
@@ -196,6 +196,30 @@ namespace Testing3
             Boolean Found = AllStocks.ThisStock.Find(PrimaryKey);
             //test to see that the record was not found
             Assert.IsFalse(Found);
+        }
+
+        [TestMethod]
+        public void ReportByProductTitleMethodOK()
+        {
+            //create an instance of the class containing unfiltered results
+            clsStockCollection AllStocks = new clsStockCollection();
+            //create an instance of the filtered data
+            clsStockCollection FilteredStocks = new clsStockCollection();
+            //apply a blank string(that should return all records)
+            FilteredStocks.ReportByProductTitle("");
+            //test to see that the two values are the same
+            Assert.AreEqual(AllStocks.StockCount, FilteredStocks.StockCount);
+        }
+
+        [TestMethod]
+        public void ReportByProductTitleNoneFound() 
+        {
+            //create an instance of the class we want to create
+            clsStockCollection FilteredStocks = new clsStockCollection();
+            //apply a code that doesn't exist
+            FilteredStocks.ReportByProductTitle("xxxx xxxxx");
+            //test to see that there are no records
+            Assert.AreEqual(0, FilteredStocks.StockCount);
         }
     }
 }
