@@ -41,11 +41,13 @@ public partial class _1_DataEntry : System.Web.UI.Page
             ASupplier.SupplierCity = SupplierCity;  
             ASupplier.SupplierContactPhone = SupplierContactPhone;
             ASupplier.SupplierAddDate = Convert.ToDateTime(SupplierAddDate);
+            ASupplier.Availability = Convert.ToBoolean(Availability);
+            ASupplier.SupplierID = Convert.ToInt32(SupplierID);
 
-            //Sotre the name in the session object
-            Session["ASupplier"] = ASupplier;
-            //navigate to the supplier view page
-            Response.Redirect("SupplierViewer.aspx");
+            clsSupplierCollection SupplierList = new clsSupplierCollection();
+            SupplierList.ThisSupplier = ASupplier;
+            SupplierList.Add();
+            Response.Redirect("SupplierList.aspx");
         }
         else
         {
