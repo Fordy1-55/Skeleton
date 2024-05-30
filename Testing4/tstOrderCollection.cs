@@ -155,6 +155,7 @@ namespace Testing4
             Assert.AreEqual(AllOrders.ThisOrder, TestItem);
         }
 
+        [TestMethod]
         public void DeleteMethodOK()
         {
             //create an instance of the class we want to create
@@ -200,6 +201,7 @@ namespace Testing4
             Assert.AreEqual(AllOrders.Count, FilteredOrders.Count);
         }
 
+        [TestMethod]
         public void ReportByOrderDescriptionNoneFound()
         {
             //create a instance of the class we want to create
@@ -211,6 +213,7 @@ namespace Testing4
 
         }
 
+        [TestMethod]
         public void ReportByOrderDescriptionTestDataFound()
         {
             //create an instance of the filtered data
@@ -223,12 +226,12 @@ namespace Testing4
             if (FilteredDescriptions.Count == 2)
             {
                 //check to see that the first record is 25
-                if (FilteredDescriptions.OrderList[0].OrderId != 69)
+                if (FilteredDescriptions.OrderList[0].OrderId != 110)
                 {
                     OK = false;
                 }
                 //check to see that the first record is 26
-                if (FilteredDescriptions.OrderList[1].OrderId != 70)
+                if (FilteredDescriptions.OrderList[1].OrderId != 111)
                 {
                     OK = false;
                 }

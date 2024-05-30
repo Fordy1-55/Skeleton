@@ -20,12 +20,19 @@ public partial class _1_List : System.Web.UI.Page
     {
         clsSupplierCollection Suppliers = new clsSupplierCollection();
         lstSupplierList.DataSource = Suppliers.SupplierList;
-        lstSupplierList.DataValueField = "SupplierName";
+        lstSupplierList.DataValueField = "SupplierID";
+        lstSupplierList.DataTextField = "SupplierName";
         lstSupplierList.DataBind();
     }
 
     protected void ListBox1_SelectedIndexChanged(object sender, EventArgs e)
     {
         
+    }
+
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+        Session["SupplierID"] = -1;
+        Response.Redirect("SupplierDataEntry");
     }
 }

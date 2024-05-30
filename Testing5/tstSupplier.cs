@@ -421,8 +421,7 @@ namespace Testing5
         {
             clsSupplier ASupplier = new clsSupplier();
             string Error = "";
-            DateTime TestDate;
-            TestDate = DateTime.Now.Date.AddDays(-1);
+            String TestDate = "31/12/2022";
             string SupplierAddDate = TestDate.ToString();
             Error = ASupplier.Valid(SupplierName, SupplierContactEmail, SupplierContactPhone, SupplierCity, SupplierAddDate);
             Assert.AreNotEqual(Error, "");

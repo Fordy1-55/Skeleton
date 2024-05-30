@@ -6,6 +6,7 @@ namespace ClassLibrary
     public class clsSupplierCollection
     {
         List<clsSupplier> mSupplierList = new List<clsSupplier>();
+        clsSupplier mThisSupplier = new clsSupplier();
 
         public List<clsSupplier> SupplierList
         {
@@ -29,7 +30,17 @@ namespace ClassLibrary
 
             }
         }
-        public clsSupplier ThisSupplier { get; set; }
+        public clsSupplier ThisSupplier 
+        {
+            get
+            {
+                return mThisSupplier;
+            }
+            set
+            {
+                mThisSupplier = value;
+            }
+        }
 
         public clsSupplierCollection()
         {
@@ -42,6 +53,7 @@ namespace ClassLibrary
             {
                 clsSupplier ASupplier = new clsSupplier();
                 ASupplier.Availability = Convert.ToBoolean(DB.DataTable.Rows[Index]["Availability"]);
+                ASupplier.SupplierName = Convert.ToString(DB.DataTable.Rows[Index]["SupplierName"]);
                 ASupplier.SupplierID = Convert.ToInt32(DB.DataTable.Rows[Index]["SupplierID"]);
                 ASupplier.SupplierContactEmail = Convert.ToString(DB.DataTable.Rows[Index]["SupplierContactEmail"]);
                 ASupplier.SupplierContactPhone = Convert.ToString(DB.DataTable.Rows[Index]["SupplierContactPhone"]);
@@ -50,6 +62,19 @@ namespace ClassLibrary
                 mSupplierList.Add(ASupplier);
                 Index++;
             }
+        }
+
+        public int Add()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@SupplierName", mThisSupplier.SupplierName);
+            DB.AddParameter("@SupplierContactEmail", mThisSupplier.SupplierContactEmail);
+            DB.AddParameter("@Availability", mThisSupplier.Availability);
+            DB.AddParameter("@SupplierAdddate", mThisSupplier.SupplierAddDate);
+            DB.AddParameter("@SupplierContactPhone", mThisSupplier.SupplierContactPhone);
+            DB.AddParameter("@SupplierCity", mThisSupplier.SupplierCity);
+
+            return DB.Execute("sproc_tblSupplier_Insert");
         }
     }
 }

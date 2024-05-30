@@ -81,4 +81,38 @@ public partial class _1_List : System.Web.UI.Page
             lblError.Text = "Please select a record from the list to delete :";
         }
     }
+
+    protected void btnApplyFilter_Click(object sender, EventArgs e)
+    {
+        //
+        clsStockCollection AnStock = new clsStockCollection();
+        //
+        AnStock.ReportByProductTitle(txtFilter.Text);
+        //
+        lstStockList.DataSource = AnStock.StockList;
+        //
+        lstStockList.DataValueField = "ProductId";
+        //
+        lstStockList.DataTextField = "ProductTitle";
+        //
+        lstStockList.DataBind();
+    }
+
+    protected void btnClearFilter_Click(object sender, EventArgs e)
+    {
+        //
+        clsStockCollection AnStock = new clsStockCollection();
+        //
+        AnStock.ReportByProductTitle("");
+        //
+        txtFilter.Text = "";
+        //
+        lstStockList.DataSource = AnStock.StockList;
+        //
+        lstStockList.DataValueField = "ProductId";
+        //
+        lstStockList.DataTextField = "ProductTitle";
+        //
+        lstStockList.DataBind();
+    }
 }
