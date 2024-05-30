@@ -121,6 +121,8 @@ namespace ClassLibrary
             DB.AddParameter("@Role", mThisStaff.Role);
             DB.AddParameter("@PerformanceTarget", mThisStaff.PerformanceTarget);
             DB.AddParameter("@ManagerStatus", mThisStaff.ManagerStatus);
+            //execute the stored procedure
+            DB.Execute("sproc_tblStaff_Update");
         }
 
         void PopulateArray(clsDataConnection DB)
