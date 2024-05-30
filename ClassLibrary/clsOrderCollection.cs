@@ -162,7 +162,6 @@ namespace ClassLibrary
                 Index++;
             }
         }
-        //20 + 24
 
 
         public void Update()
