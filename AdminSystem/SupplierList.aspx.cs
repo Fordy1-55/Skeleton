@@ -35,4 +35,19 @@ public partial class _1_List : System.Web.UI.Page
         Session["SupplierID"] = -1;
         Response.Redirect("SupplierDataEntry");
     }
+
+    protected void btnEdit_Click(object sender, EventArgs e)
+    {
+        Int32 SupplierID;
+        if(lstSupplierList.SelectedIndex!=-1)
+        {
+            SupplierID = Convert.ToInt32(lstSupplierList.SelectedValue);
+            Session["SupplierID"] = SupplierID;
+            Response.Redirect("SupplierDataEntry.aspx");
+        }
+        else
+        {
+            lblError.Text = "Please select a record from the list to edit";
+        }
+    }
 }
