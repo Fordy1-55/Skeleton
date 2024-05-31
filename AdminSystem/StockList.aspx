@@ -27,6 +27,7 @@
             </p>
             <asp:Button ID="btnApplyFilter" runat="server" OnClick="btnApplyFilter_Click" style="z-index: 1; left: 16px; top: 723px; position: absolute" Text="Apply Filter" />
             <asp:Button ID="btnClearFilter" runat="server" height="26px" OnClick="btnClearFilter_Click" style="z-index: 1; left: 140px; top: 723px; position: absolute" Text="Clear Filter" width="100px" />
+             <asp:Button ID="btnReturn" runat="server" style="z-index: 1; left: 440px; top: 723px; position: absolute" Text="Return to Main Menu" OnClick="btnReturn_Click" />
         </div>
     </form>
 </body>
