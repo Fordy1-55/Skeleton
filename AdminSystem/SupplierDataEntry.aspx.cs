@@ -8,9 +8,30 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+    Int32 SupplierID;
     protected void Page_Load(object sender, EventArgs e)
     {
+        SupplierID = Convert.ToInt32(Session["SupplierID"]);
+        if (IsPostBack == false)
+        {
+            if(SupplierID != -1)
+            {
+                DisplaySupplier();
+            }
+        }
+    }
 
+    void DisplaySupplier()
+    {
+        clsSupplierCollection supplierCollection = new clsSupplierCollection();
+        supplierCollection.ThisSupplier.Find(SupplierID);
+        txtSupplierID.Text = supplierCollection.ThisSupplier.SupplierID.ToString();
+        txtSupplierName.Text = supplierCollection.ThisSupplier.SupplierName.ToString();
+        txtSupplierContactEmail.Text = supplierCollection.ThisSupplier.SupplierContactEmail.ToString();
+        chkAvailability.Checked = supplierCollection.ThisSupplier.Availability;
+        txtSupplierAddDate.Text = supplierCollection.ThisSupplier.SupplierAddDate.ToString();
+        txtSupplierContactPhone.Text = supplierCollection.ThisSupplier.SupplierAddDate.ToString();
+        txtSupplierCity.Text = supplierCollection.ThisSupplier.SupplierCity.ToString();
     }
 
     protected void btnOK_Click(object sender, EventArgs e)
@@ -18,36 +39,45 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //new instance of clsSupplier
         clsSupplier ASupplier = new clsSupplier();
         //Capture the supplier name
-        string SupplierName = txtSupplierName.Text;
+        string supplierName = txtSupplierName.Text;
         //Capture the Supplier ID
-        string SupplierID = txtSupplierID.Text;
+        string supplierID = txtSupplierID.Text;
         //Capture the Supplier email
-        string SupplierContactEmail = txtSupplierContactEmail.Text;
+        string supplierContactEmail = txtSupplierContactEmail.Text;
         //Capture the supplier phone
-        string SupplierContactPhone = txtSupplierContactPhone.Text;
+        string supplierContactPhone = txtSupplierContactPhone.Text;
         //Capture the supplier City
-        string SupplierCity = txtSupplierCity.Text;
+        string supplierCity = txtSupplierCity.Text;
         //Capture the date added
-        string SupplierAddDate = txtSupplierAddDate.Text;
+        string supplierAddDate = txtSupplierAddDate.Text;
         //Capture the availabitlity
         string Availability = chkAvailability.Text;
 
         string Error = "";
-        Error = ASupplier.Valid(SupplierName, SupplierContactEmail, SupplierContactPhone, SupplierCity, SupplierAddDate);
+        Error = ASupplier.Valid(supplierName, supplierContactEmail, supplierContactPhone, supplierCity, supplierAddDate);
         if (Error == "")
         {
-            ASupplier.SupplierName = SupplierName;
-            ASupplier.SupplierContactEmail = SupplierContactEmail;
-            ASupplier.SupplierCity = SupplierCity;  
-            ASupplier.SupplierContactPhone = SupplierContactPhone;
-            ASupplier.SupplierAddDate = Convert.ToDateTime(SupplierAddDate);
+            ASupplier.SupplierName = supplierName;
+            ASupplier.SupplierContactEmail = supplierContactEmail;
+            ASupplier.SupplierCity = supplierCity;  
+            ASupplier.SupplierContactPhone = supplierContactPhone;
+            ASupplier.SupplierAddDate = Convert.ToDateTime(supplierAddDate);
             ASupplier.Availability = Convert.ToBoolean(Availability);
             ASupplier.SupplierID = Convert.ToInt32(SupplierID);
 
             clsSupplierCollection SupplierList = new clsSupplierCollection();
-            SupplierList.ThisSupplier = ASupplier;
-            SupplierList.Add();
-            Response.Redirect("SupplierList.aspx");
+            if (SupplierID == -1)
+            {
+                SupplierList.ThisSupplier = ASupplier;
+                SupplierList.Add();
+                Response.Redirect("SupplierList.aspx");
+            }
+            else
+            {
+                SupplierList.ThisSupplier.Find(SupplierID);
+                SupplierList.ThisSupplier = ASupplier;
+                SupplierList.Update();
+            }
         }
         else
         {
