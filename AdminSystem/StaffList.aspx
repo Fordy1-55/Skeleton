@@ -20,6 +20,7 @@
         <asp:TextBox ID="txtFilter" runat="server" Height="16px" style="margin-left: 33px; margin-top: 2px" Width="154px"></asp:TextBox>
         <asp:Button ID="btnApply" runat="server" OnClick="btnApply_Click" style="margin-left: 19px" Text="Apply Filter" Width="93px" />
         <asp:Button ID="btnClear" runat="server" Height="26px" OnClick="btnClear_Click" style="margin-left: 22px" Text="Clear Filter" Width="100px" />
+        <asp:Button ID="btnReturnToMain" runat="server" OnClick="btnReturnToMain_Click" style="margin-left: 35px" Text="Return to Main Menu" Width="169px" />
         <p>
         <asp:Label ID="lblError" runat="server" Text="[lblError]"></asp:Label>
         </p>
