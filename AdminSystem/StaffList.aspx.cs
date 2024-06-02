@@ -115,4 +115,9 @@ public partial class _1_List : System.Web.UI.Page
         //bind data to list
         lstStaffList.DataBind();
     }
+
+    protected void btnReturnToMain_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("TeamMainMenu.aspx");
+    }
 }

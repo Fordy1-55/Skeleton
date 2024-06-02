@@ -22,6 +22,12 @@ public partial class _1_DataEntry : System.Web.UI.Page
                 //display the current data for the record
                 DisplayStaff();
             }
+            //create new instance of clsStaffUser
+            clsStaffUser User = new clsStaffUser();
+            //get data from session object
+            User = (clsStaffUser)Session["User"];
+            //display username
+            Response.Write("Logged in as: " + User.UserName);
         }
 
     }
@@ -181,5 +187,10 @@ public partial class _1_DataEntry : System.Web.UI.Page
         txtStartDate.Text = StaffBook.ThisStaff.StartDate.ToString();
         chkPerformanceTarget.Checked = StaffBook.ThisStaff.PerformanceTarget;
         chkManagerStatus.Checked = StaffBook.ThisStaff.ManagerStatus;
+    }
+
+    protected void btnReturnToMain_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("TeamMainMenu.aspx");
     }
 }

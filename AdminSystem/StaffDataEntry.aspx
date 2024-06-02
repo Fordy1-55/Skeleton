@@ -42,6 +42,7 @@
             &nbsp;</p>
         <p>
             <asp:Button ID="btnFind" runat="server" style="margin-left: 189px" Text="Find" Width="97px" OnClick="btnFind_Click1" />
+            <asp:Button ID="btnReturnToMain" runat="server" OnClick="btnReturnToMain_Click" style="margin-left: 47px" Text="Return to Main Menu" />
         </p>
     </form>
 </body>
