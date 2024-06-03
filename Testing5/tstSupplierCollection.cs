@@ -137,5 +137,46 @@ namespace Testing5
             Boolean Found = AllSuppliers.ThisSupplier.Find(PrimaryKey);
             Assert.IsFalse(Found);
         }
+
+        [TestMethod]
+        public void ReportBySupplierCityMethodOK()
+        {
+            clsSupplierCollection AllSuppliers = new clsSupplierCollection();
+            clsSupplierCollection Filteredsuppliers = new clsSupplierCollection();
+            Filteredsuppliers.ReportBySupplierCity("");
+            Assert.AreEqual(AllSuppliers.Count, Filteredsuppliers.Count);
+        }
+
+        [TestMethod]
+        public void ReportBySupplierCityNoneFound()
+        {
+            clsSupplierCollection FilteredSuppliers = new clsSupplierCollection();
+            FilteredSuppliers.ReportBySupplierCity("XXXXXXXXXXXXXX");
+            Assert.AreEqual(0, FilteredSuppliers.Count);
+        }
+
+        [TestMethod]
+        public void ReportbyCityTestDatFound()
+        {
+            clsSupplierCollection FilteredSuppliers = new clsSupplierCollection();
+            Boolean OK = true;
+            FilteredSuppliers.ReportBySupplierCity("Shanghai");
+            if (FilteredSuppliers.Count == 2)
+            {
+                if (FilteredSuppliers.SupplierList[0].SupplierID != 2037)
+                {
+                    OK = false;
+                }
+                if (FilteredSuppliers.SupplierList[1].SupplierID != 2038)
+                {
+                    OK = false;
+                }
+            }
+            else 
+            {
+                OK = false; 
+            }
+            Assert.IsTrue(OK);
+        }
     }
 }

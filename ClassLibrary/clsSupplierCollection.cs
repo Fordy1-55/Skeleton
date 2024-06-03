@@ -44,11 +44,17 @@ namespace ClassLibrary
 
         public clsSupplierCollection()
         {
-            Int32 Index = 0;
-            Int32 RecordCount = 0;
             clsDataConnection DB = new clsDataConnection();
             DB.Execute("sproc_tblSupplier_SelectAll");
+            PopulateArray(DB);
+        }
+
+        void PopulateArray(clsDataConnection DB)
+        {
+            Int32 Index = 0;
+            Int32 RecordCount;
             RecordCount = DB.Count;
+            mSupplierList = new List<clsSupplier>();
             while (Index < RecordCount)
             {
                 clsSupplier ASupplier = new clsSupplier();
@@ -92,7 +98,17 @@ namespace ClassLibrary
 
         public void Delete()
         {
-            throw new NotImplementedException();
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@SupplierID", mThisSupplier.SupplierID);
+            DB.Execute("sproc_tblSupplier_Delete");
+        }
+
+        public void ReportBySupplierCity(string SupplierCity)
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@SupplierCity", SupplierCity);
+            DB.Execute("sproc_tblSupplier_FilterByCity");
+            PopulateArray(DB);
         }
     }
 }
