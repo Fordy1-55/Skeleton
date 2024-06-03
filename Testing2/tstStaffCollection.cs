@@ -34,7 +34,7 @@ namespace Testing2
             //set properties
             TestItem.StaffID = 1;
             TestItem.Name = "Test";
-            TestItem.Role = "Team Memb";
+            TestItem.Role = "Team Member";
             TestItem.StartDate = DateTime.Now;
             TestItem.ShiftType = "Dispatch";
             TestItem.PerformanceTarget = true;
