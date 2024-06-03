@@ -7,28 +7,26 @@
     <title></title>
     <style type="text/css">
         .auto-style1 {
-            margin-bottom: 0;
+           text-align:left;
         }
-        .auto-style2 {
-            margin-top: 0px;
-            padding: 1px 2px;
-        }
+
     </style>
 </head>
 <body>
     <form id="form1" runat="server">
         <div>
+            <asp:ListBox ID="lstSupplierList" runat="server" Height="240px" OnSelectedIndexChanged="ListBox1_SelectedIndexChanged" Width="285px"></asp:ListBox>
+            <asp:Button ID="btnEdit" runat="server" CssClass="auto-style2" style="z-index: 1; left: 111px; top: 311px; position: absolute" Text="Edit" />
+            <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 105px; top: 273px; position: absolute"></asp:Label>
+            <asp:Button ID="btnDelete" runat="server" OnClick="Button1_Click1" style="z-index: 1; left: 207px; top: 312px; position: absolute" Text="Delete" />
+            <asp:Button ID="BtnAdd" runat="server" OnClick="Button1_Click" style="z-index: 1; left: 17px; top: 312px; position: absolute" Text="Add" />
         </div>
-        <asp:ListBox ID="lstSupplierList" runat="server" Height="214px" OnSelectedIndexChanged="ListBox1_SelectedIndexChanged" Width="262px"></asp:ListBox>
-        <p class="auto-style1" style="margin-left: 80px">
-            <asp:Button ID="BtnAdd" runat="server" OnClick="Button1_Click" Text="Add" CssClass="auto-style2" height="32px" width="41px" />
-            <asp:Button ID="btnEdit" runat="server" CssClass="auto-style2" height="32px" OnClick="btnEdit_Click" style="margin-bottom: 2px" Text="Edit" />
-        </p>
-        <p style="margin-left: 80px">
-            <asp:Label ID="lblError" runat="server"></asp:Label>
-        </p>
-        <p style="margin-left: 80px">
-            &nbsp;</p>
+        
+        <asp:Button ID="BtnApplyFltr" runat="server" OnClick="BtnApplyFltr_Click" style="z-index: 1; left: 31px; top: 420px; position: absolute" Text="Apply Filter" />
+        <asp:Button ID="btnClearFltr" runat="server" OnClick="btnClearFltr_Click" style="z-index: 1; left: 169px; top: 421px; position: absolute" Text="ClearFilter" />
+        <asp:Label ID="lblFilter" runat="server" style="z-index: 1; left: 30px; top: 374px; position: absolute" Text="Enter a City:"></asp:Label>
+        <asp:TextBox ID="txtFilter" runat="server" style="z-index: 1; left: 131px; top: 374px; position: absolute"></asp:TextBox>
+        
     </form>
 </body>
 </html>
