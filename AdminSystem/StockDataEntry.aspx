@@ -7,8 +7,12 @@
     <title></title>
     <style type="text/css">
         #form1 {
-            height: 423px;
+            height: 582px;
+            background: #bababa;
+            font-family: Arial;
         }
+
+
     </style>
 </head>
 <body style="height: 581px">
@@ -21,7 +25,7 @@
             <br />
             <asp:TextBox ID="txtProductTitle" runat="server" height="22px" style="z-index: 1; left: 177px; top: 72px; position: absolute" width="128px" OnTextChanged="txtProductTitle_TextChanged"></asp:TextBox>
         </div>
-        <asp:TextBox ID="txtProductId" runat="server" height="22px" style="z-index: 1; left: 177px; top: 14px; position: absolute" width="128px" OnTextChanged="txtProductId_TextChanged"></asp:TextBox>
+        <asp:TextBox ID="txtProductId" runat="server" height="22px" style="z-index: 1; left: 177px; top: 14px; position: absolute; bottom: 636px;" width="128px" OnTextChanged="txtProductId_TextChanged"></asp:TextBox>
         <br />
         <asp:Label ID="lblProductDescription" runat="server" height="19px" style="z-index: 1; left: 12px; top: 145px; position: absolute; width: 127px;" Text="Product Description"></asp:Label>
         <asp:TextBox ID="txtProductDescription" runat="server" height="22px" style="z-index: 1; left: 177px; top: 137px; position: absolute; bottom: 709px;" width="128px" OnTextChanged="txtProductDescription_TextChanged"></asp:TextBox>
@@ -35,7 +39,7 @@
         <br />
         <br />
         <asp:Label ID="lblProductPrice" runat="server" height="19px" style="z-index: 1; left: 12px; top: 281px; position: absolute" Text="Product Price" width="121px"></asp:Label>
-        <asp:TextBox ID="txtProductPrice" runat="server" height="22px" style="z-index: 1; left: 177px; top: 275px; position: absolute; margin-bottom: 1px" width="128px" OnTextChanged="txtProductPrice_TextChanged"></asp:TextBox>
+        <asp:TextBox ID="txtProductPrice" runat="server" height="22px" style="z-index: 1; left: 178px; top: 275px; position: absolute; margin-bottom: 1px" width="128px" OnTextChanged="txtProductPrice_TextChanged"></asp:TextBox>
         <br />
         <br />
         <br />
