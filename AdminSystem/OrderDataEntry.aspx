@@ -5,10 +5,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
+    <style type="text/css">
+        .auto-style1 {
+            background-color: #CCFFCC;
+        }
+    </style>
 </head>
-<body>
+<body style="background-color: #99FF99">
     &nbsp;<form id="form1" runat="server">
-        <asp:Button ID="btnFind" runat="server" style="z-index: 1; left: 370px; top: 27px; position: absolute" Text="Find" OnClick="btnFind_Click1" />
+        <asp:Button ID="btnFind" runat="server" style="z-index: 1; left: 370px; top: 27px; position: absolute" Text="Find" OnClick="btnFind_Click1" CssClass="auto-style1" />
         <div>
             <asp:Label ID="lblOrderId" runat="server" style="z-index: 1; left: 11px; top: 28px; position: absolute" Text="Order ID" width="123px"></asp:Label>
             <asp:TextBox ID="txtOrderId" runat="server"  style="z-index: 1; left: 148px; top: 28px; position: absolute; margin-bottom: 0px"></asp:TextBox>
@@ -33,9 +38,9 @@
         </p>
         <asp:CheckBox ID="chkOverseas" runat="server" style="z-index: 1; left: 148px; top: 253px; position: absolute; height: 18px" Text="Overseas" width="123px" />
         <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 347px; top: 124px; position: absolute" width="123px"></asp:Label>
-        <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" style="z-index: 1; left: 11px; top: 311px; position: absolute" Text="OK" />
-        <asp:Button ID="btnCancel" runat="server"  style="z-index: 1; top: 311px; position: absolute; left: 84px" Text="Cancel" OnClick="btnCancel_Click" />
-        <asp:Button ID="btnMainMenu" runat="server" OnClick="btnMainMenu_Click" style="z-index: 1; left: 188px; top: 310px; position: absolute" Text="Return to Main Menu" />
+        <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" style="z-index: 1; left: 11px; top: 311px; position: absolute" Text="OK" CssClass="auto-style1" />
+        <asp:Button ID="btnCancel" runat="server"  style="z-index: 1; top: 311px; position: absolute; left: 84px" Text="Cancel" OnClick="btnCancel_Click" CssClass="auto-style1" />
+        <asp:Button ID="btnMainMenu" runat="server" OnClick="btnMainMenu_Click" style="z-index: 1; left: 188px; top: 310px; position: absolute" Text="Return to Main Menu" CssClass="auto-style1" />
     </form>
 </body>
 </html>
