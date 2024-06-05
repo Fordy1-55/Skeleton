@@ -1,9 +1,7 @@
 ﻿using ClassLibrary;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Collections.Generic;
 using System;
-
-
+using System.Collections.Generic;
 
 namespace Testing1
 {
@@ -46,7 +44,7 @@ namespace Testing1
             Assert.AreEqual(AllCustomers.CustomerList, TestList);
         }
 
-       
+
 
         [TestMethod]
         public void ListAndCountOK()
@@ -67,7 +65,7 @@ namespace Testing1
             TestItem.CustomerAddress = "18 Main Street";
             TestItem.CustomerTelephoneNo = "0768349761";
             //add item to the test list
-            TestList.Add(TestItem) ;
+            TestList.Add(TestItem);
             //assign data to property
             AllCustomers.CustomerList = TestList;
             //test to see both values are the same
@@ -93,20 +91,39 @@ namespace Testing1
             AllCustomers.ThisCustomer = TestCustomer;
             //test to see both values are the same
             Assert.AreEqual(AllCustomers.ThisCustomer, TestCustomer);
-      
-     
         }
 
-       
+        [TestMethod]
+        public void AddMethodOK()
+        {
+            //create instance of class we want to create
+            clsCustomerCollection AllCustomers = new clsCustomerCollection();
+            //create item of testdata
+            clsCustomer TestItem = new clsCustomer();
+            //variable to store primary key
+            Int32 PrimaryKey = 0;
+            //set properties
+            TestItem.CustomerID = 1;
+            TestItem.CustomerName = "Sabrina";
+            TestItem.CustomerEmail = "Sabrina@hotmail.com";
+            TestItem.DateOfBirth = DateTime.Now;
+            TestItem.CustomerAddress = "90 Girraffe Lane";
+            TestItem.CustomerTelephoneNo = "0784790358";
+            TestItem.Subscription = true;
+            //set thisCustomer to testdata
+            AllCustomers.ThisCustomer = TestItem;
+            //add record
+            PrimaryKey = AllCustomers.Add();
+            //set primary key of the testdata
+            TestItem.CustomerID = PrimaryKey;
+            //find record
+            AllCustomers.ThisCustomer.Find(PrimaryKey);
+            //test to see that both values are the same
+            Assert.AreEqual(AllCustomers.ThisCustomer, TestItem);
+
+        }
+
+
+
     }
-
-
-
-
-
-
-
-
-
-    
 }
