@@ -8,7 +8,10 @@ namespace ClassLibrary
     {
         // private data member for the list
         List<clsCustomer> mCustomerList = new List<clsCustomer>();
+        //private member data for ThisCustomer
+        clsCustomer mThisCustomer = new clsCustomer();
         // public property for the customer list
+
         public List<clsCustomer> CustomerList
         {
             get
@@ -24,6 +27,8 @@ namespace ClassLibrary
 
         }
 
+        
+
         public int Count
         {
             get
@@ -36,6 +41,7 @@ namespace ClassLibrary
             }
         }
 
+       
         //public clsCustomerCollection()
         //{
         //    //create the Items of the test data
@@ -94,8 +100,54 @@ namespace ClassLibrary
         
         
         }
-        public clsCustomer ThisCustomer { get; set; }
+        public clsCustomer ThisCustomer
+        {
+            get
+            {
+                return mThisCustomer;
+
+            }
+            set
+            {
+                mThisCustomer = value;
+            }
+        }
+
+        public int Add()
+        {
+            //add a record to the database based on the values of this mThis Customer
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //DB.AddParameter("@CustomerID", mThisCustomer.CustomerID);
+            DB.AddParameter("@CustomerName", mThisCustomer.CustomerName);
+            DB.AddParameter("@CustomerEmail", mThisCustomer.CustomerEmail);
+            DB.AddParameter("@DateOfBirth", mThisCustomer.DateOfBirth);
+            DB.AddParameter("@CustomerAddress", mThisCustomer.CustomerAddress);
+            DB.AddParameter("@CustomerTelephoneNo", mThisCustomer.CustomerTelephoneNo);
+            DB.AddParameter("@Subscription", mThisCustomer.Subscription);
+
+            //execute the stored procedure
+           return DB.Execute("sproc_tblCustomer_Insert");
+        }
+
+        //public int Add()
+        //{
+        //    //add a record to the database based on the values of this mThis Customer
+        //    //connect to the database
+        //    clsDataConnection DB = new clsDataConnection();
+        //   //DB.AddParameter("@CustomerID", mThisCustomer.CustomerID);
+        //    DB.AddParameter("@CustomerName", mThisCustomer.CustomerName);
+        //    DB.AddParameter("@CustomerEmail", mThisCustomer.CustomerEmail);
+        //    DB.AddParameter("@DateOfBirth", mThisCustomer.DateOfBirth);
+        //    DB.AddParameter("@CustomerAddress", mThisCustomer.CustomerAddress);
+        //    DB.AddParameter("@CustomerTelephoneNo", mThisCustomer.CustomerTelephoneNo);
+        //    DB.AddParameter("@Subscription", mThisCustomer.Subscription);
+
+        //    //execute the stored procedure
+        //    DB.Execute("sproc_tblCustomer_Insert");
+        //}
+
     }
-
-
 }
+
+

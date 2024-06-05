@@ -39,6 +39,8 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Error = AnCustomer.Valid(CustomerName, CustomerAddress, CustomerTelephoneNo, CustomerEmail, DateOfBirth);
         if (Error == "")
         {
+            //capture the CustomerID
+            AnCustomer.CustomerID = Convert.ToInt32(txtCustomerID);
             //capture the customer name
             AnCustomer.CustomerName = CustomerName;
             //capture the customer email
@@ -49,10 +51,20 @@ public partial class _1_DataEntry : System.Web.UI.Page
             AnCustomer.CustomerTelephoneNo = CustomerTelephoneNo;
             //capture the customers date of birth
             AnCustomer.DateOfBirth = Convert.ToDateTime(DateOfBirth);
-            //Store the Customer Name in the session object
-            Session["AnCustomer"] = AnCustomer;
-            //navigate to view page
-            Response.Redirect("CustomerViewer.aspx");
+            //capture subscription 
+            AnCustomer.Subscription = chkSubscription.Checked;
+            //create a new instance for the customer collection
+            clsCustomerCollection CustomerList = new clsCustomerCollection();
+            //set this customer property
+            CustomerList.ThisCustomer = AnCustomer;
+            //add the new record
+            CustomerList.Add();
+            //
+
+
+
+            //navigate to list page
+            Response.Redirect("CustomerList.aspx");
         }
         else
         {

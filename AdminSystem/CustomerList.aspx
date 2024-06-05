@@ -10,6 +10,10 @@
     <form id="form1" runat="server">
         <div>
         </div>
+        <asp:ListBox ID="lstCustomerList" runat="server" Height="432px" Width="476px"></asp:ListBox>
+        <p>
+            <asp:Button ID="btnAdd" runat="server" OnClick="Button1_Click" Text="Add" />
+        </p>
     </form>
 </body>
 </html>
