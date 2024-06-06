@@ -11,7 +11,7 @@ namespace Testing5
     public class tstSupplier
     {
         string SupplierName = "Jack";
-        string SupplierContactEmail = "Jack@Jmail.com";
+        string SupplierContactEmail = "sam@simple.com";
         string SupplierContactPhone = "73579401735";
         string SupplierCity = "Leicester";
         string SupplierAddDate = DateTime.Now.ToShortDateString();
