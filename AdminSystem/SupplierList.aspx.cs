@@ -33,7 +33,7 @@ public partial class _1_List : System.Web.UI.Page
     protected void Button1_Click(object sender, EventArgs e)
     {
         Session["SupplierID"] = -1;
-        Response.Redirect("SupplierDataEntry");
+        Response.Redirect("SupplierDataEntry.aspx");
     }
 
     protected void btnEdit_Click(object sender, EventArgs e)
@@ -85,5 +85,10 @@ public partial class _1_List : System.Web.UI.Page
         lstSupplierList.DataValueField = "SupplierID";
         lstSupplierList.DataTextField = "SupplierName";
         lstSupplierList.DataBind();
+    }
+
+    protected void Button1_Click2(object sender, EventArgs e)
+    {
+        Response.Redirect("TeamMainMenu.aspx");
     }
 }

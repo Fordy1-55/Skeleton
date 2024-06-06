@@ -30,8 +30,8 @@
         <asp:Label ID="lblSupplierCity" runat="server" style="z-index: 1; left: 16px; top: 160px; position: absolute; height: 21px; width: 70px; bottom: 495px" Text="City"></asp:Label>
         <asp:TextBox ID="txtSupplierCity" runat="server" style="z-index: 1; left: 124px; top: 161px; position: absolute" width="128px"></asp:TextBox>
         <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 16px; top: 259px; position: absolute" width="70px"></asp:Label>
-        <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" style="z-index: 1; left: 17px; top: 298px; position: absolute; height: 26px" Text="OK" />
-        <asp:Button ID="btnCancel" runat="server" OnClick="btnCancel_Click" style="z-index: 1; top: 298px; position: absolute; left: 124px" Text="Cancel" />
+        <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" style="z-index: 1; left: 17px; top: 297px; position: absolute; height: 26px" Text="OK" />
+        <asp:Button ID="btnCancel" runat="server" OnClick="btnCancel_Click" style="z-index: 1; top: 297px; position: absolute; left: 124px" Text="Cancel" height="26px" />
         <p>
             &nbsp;</p>
         <p>
@@ -53,6 +53,10 @@
             &nbsp;</p>
         <p>
             &nbsp;</p>
+        <p>
+        <asp:Button ID="BtnMainMenu" runat="server" OnClick="Button1_Click2" Text="Return to main menu" style="z-index: 1; left: 373px; top: 297px; position: absolute" height="26px"/>
+        
+        </p>
     </form>
 </body>
 </html>
