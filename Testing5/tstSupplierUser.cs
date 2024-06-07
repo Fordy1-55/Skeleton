@@ -33,7 +33,7 @@ namespace Testing5
             clsSupplierUser AUser = new clsSupplierUser();
             string TestData = "Caleb";
             AUser.UserName = TestData;
-            Assert.AreEqual(AUser, TestData);
+            Assert.AreEqual(AUser.UserName, TestData);
         }
 
         [TestMethod]
