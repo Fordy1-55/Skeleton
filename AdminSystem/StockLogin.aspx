@@ -9,10 +9,10 @@
 <body style="height: 651px">
     <form id="form1" runat="server">
         <div>
-            <p>Stock Login Page</p>
+            <p style="font-family: arial, Helvetica, sans-serif">Stock Login Page</p>
         </div>
-        <asp:Label ID="lblUserName" runat="server" style="z-index: 1; left: 60px; top: 153px; position: absolute" Text="UserName:"></asp:Label>
-        <asp:Label ID="lblPassword" runat="server" style="z-index: 1; left: 60px; top: 203px; position: absolute" Text="Password:"></asp:Label>
+        <asp:Label ID="lblUserName" runat="server" style="z-index: 1; left: 60px; top: 153px; position: absolute" Text="UserName:" Font-Names="Arial"></asp:Label>
+        <asp:Label ID="lblPassword" runat="server" style="z-index: 1; left: 60px; top: 203px; position: absolute" Text="Password:" Font-Names="Arial"></asp:Label>
         <asp:TextBox ID="txtUserName" runat="server" style="z-index: 1; left: 160px; top: 153px; position: absolute"></asp:TextBox>
         <asp:TextBox ID="txtPassword" runat="server" style="z-index: 1; left: 160px; top: 203px; position: absolute" TextMode="Password"></asp:TextBox>
         <asp:Button ID="btnLogin" runat="server" style="z-index: 1; left: 160px; top: 263px; position: absolute; width: 53px;" Text="Login" OnClick="btnLogin_Click" />
