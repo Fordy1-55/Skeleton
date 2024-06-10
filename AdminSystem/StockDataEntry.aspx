@@ -56,7 +56,7 @@
             <asp:Label ID="lblProductTitle" runat="server" style="z-index: 1; left: 12px; top: 81px; position: absolute; height: 19px" Text="Product Title" width="121px"></asp:Label>
         </p>
         <asp:Button ID="btnOk" runat="server" height="26px" OnClick="btnOk_Click" style="z-index: 1; left: 13px; top: 492px; position: absolute" Text="Ok" width="60px" />
-        <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 96px; top: 492px; position: absolute" Text="Cancel" height="26px" width="60px" />
+        <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 96px; top: 492px; position: absolute" Text="Cancel" height="26px" width="60px" OnClick="btnCancel_Click" />
         <asp:Button ID="btnReturn" runat="server" style="z-index: 1; left: 210px; top: 492px; position: absolute" Text="Return to Main Menu" OnClick="btnReturn_Click" />
     </form>
 </body>
